@@ -19,17 +19,15 @@ const correctAnswer = ref("");
 const answeredQuestion = ref(false);
 const answeredCorrectly = ref(false);
 
-
-function checkAnswer(answer){
+const checkAnswer = (answer) => {
   answeredQuestion.value = true;
 
-  if(answer === correctAnswer.value){
+  if (answer === correctAnswer.value) {
     answeredCorrectly.value = true;
-  }
-  else{
+  } else {
     answeredCorrectly.value = false;
   }
-}
+};
 
 onBeforeMount(() => {
   wordToTranslate.value = "Pineapple";
@@ -38,6 +36,5 @@ onBeforeMount(() => {
   answers.value = [...answers.value, "ananas"];
   answers.value = [...answers.value, "äpple"];
   correctAnswer.value = "ananas";
-  
 });
 </script>
