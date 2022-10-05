@@ -16,8 +16,8 @@ const category = ref("");
 onBeforeMount(() => {
   wordToTranslate.value = "Pineapple";
   category.value = "Fruit";
-  answers.value = answers.value = [...answers.value, "banan"];
-  answers.value = answers.value = [...answers.value, "ananas"];
-  answers.value = answers.value = [...answers.value, "äpple"];
+  answers.value = [...answers.value, "banan"];
+  answers.value = [...answers.value, "ananas"];
+  answers.value = [...answers.value, "äpple"];
 });
 </script>
