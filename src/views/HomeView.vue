@@ -4,7 +4,9 @@
   <AnswerItems @button-clicked="checkAnswer" :answers="answers" />
   <p v-if="answeredCorrectly && answeredQuestion">Correct answer!</p>
   <p v-else-if="answeredQuestion && !answeredCorrectly">Wrong answer</p>
-  <button v-show="answeredQuestion">Next question</button>
+  <button v-show="answeredQuestion" @click.prevent="nextQuestion">
+    Next question
+  </button>
 </template>
 
 <script setup>
@@ -29,9 +31,20 @@ const checkAnswer = (answer) => {
   }
 };
 
+const nextQuestion = () => {
+  wordToTranslate.value = "Pear";
+  correctAnswer.value = "päron";
+  answers.value = [];
+  answers.value = [...answers.value, "mango"];
+  answers.value = [...answers.value, "päron"];
+  answers.value = [...answers.value, "jordgubbe"];
+  answeredQuestion.value = false;
+  answeredCorrectly.value = false;
+};
+
 onBeforeMount(() => {
-  wordToTranslate.value = "Pineapple";
   category.value = "Fruit";
+  wordToTranslate.value = "Pineapple";
   answers.value = [...answers.value, "banan"];
   answers.value = [...answers.value, "ananas"];
   answers.value = [...answers.value, "äpple"];
