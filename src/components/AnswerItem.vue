@@ -1,5 +1,5 @@
 <template>
-  <button>{{ props.answer }}</button>
+  <button @click.prevent="$emit('button-clicked',props.answer)">{{ props.answer }}</button>
 </template>
 
 <script setup>
@@ -9,4 +9,6 @@ const props = defineProps({
     required: true,
   },
 });
+
+
 </script>

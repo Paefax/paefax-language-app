@@ -1,6 +1,6 @@
 <template>
   <div v-for="(answer, index) in props.answers" :key="index">
-    <AnswerItem :answer="answer" />
+    <AnswerItem @button-clicked="buttonClicked" :answer="answer" />
   </div>
 </template>
 
@@ -13,4 +13,11 @@ const props = defineProps({
     required: true,
   },
 });
+
+
+ const emits = defineEmits(["button-clicked"])
+ const buttonClicked = (answer) =>{
+    emits("button-clicked",answer)
+ }
+
 </script>
