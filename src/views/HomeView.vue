@@ -11,15 +11,14 @@
 
 <script setup>
 import AnswerItems from "../components/AnswerItems.vue";
-import { ref, onBeforeMount } from "vue";
+import { ref, onMounted } from "vue";
 import { useQuizStore } from "@/stores/quiz";
 const answers = ref([]);
 const wordToTranslate = ref("");
 const category = ref("");
 const quiz = useQuizStore();
 const correctAnswer = ref("");
-const currentQuestion = ref(Object);
-
+const currentQuestion = ref();
 const answeredQuestion = ref(false);
 const answeredCorrectly = ref(false);
 
@@ -34,6 +33,7 @@ const checkAnswer = (answer) => {
 };
 
 const setQuestionInfo = () => {
+  console.log("Kevins log", currentQuestion.value);
   wordToTranslate.value = currentQuestion.value.word;
   correctAnswer.value = currentQuestion.value.correctAnswer;
   answers.value = [];
@@ -42,6 +42,7 @@ const setQuestionInfo = () => {
     ...answers.value,
     currentQuestion.value.incorrectAnswers[0].word,
   ];
+
   answers.value = [
     ...answers.value,
     currentQuestion.value.incorrectAnswers[1].word,
@@ -62,12 +63,21 @@ const nextQuestion = () => {
   }
 };
 
-onBeforeMount(() => {
+onMounted(() => {
   //Set information about quiz (Now hard coded in quiz.js)
-  category.value = quiz.category;
+  fetch("questions.json")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      quiz.setQuestions(data.questions);
 
-  //Set first question
-  currentQuestion.value = quiz.getCurrentQuestion();
-  setQuestionInfo();
+      category.value = quiz.category;
+
+      //Set first question
+      currentQuestion.value = quiz.getCurrentQuestion();
+      console.log("Kevins log2", quiz.getCurrentQuestion());
+      setQuestionInfo();
+    });
+  // Behöver ingen getter utan computed
 });
 </script>
