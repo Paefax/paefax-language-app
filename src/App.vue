@@ -3,6 +3,7 @@
     <nav>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/language">Language</RouterLink>
+      <RouterLink to="/categories">Category</RouterLink>
     </nav>
   </header>
   <main id="viewport">
