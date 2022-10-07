@@ -11,19 +11,19 @@
 
 <script setup>
 import AnswerItems from "../components/AnswerItems.vue";
-import { ref, onBeforeMount } from "vue";
+import { ref, onMounted } from "vue";
+import { useQuizStore } from "@/stores/quiz";
 const answers = ref([]);
 const wordToTranslate = ref("");
 const category = ref("");
-
+const quiz = useQuizStore();
 const correctAnswer = ref("");
-
+const currentQuestion = ref();
 const answeredQuestion = ref(false);
 const answeredCorrectly = ref(false);
 
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
-
   if (answer === correctAnswer.value) {
     answeredCorrectly.value = true;
   } else {
@@ -31,23 +31,41 @@ const checkAnswer = (answer) => {
   }
 };
 
-const nextQuestion = () => {
-  wordToTranslate.value = "Pear";
-  correctAnswer.value = "päron";
+const setQuestionInfo = () => {
+  currentQuestion.value = quiz.getCurrentQuestion();
+  wordToTranslate.value = currentQuestion.value.word;
+  correctAnswer.value = currentQuestion.value.correctAnswer;
   answers.value = [];
-  answers.value = [...answers.value, "mango"];
-  answers.value = [...answers.value, "päron"];
-  answers.value = [...answers.value, "jordgubbe"];
-  answeredQuestion.value = false;
-  answeredCorrectly.value = false;
+  answers.value = [...answers.value, currentQuestion.value.correctAnswer];
+  answers.value = [
+    ...answers.value,
+    currentQuestion.value.incorrectAnswers[0].word,
+  ];
+  answers.value = [
+    ...answers.value,
+    currentQuestion.value.incorrectAnswers[1].word,
+  ];
 };
 
-onBeforeMount(() => {
-  category.value = "Fruit";
-  wordToTranslate.value = "Pineapple";
-  answers.value = [...answers.value, "banan"];
-  answers.value = [...answers.value, "ananas"];
-  answers.value = [...answers.value, "äpple"];
-  correctAnswer.value = "ananas";
+const nextQuestion = () => {
+  let noMoreQuestions = !(quiz.idCurrentQuestion < quiz.numberOfQuestions - 1);
+  if (noMoreQuestions) {
+    //TODO: Here we will send the user to the finish/result page.
+    console.log("done");
+  } else {
+    quiz.nextQuestion();
+    setQuestionInfo();
+    answeredQuestion.value = false;
+  }
+};
+
+onMounted(() => {
+  fetch("questions.json")
+    .then((response) => response.json())
+    .then((data) => {
+      quiz.setQuestions(data.questions); // Put questions for this quiz in the quiz store
+      category.value = quiz.category; //Set category - same for entire quiz
+      setQuestionInfo(); //Set first question
+    });
 });
 </script>
