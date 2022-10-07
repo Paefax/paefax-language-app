@@ -4,10 +4,8 @@
     <section id="language-cards">
       <LanguageCard
         v-for="(language, index) in languages"
-        :key="language.id"
+        :key="index"
         :name="language.name"
-        :img="language.img"
-        :alt="language.alt"
       />
     </section>
   </main>
@@ -19,28 +17,7 @@ import LanguageCard from "../components/LanguageCard.vue";
 
 const languages = ref([
   {
-    id: 1,
-    name: "English",
-    img: "uk-flag.svg",
-    alt: "uk flag",
-  },
-  {
-    id: 2,
-    name: "Spanish",
-    img: "spain-flag.svg",
-    alt: "spain flag",
-  },
-  {
-    id: 3,
-    name: "French",
-    img: "france-flag.svg",
-    alt: "france flag",
-  },
-  {
-    id: 4,
-    name: "Chinese",
-    img: "china-flag.svg",
-    alt: "china flag",
+    name: "Swedish",
   },
 ]);
 </script>
