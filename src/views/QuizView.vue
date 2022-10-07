@@ -13,6 +13,7 @@
 import AnswerItems from "../components/AnswerItems.vue";
 import { ref, onMounted } from "vue";
 import { useQuizStore } from "@/stores/quiz";
+import router from "../router/index";
 const answers = ref([]);
 const wordToTranslate = ref("");
 const category = ref("");
@@ -50,8 +51,7 @@ const setQuestionInfo = () => {
 const nextQuestion = () => {
   let noMoreQuestions = !(quiz.idCurrentQuestion < quiz.numberOfQuestions - 1);
   if (noMoreQuestions) {
-    //TODO: Here we will send the user to the finish/result page.
-    console.log("done");
+    router.push("/result");
   } else {
     quiz.nextQuestion();
     setQuestionInfo();

@@ -1,6 +1,8 @@
 <template>
   <main>
-    <button>{{ props.name }}</button>
+    <RouterLink to="/quiz">
+      <button>{{ props.name }}</button>
+    </RouterLink>
   </main>
 </template>
 

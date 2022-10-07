@@ -6,7 +6,7 @@
       alt="Paefax logo globe with flags"
     />
     <h1 id="landing-page-title">Paefax Language Quiz</h1>
-    <RouterLink to="/quiz">
+    <RouterLink to="/language">
       <button>Get Started</button>
     </RouterLink>
   </main>
