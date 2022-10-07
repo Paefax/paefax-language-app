@@ -16,6 +16,7 @@ import AnswerItems from "../components/AnswerItems.vue";
 import { ref, onMounted } from "vue";
 import { useQuizStore } from "@/stores/quiz";
 import router from "../router/index";
+
 const answers = ref([]);
 const wordToTranslate = ref("");
 const category = ref("");

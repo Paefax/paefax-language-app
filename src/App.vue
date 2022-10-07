@@ -15,6 +15,7 @@ import { RouterView } from "vue-router";
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 </style>

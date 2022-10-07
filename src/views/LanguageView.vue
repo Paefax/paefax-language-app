@@ -1,11 +1,14 @@
 <template>
-  <main>
+  <main id="language-box">
     <h1>Pick a language</h1>
     <section id="language-cards">
       <LanguageCard
-        v-for="(language, index) in languages"
-        :key="index"
+        v-for="language in languages"
+        :key="language.id"
         :name="language.name"
+        :img="language.img"
+        :alt="language.alt"
+        :link="language.link"
       />
     </section>
   </main>
@@ -14,16 +17,40 @@
 <script setup>
 import { ref } from "vue";
 import LanguageCard from "../components/LanguageCard.vue";
-
 const languages = ref([
   {
-    name: "Swedish",
+    id: 1,
+    name: "English",
+    img: "uk-flag.svg",
+    alt: "uk flag",
+    link: "/category",
+  },
+  {
+    id: 2,
+    name: "Spanish",
+    img: "spain-flag.svg",
+    alt: "spain flag",
+    link: "/category",
+  },
+  {
+    id: 3,
+    name: "French",
+    img: "france-flag.svg",
+    alt: "france flag",
+    link: "/category",
+  },
+  {
+    id: 4,
+    name: "Chinese",
+    img: "china-flag.svg",
+    alt: "china flag",
+    link: "/category",
   },
 ]);
 </script>
 
 <style scoped>
-main {
+#language-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
