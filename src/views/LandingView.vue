@@ -9,9 +9,6 @@
     <RouterLink to="/quiz">
       <button>Get Started</button>
     </RouterLink>
-    <RouterLink to="/account">
-      <button>Already have an account?</button>
-    </RouterLink>
   </main>
 </template>
 
