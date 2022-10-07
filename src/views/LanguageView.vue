@@ -1,5 +1,5 @@
 <template>
-  <main id="language-box">
+  <main>
     <h1>Pick a language</h1>
     <section id="language-cards">
       <LanguageCard
@@ -23,7 +23,7 @@ const languages = ref([
 </script>
 
 <style scoped>
-#language-box {
+main {
   display: flex;
   flex-direction: column;
   justify-content: center;
