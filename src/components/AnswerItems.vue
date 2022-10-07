@@ -13,11 +13,9 @@ const props = defineProps({
     required: true,
   },
 });
+const emits = defineEmits(["button-clicked"]);
 
-
- const emits = defineEmits(["button-clicked"])
- const buttonClicked = (answer) =>{
-    emits("button-clicked",answer)
- }
-
+const buttonClicked = (answer) => {
+  emits("button-clicked", answer);
+};
 </script>
