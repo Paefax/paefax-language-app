@@ -24,7 +24,6 @@ const answeredCorrectly = ref(false);
 
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
-
   if (answer === correctAnswer.value) {
     answeredCorrectly.value = true;
   } else {
@@ -33,7 +32,7 @@ const checkAnswer = (answer) => {
 };
 
 const setQuestionInfo = () => {
-  console.log("Kevins log", currentQuestion.value);
+  currentQuestion.value = quiz.getCurrentQuestion();
   wordToTranslate.value = currentQuestion.value.word;
   correctAnswer.value = currentQuestion.value.correctAnswer;
   answers.value = [];
@@ -42,7 +41,6 @@ const setQuestionInfo = () => {
     ...answers.value,
     currentQuestion.value.incorrectAnswers[0].word,
   ];
-
   answers.value = [
     ...answers.value,
     currentQuestion.value.incorrectAnswers[1].word,
@@ -50,34 +48,24 @@ const setQuestionInfo = () => {
 };
 
 const nextQuestion = () => {
-  if (quiz.idCurrentQuestion < quiz.numberOfQuestions - 1) {
-    quiz.nextQuestion();
-    currentQuestion.value = quiz.getCurrentQuestion();
-    setQuestionInfo();
-
-    answeredQuestion.value = false;
-    answeredCorrectly.value = false;
-  } else {
-    // Here we will send the user to the finish/result page.
+  let noMoreQuestions = !(quiz.idCurrentQuestion < quiz.numberOfQuestions - 1);
+  if (noMoreQuestions) {
+    //TODO: Here we will send the user to the finish/result page.
     console.log("done");
+  } else {
+    quiz.nextQuestion();
+    setQuestionInfo();
+    answeredQuestion.value = false;
   }
 };
 
 onMounted(() => {
-  //Set information about quiz (Now hard coded in quiz.js)
   fetch("questions.json")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      quiz.setQuestions(data.questions);
-
-      category.value = quiz.category;
-
-      //Set first question
-      currentQuestion.value = quiz.getCurrentQuestion();
-      console.log("Kevins log2", quiz.getCurrentQuestion());
-      setQuestionInfo();
+      quiz.setQuestions(data.questions); // Put questions for this quiz in the quiz store
+      category.value = quiz.category; //Set category - same for entire quiz
+      setQuestionInfo(); //Set first question
     });
-  // Behöver ingen getter utan computed
 });
 </script>
