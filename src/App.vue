@@ -2,6 +2,7 @@
   <header>
     <nav>
       <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/language">Language</RouterLink>
     </nav>
   </header>
   <main id="viewport">

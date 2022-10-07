@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import LanguageView from "../views/LanguageView.vue";
 import LandingView from "../views/LandingView.vue";
 
 const router = createRouter({
@@ -15,6 +16,11 @@ const router = createRouter({
       path: "/quiz",
       name: "quiz",
       component: HomeView,
+    },
+    {
+      path: "/language",
+      name: "language",
+      component: LanguageView,
     },
   ],
 });
