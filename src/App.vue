@@ -3,7 +3,7 @@
     <nav>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/language">Language</RouterLink>
-      <RouterLink to="/categories">Category</RouterLink>
+      <RouterLink to="/category">Category</RouterLink>
       <RouterLink to="/quiz">Quiz</RouterLink>
     </nav>
   </header>

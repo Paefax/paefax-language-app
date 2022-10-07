@@ -24,8 +24,8 @@ const router = createRouter({
       component: LanguageView,
     },
     {
-      path: "/categories",
-      name: "categories",
+      path: "/category",
+      name: "category",
       component: CategoryView,
     },
   ],
