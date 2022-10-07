@@ -28,13 +28,13 @@ npm run dev
 
 ## Useful links
 
-[Agile board](https://trello.com/b/yGDs6Lc3), where we have our user stories, backlog, current sprint log and where we plan and execute our work
+[Agile board](https://trello.com/b/yGDs6Lc3), where we have our user stories, backlog, current sprint log and where we plan and execute our work.
 
-[LoFi wireframe](https://www.figma.com/file/BulVWVa1zG2pkhOGge8UJg/Quiz-App?node-id=13%3A2), our first draft for the look of the frontend with basic functionality
+[LoFi wireframe](https://www.figma.com/file/BulVWVa1zG2pkhOGge8UJg/Quiz-App?node-id=13%3A2), our first draft for the look of the frontend with basic functionality.
 
-[HiFi wireframe](), comming soon!
+[HiFi wireframe](https://www.figma.com/file/B01yY6eOuxlaKGoEf4T2Y3/HIFI-Quiz-app?node-id=0%3A1), our LoFi with added color theme and fonts.
 
-[Backend repository](), comming soon!
+[Backend repository](https://github.com/Paefax/paefax-language-backend), our backend repository.
 
 ## Project members
 
