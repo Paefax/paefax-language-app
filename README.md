@@ -18,7 +18,6 @@ https://github.com/Paefax/paefax-language-app.git
 
 ```sh
 npm install
-npm install pinia
 ```
 
 ### Compile and start hot-reload server
