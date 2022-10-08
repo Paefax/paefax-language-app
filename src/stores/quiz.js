@@ -6,6 +6,7 @@ export const useQuizStore = defineStore("quiz", () => {
   const questions = ref([]);
   const idCurrentQuestion = ref(0);
   const numberOfQuestions = computed(() => questions.value.length);
+  const wrongAnsweredQuestions = ref([]);
 
   const setQuestions = (newQuestions) => {
     questions.value = newQuestions;
@@ -28,6 +29,15 @@ export const useQuizStore = defineStore("quiz", () => {
     }
   };
 
+  const addQuestion = (question) => {
+    if (wrongAnsweredQuestions.value.length < numberOfQuestions.value) {
+      wrongAnsweredQuestions.value.push(question);
+    } else {
+      wrongAnsweredQuestions.value = [];
+      wrongAnsweredQuestions.value.push(question);
+    }
+  };
+
   return {
     questions,
     nextQuestion,
@@ -37,5 +47,7 @@ export const useQuizStore = defineStore("quiz", () => {
     numberOfQuestions,
     setQuestions,
     setCategory,
+    wrongAnsweredQuestions,
+    addQuestion,
   };
 });
