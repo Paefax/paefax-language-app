@@ -32,6 +32,7 @@ const checkAnswer = (answer) => {
     answeredCorrectly.value = true;
   } else {
     answeredCorrectly.value = false;
+    quiz.addQuestion(currentQuestion.value);
   }
 };
 
