@@ -68,6 +68,7 @@ onMounted(() => {
   fetch("questions.json")
     .then((response) => response.json())
     .then((data) => {
+      quiz.setDefaultQuestions(data.questions);
       quiz.setQuestions(data.questions);
       quiz.setCategory(data.category);
       setQuestionInfo();
