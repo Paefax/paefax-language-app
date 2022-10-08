@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>{{ category }}</h1>
+    <h1>{{ quiz.category }}</h1>
     <p>{{ wordToTranslate }}</p>
     <AnswerItems @button-clicked="checkAnswer" :answers="answers" />
     <p v-if="answeredCorrectly && answeredQuestion">Correct answer!</p>
@@ -12,14 +12,15 @@
 </template>
 
 <script setup>
-import AnswerItems from "../components/AnswerItems.vue";
-import { ref, onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useQuizStore } from "@/stores/quiz";
+import AnswerItems from "../components/AnswerItems.vue";
 import router from "../router/index";
+
+const quiz = useQuizStore();
+
 const answers = ref([]);
 const wordToTranslate = ref("");
-const category = ref("");
-const quiz = useQuizStore();
 const correctAnswer = ref("");
 const currentQuestion = ref();
 const answeredQuestion = ref(false);
@@ -52,10 +53,11 @@ const setQuestionInfo = () => {
 
 const nextQuestion = () => {
   let noMoreQuestions = !(quiz.idCurrentQuestion < quiz.numberOfQuestions - 1);
+  quiz.nextQuestion();
+
   if (noMoreQuestions) {
     router.push("/result");
   } else {
-    quiz.nextQuestion();
     setQuestionInfo();
     answeredQuestion.value = false;
   }
@@ -65,9 +67,9 @@ onMounted(() => {
   fetch("questions.json")
     .then((response) => response.json())
     .then((data) => {
-      quiz.setQuestions(data.questions); // Put questions for this quiz in the quiz store
-      category.value = quiz.category; //Set category - same for entire quiz
-      setQuestionInfo(); //Set first question
+      quiz.setQuestions(data.questions);
+      quiz.setCategory(data.category);
+      setQuestionInfo();
     });
 });
 </script>

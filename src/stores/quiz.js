@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
 export const useQuizStore = defineStore("quiz", () => {
-  const category = ref("fruit");
+  const category = ref("");
   const questions = ref([]);
   const idCurrentQuestion = ref(0);
   const numberOfQuestions = computed(() => questions.value.length);
@@ -11,12 +11,21 @@ export const useQuizStore = defineStore("quiz", () => {
     questions.value = newQuestions;
   };
 
+  const setCategory = (categoryName) => {
+    category.value = categoryName;
+  };
+
   const nextQuestion = () => {
     idCurrentQuestion.value++;
   };
 
   const getCurrentQuestion = () => {
-    return questions.value[idCurrentQuestion.value];
+    if (idCurrentQuestion.value < numberOfQuestions.value) {
+      return questions.value[idCurrentQuestion.value];
+    } else {
+      idCurrentQuestion.value = 0;
+      return questions.value[0];
+    }
   };
 
   return {
@@ -27,5 +36,6 @@ export const useQuizStore = defineStore("quiz", () => {
     idCurrentQuestion,
     numberOfQuestions,
     setQuestions,
+    setCategory,
   };
 });
