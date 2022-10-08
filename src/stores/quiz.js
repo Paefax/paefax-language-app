@@ -2,14 +2,20 @@ import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
 export const useQuizStore = defineStore("quiz", () => {
-  const category = ref("");
+  const defaultQuestions = ref([]);
   const questions = ref([]);
+  const category = ref("");
   const idCurrentQuestion = ref(0);
   const numberOfQuestions = computed(() => questions.value.length);
   const wrongAnsweredQuestions = ref([]);
 
   const setQuestions = (newQuestions) => {
-    questions.value = newQuestions;
+    questions.value = JSON.parse(JSON.stringify(newQuestions));
+    wrongAnsweredQuestions.value = [];
+  };
+
+  const setDefaultQuestions = (questions) => {
+    defaultQuestions.value = questions;
   };
 
   const setCategory = (categoryName) => {
@@ -38,6 +44,22 @@ export const useQuizStore = defineStore("quiz", () => {
     }
   };
 
+  const removeQuestion = (question) => {
+    const index = wrongAnsweredQuestions.value.findIndex(
+      (entry) => entry.id === question.id
+    );
+
+    if (index >= 0) {
+      wrongAnsweredQuestions.value.splice(index, 1);
+    }
+  };
+
+  const resetToDefault = () => {
+    setQuestions(defaultQuestions.value);
+    idCurrentQuestion.value = 0;
+    wrongAnsweredQuestions.value = [];
+  };
+
   return {
     questions,
     nextQuestion,
@@ -49,5 +71,9 @@ export const useQuizStore = defineStore("quiz", () => {
     setCategory,
     wrongAnsweredQuestions,
     addQuestion,
+    removeQuestion,
+    defaultQuestions,
+    setDefaultQuestions,
+    resetToDefault,
   };
 });
