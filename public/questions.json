@@ -5,53 +5,25 @@
       "id": 0,
       "word": "apple",
       "correctAnswer": "äpple",
-      "incorrectAnswers": [
-        {
-          "word": "ananas"
-        },
-        {
-          "word": "kiwi"
-        }
-      ]
+      "incorrectAnswers": ["ananas", "kiwi"]
     },
     {
       "id": 1,
       "word": "pear",
       "correctAnswer": "päron",
-      "incorrectAnswers": [
-        {
-          "word": "äpple"
-        },
-        {
-          "word": "mango"
-        }
-      ]
+      "incorrectAnswers": ["äpple", "mango"]
     },
     {
       "id": 2,
       "word": "pineapple",
       "correctAnswer": "ananas",
-      "incorrectAnswers": [
-        {
-          "word": "mango"
-        },
-        {
-          "word": "jordgubbe"
-        }
-      ]
+      "incorrectAnswers": ["mango", "jordgubbe"]
     },
     {
       "id": 3,
       "word": "strawberry",
       "correctAnswer": "jordgubbe",
-      "incorrectAnswers": [
-        {
-          "word": "björnbär"
-        },
-        {
-          "word": "hallon"
-        }
-      ]
+      "incorrectAnswers": ["björnbär", "hallon"]
     }
   ]
 }

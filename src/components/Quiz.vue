@@ -39,16 +39,12 @@ const setQuestionInfo = () => {
   currentQuestion.value = quiz.getCurrentQuestion();
   wordToTranslate.value = currentQuestion.value.word;
   correctAnswer.value = currentQuestion.value.correctAnswer;
+
   answers.value = [];
-  answers.value = [...answers.value, currentQuestion.value.correctAnswer];
-  answers.value = [
-    ...answers.value,
-    currentQuestion.value.incorrectAnswers[0].word,
-  ];
-  answers.value = [
-    ...answers.value,
-    currentQuestion.value.incorrectAnswers[1].word,
-  ];
+
+  answers.value.push(currentQuestion.value.correctAnswer);
+  answers.value.push(currentQuestion.value.incorrectAnswers[0]);
+  answers.value.push(currentQuestion.value.incorrectAnswers[1]);
 
   shuffleAnswers(answers.value);
 };
