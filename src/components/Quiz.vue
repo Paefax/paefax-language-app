@@ -41,9 +41,19 @@ const setQuestionInfo = () => {
   correctAnswer.value = currentQuestion.value.correctAnswer;
 
   answers.value = [];
+
   answers.value.push(currentQuestion.value.correctAnswer);
   answers.value.push(currentQuestion.value.incorrectAnswers[0]);
   answers.value.push(currentQuestion.value.incorrectAnswers[1]);
+
+  shuffleAnswers(answers.value);
+};
+
+const shuffleAnswers = (answers) => {
+  for (let i = answers.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [answers[i], answers[j]] = [answers[j], answers[i]];
+  }
 };
 
 const nextQuestion = () => {
