@@ -1,10 +1,12 @@
 <template>
   <main>
     <h1>Good job!</h1>
-    <h2>You finished the quiz</h2>
+    <h3>Score: {{ quiz.score }} / {{ quiz.numberOfQuestions }}</h3>
+    
     <RouterLink to="/retake" v-if="canRetake">
       <button>Retake</button>
     </RouterLink>
+
     <RouterLink to="/">
       <button @click="resetDefault()">Home</button>
     </RouterLink>

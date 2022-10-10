@@ -30,6 +30,7 @@ const checkAnswer = (answer) => {
   answeredQuestion.value = true;
   if (answer === correctAnswer.value) {
     answeredCorrectly.value = true;
+    quiz.increaseScore();
   } else {
     answeredCorrectly.value = false;
     quiz.addQuestion(currentQuestion.value);
@@ -40,16 +41,21 @@ const setQuestionInfo = () => {
   currentQuestion.value = quiz.getCurrentQuestion();
   wordToTranslate.value = currentQuestion.value.word;
   correctAnswer.value = currentQuestion.value.correctAnswer;
+
   answers.value = [];
-  answers.value = [...answers.value, currentQuestion.value.correctAnswer];
-  answers.value = [
-    ...answers.value,
-    currentQuestion.value.incorrectAnswers[0].word,
-  ];
-  answers.value = [
-    ...answers.value,
-    currentQuestion.value.incorrectAnswers[1].word,
-  ];
+
+  answers.value.push(currentQuestion.value.correctAnswer);
+  answers.value.push(currentQuestion.value.incorrectAnswers[0]);
+  answers.value.push(currentQuestion.value.incorrectAnswers[1]);
+
+  shuffleAnswers(answers.value);
+};
+
+const shuffleAnswers = (answers) => {
+  for (let i = answers.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [answers[i], answers[j]] = [answers[j], answers[i]];
+  }
 };
 
 const nextQuestion = () => {
