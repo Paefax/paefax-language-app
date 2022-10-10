@@ -2,9 +2,13 @@
   <main>
     <h1>Good job!</h1>
     <h3>Score: {{ quiz.score }} / {{ quiz.numberOfQuestions }}</h3>
-    <h2>You finished the quiz</h2>
+    
+    <RouterLink to="/retake" v-if="canRetake">
+      <button>Retake</button>
+    </RouterLink>
+
     <RouterLink to="/">
-      <button>Home</button>
+      <button @click="resetDefault()">Home</button>
     </RouterLink>
   </main>
 </template>
@@ -13,6 +17,12 @@
 import { useQuizStore } from "@/stores/quiz";
 
 const quiz = useQuizStore();
+
+const canRetake = quiz.wrongAnsweredQuestions.length > 0 ? true : false;
+
+const resetDefault = () => {
+  quiz.resetToDefault();
+};
 </script>
 
 <style scoped>
