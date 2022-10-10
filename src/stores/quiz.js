@@ -60,6 +60,7 @@ export const useQuizStore = defineStore("quiz", () => {
     setQuestions(defaultQuestions.value);
     idCurrentQuestion.value = 0;
     wrongAnsweredQuestions.value = [];
+  };
 
   const increaseScore = () => {
     score.value++;
