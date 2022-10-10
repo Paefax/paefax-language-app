@@ -30,6 +30,7 @@ const checkAnswer = (answer) => {
   answeredQuestion.value = true;
   if (answer === correctAnswer.value) {
     answeredCorrectly.value = true;
+    quiz.increaseScore();
   } else {
     answeredCorrectly.value = false;
   }
