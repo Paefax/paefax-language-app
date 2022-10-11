@@ -1,4 +1,7 @@
 # Paefax Language Quiz project
+![build](https://github.com/Paefax/paefax-language-app/actions/workflows/build.yml/badge.svg)
+![lines](https://img.shields.io/tokei/lines/github/Paefax/paefax-language-app)
+![pulls](https://img.shields.io/github/issues-pr-closed/Paefax/paefax-language-app)
 
 This app is part of our final project in our Agile course and Web application course at IT-Högskolan in Gothenburg.
 
@@ -39,3 +42,13 @@ npm run dev
 ## Project members
 
 [Philippe Vial](https://github.com/Philippevial) | [Felix Jacobsen](https://github.com/FelixJacobsen) | [Fredrik Eriksson](https://github.com/ErikssonF) | [Helena Eklund](https://github.com/helenahalldiniths) | [Patrik Fallqvist Magnusson](https://github.com/LordRekishi)
+
+## Technologies
+
+![IDE](https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white)
+![TRELLO](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white)
+![FIGMA](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+![VUE](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D)
+![NODE](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![EXP](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![SQL](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
