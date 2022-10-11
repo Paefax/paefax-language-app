@@ -40,6 +40,16 @@ const router = createRouter({
       name: "login",
       component: ComingSoonView,
     },
+    {
+      path: "/settings",
+      name: "settings",
+      component: ComingSoonView,
+    },
+    {
+      path: "/account",
+      name: "account",
+      component: ComingSoonView,
+    },
   ],
 });
 
