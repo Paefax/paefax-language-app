@@ -1,7 +1,7 @@
 <template>
   <main>
     <h1>Choose a category</h1>
-    <section>
+    <section id="category-card">
       <CategoryCard
         v-for="(category, index) in categories"
         :key="index"
@@ -19,6 +19,15 @@ const categories = ref([
   {
     name: "Fruit",
   },
+  {
+    name: "Animals",
+  },
+  {
+    name: "Vehicles",
+  },
+  {
+    name: "Numbers",
+  },
 ]);
 </script>
 
@@ -28,5 +37,13 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#category-card {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 </style>
