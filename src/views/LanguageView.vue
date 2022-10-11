@@ -19,6 +19,15 @@ const languages = ref([
   {
     name: "Swedish",
   },
+  {
+    name: "English",
+  },
+  {
+    name: "Spanish",
+  },
+  {
+    name: "French",
+  },
 ]);
 </script>
 

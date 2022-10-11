@@ -2,12 +2,14 @@
   <main>
     <img
       id="logo-img"
-      src="../assets/images/logo.png"
+      src="../assets/images/logo.svg"
       alt="Paefax logo globe with flags"
     />
-    <h1>Paefax Language Quiz</h1>
     <RouterLink to="/language">
       <button>Get Started</button>
+    </RouterLink>
+    <RouterLink to="/login">
+      <button>Already have a account?</button>
     </RouterLink>
   </main>
 </template>
@@ -18,7 +20,7 @@
 main {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
   max-width: 375px;
@@ -26,5 +28,6 @@ main {
 
 #logo-img {
   max-width: 80%;
+  margin-top: 30px;
 }
 </style>
