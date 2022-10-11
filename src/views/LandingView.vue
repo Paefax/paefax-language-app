@@ -8,6 +8,9 @@
     <RouterLink to="/language">
       <button>Get Started</button>
     </RouterLink>
+    <RouterLink to="/login">
+      <button>Already have a account?</button>
+    </RouterLink>
   </main>
 </template>
 
