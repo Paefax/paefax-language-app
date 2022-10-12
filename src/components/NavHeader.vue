@@ -1,10 +1,10 @@
 <template>
-  <div class="banner">
+  <section class="banner">
     <RouterLink to="/">
       <img src="../assets/images/white-logo-without-text.png" alt="logo" />
     </RouterLink>
     <HamburgerMenu />
-  </div>
+  </section>
 </template>
 
 <script setup>

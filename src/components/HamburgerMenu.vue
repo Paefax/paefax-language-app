@@ -1,9 +1,9 @@
 <template>
-  <div class="menu-options">
+  <nav class="menu-options">
     <RouterLink to="/account"> Account </RouterLink>
     <RouterLink to="/settings"> Settings </RouterLink>
     <RouterLink to="/language"> Language </RouterLink>
-  </div>
+  </nav>
 </template>
 
 <script setup></script>
@@ -17,7 +17,6 @@ a {
 
 .menu-options {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-around;
 }
