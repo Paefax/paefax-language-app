@@ -1,8 +1,13 @@
 <template>
   <div class="banner">
     <img src="../assets/images/logo.svg" alt="logo" />
+    <HamburgerMenu />
   </div>
 </template>
+
+<script setup>
+import HamburgerMenu from "./HamburgerMenu.vue";
+</script>
 
 <style scoped>
 .banner {
