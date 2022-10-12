@@ -2,12 +2,14 @@
   <main id="viewport">
     <NavHeader />
     <RouterView />
+    <NavFooter />
   </main>
 </template>
 
 <script setup>
 import { RouterView } from "vue-router";
 import NavHeader from "./components/NavHeader.vue";
+import NavFooter from "./components/NavFooter.vue";
 </script>
 
 <style scoped>
