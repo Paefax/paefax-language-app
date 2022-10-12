@@ -1,6 +1,8 @@
 <template>
   <div class="banner">
-    <img src="../assets/images/logo.svg" alt="logo" />
+    <RouterLink to="/">
+      <img src="../assets/images/logo.svg" alt="logo" />
+    </RouterLink>
     <HamburgerMenu />
   </div>
 </template>
