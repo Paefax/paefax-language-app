@@ -1,14 +1,8 @@
 <template>
   <div class="menu-options">
-    <RouterLink to="/account">
-      <a>Account</a>
-    </RouterLink>
-    <RouterLink to="/settings">
-      <a>Settings</a>
-    </RouterLink>
-    <RouterLink to="/language">
-      <a>Language</a>
-    </RouterLink>
+    <RouterLink to="/account"> Account </RouterLink>
+    <RouterLink to="/settings"> Settings </RouterLink>
+    <RouterLink to="/language"> Language </RouterLink>
   </div>
 </template>
 
@@ -18,6 +12,7 @@
 a {
   color: white;
   text-decoration: none;
+  padding: 10px;
 }
 
 .menu-options {

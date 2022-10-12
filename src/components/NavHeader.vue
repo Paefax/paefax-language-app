@@ -14,7 +14,6 @@ import HamburgerMenu from "./HamburgerMenu.vue";
   height: 15vh;
   width: 100%;
   margin-bottom: 2rem;
-  border-radius: 0.25rem;
   position: relative;
 }
 
