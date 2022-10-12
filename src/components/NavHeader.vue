@@ -1,7 +1,7 @@
 <template>
   <div class="banner">
     <RouterLink to="/">
-      <img src="../assets/images/logo.svg" alt="logo" />
+      <img src="../assets/images/white-logo-without-text.png" alt="logo" />
     </RouterLink>
     <HamburgerMenu />
   </div>
@@ -13,7 +13,7 @@ import HamburgerMenu from "./HamburgerMenu.vue";
 
 <style scoped>
 .banner {
-  height: 15vh;
+  height: 10vh;
   width: 100%;
   margin-bottom: 2rem;
   position: relative;
