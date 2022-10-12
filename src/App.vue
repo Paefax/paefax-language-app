@@ -1,11 +1,13 @@
 <template>
   <main id="viewport">
+    <NavHeader />
     <RouterView />
   </main>
 </template>
 
 <script setup>
 import { RouterView } from "vue-router";
+import NavHeader from "./components/NavHeader.vue";
 </script>
 
 <style scoped>
