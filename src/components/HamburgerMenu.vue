@@ -1,27 +1,54 @@
 <template>
-  <Slide right noOverlay>
+  <Slide right noOverlay :closeOnNavigation="true">
     <nav class="menu-options">
-      <RouterLink to="/account"> Account </RouterLink>
-      <RouterLink to="/settings"> Settings </RouterLink>
-      <RouterLink to="/language"> Language </RouterLink>
+      <div class="menu-item">
+        <RouterLink to="/account">
+          Account
+          <AccountCircleOutline class="menu-item-img" />
+        </RouterLink>
+      </div>
+
+      <div class="menu-item">
+        <RouterLink to="/settings">
+          Settings
+          <CogOutline class="menu-item-img" />
+        </RouterLink>
+      </div>
+
+      <div class="menu-item">
+        <RouterLink to="/language">
+          Quiz <AlphaQCircleOutline class="menu-item-img" />
+        </RouterLink>
+      </div>
     </nav>
   </Slide>
 </template>
 
 <script setup>
 import { Slide } from "vue3-burger-menu";
+import AccountCircleOutline from "vue-material-design-icons/AccountCircleOutline.vue";
+import CogOutline from "vue-material-design-icons/CogOutline.vue";
+import AlphaQCircleOutline from "vue-material-design-icons/AlphaQCircleOutline.vue";
+
+const isOpen = false;
 </script>
 
 <style>
-a {
-  color: white;
-  text-decoration: none;
-  padding: 10px;
+.menu-item {
+  margin: 10px;
 }
 
-.menu-options {
-  display: flex;
-  justify-content: space-around;
+.menu-item-img {
+  margin-bottom: 10px;
+
+  padding-left: 20px;
+  position: absolute;
+}
+
+a {
+  color: #e9ecfc;
+  text-decoration: none;
+  padding: 10px;
 }
 
 .bm-burger-bars {
@@ -34,10 +61,6 @@ a {
 
 .bm-burger-button {
   position: relative;
-  width: 36px;
-  height: 30px;
-  right: 36px;
-  top: 36px;
   left: 0;
   margin-right: 25px;
 }
@@ -50,5 +73,8 @@ a {
 .menu-options {
   align-items: flex-start;
   flex-direction: column;
+  display: flex;
+  justify-content: space-around;
+  gap: 35px;
 }
 </style>

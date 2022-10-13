@@ -13,8 +13,7 @@ import HamburgerMenu from "./HamburgerMenu.vue";
 
 <style scoped>
 .banner {
-  width: 90vw;
-  margin-bottom: 2rem;
+  width: 100vw;
   justify-content: space-between;
   position: relative;
   display: flex;
