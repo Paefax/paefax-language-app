@@ -13,15 +13,16 @@ import HamburgerMenu from "./HamburgerMenu.vue";
 
 <style scoped>
 .banner {
-  height: 10vh;
-  width: 100%;
-  margin-bottom: 2rem;
+  width: 100vw;
+  justify-content: space-between;
   position: relative;
+  display: flex;
+  margin-bottom: 100px;
+  box-shadow: 0 3px 5px rgba(10, 10, 10, 10);
 }
 
 img {
-  width: 12vh;
-  padding-top: 1rem;
-  padding-left: 1rem;
+  width: 100px;
+  justify-content: center;
 }
 </style>
