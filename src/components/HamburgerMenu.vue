@@ -26,7 +26,7 @@ a {
 }
 
 .bm-burger-bars {
-  background-color: rgb(255, 255, 255);
+  background-color: #e9ecfc;
 }
 
 .line-style {
