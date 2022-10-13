@@ -24,8 +24,6 @@ import HamburgerMenu from "./HamburgerMenu.vue";
 
 img {
   width: 100px;
-  padding-top: 1rem;
-  padding-left: 1rem;
   justify-content: center;
 }
 </style>

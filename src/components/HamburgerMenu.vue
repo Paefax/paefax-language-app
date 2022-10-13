@@ -39,8 +39,11 @@ a {
   height: 30px;
   right: 36px;
   top: 36px;
+  left: 0;
+  margin-right: 25px;
 }
 
 .bm-menu {
+  background-image: linear-gradient(#247680, #185359);
 }
 </style>
