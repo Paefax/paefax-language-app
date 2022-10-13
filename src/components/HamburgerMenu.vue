@@ -21,7 +21,6 @@ a {
 
 .menu-options {
   display: flex;
-  align-items: center;
   justify-content: space-around;
 }
 
@@ -45,5 +44,11 @@ a {
 
 .bm-menu {
   background-image: linear-gradient(#247680, #185359);
+  display: flex;
+}
+
+.menu-options {
+  align-items: flex-start;
+  flex-direction: column;
 }
 </style>
