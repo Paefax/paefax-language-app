@@ -1,5 +1,6 @@
 <template>
   <main>
+    <ProgressBalls />
     <h1>{{ quiz.category }}</h1>
     <p>{{ wordToTranslate }}</p>
     <AnswerItems @button-clicked="checkAnswer" :answers="answers" />
@@ -15,6 +16,7 @@
 import { onMounted, ref } from "vue";
 import { useQuizStore } from "@/stores/quiz";
 import AnswerItems from "../components/AnswerItems.vue";
+import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
 
 const quiz = useQuizStore();
@@ -70,7 +72,7 @@ const nextQuestion = () => {
 };
 
 onMounted(() => {
-  fetch("questions.json")
+  fetch("/questions.json")
     .then((response) => response.json())
     .then((data) => {
       quiz.setQuestions(data.questions);
