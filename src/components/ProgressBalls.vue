@@ -1,24 +1,24 @@
 <template>
   <section class="dot-container">
-    <span v-for="defineDots in defineDots" class="dot">{{
-      amountOfBalls
-    }}</span>
+    <span
+      v-for="answer in quiz.answeredQuestions"
+      :class="{ dotFail: !answer, dotSuccess: answer }"
+      class="dot"
+    ></span>
+
+    <span v-for="dot in remainingQuestions" class="dot"></span>
   </section>
 </template>
 
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
-import AnswerItems from "../components/AnswerItems.vue";
 import { onMounted, ref } from "vue";
+import { computed } from "@vue/reactivity";
 
 const quiz = useQuizStore();
 
-const defineDots = quiz.numberOfQuestions;
-
-const setColor = computed({
-  //Get colors
-  //Return reactive ref
-  //Set colors
+const remainingQuestions = computed(() => {
+  return quiz.numberOfQuestions - quiz.answeredQuestions.length;
 });
 </script>
 
@@ -35,5 +35,12 @@ const setColor = computed({
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
+}
+
+.dotFail {
+  background: red;
+}
+.dotSuccess {
+  background: green;
 }
 </style>

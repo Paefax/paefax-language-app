@@ -36,6 +36,8 @@ const checkAnswer = (answer) => {
   } else {
     answeredCorrectly.value = false;
   }
+
+  quiz.registerAnswer(answeredCorrectly.value);
 };
 
 const setQuestionInfo = () => {

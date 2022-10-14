@@ -8,6 +8,12 @@ export const useQuizStore = defineStore("quiz", () => {
   const numberOfQuestions = computed(() => questions.value.length);
   const score = ref(0);
 
+  const answeredQuestions = ref([]);
+
+  const registerAnswer = (answerSuccess) => {
+    answeredQuestions.value.push(answerSuccess);
+  };
+
   const setQuestions = (newQuestions) => {
     questions.value = newQuestions;
   };
@@ -29,6 +35,7 @@ export const useQuizStore = defineStore("quiz", () => {
       return questions.value[0];
     }
   };
+  // Reset the quiz. Clear score and questions.
 
   const increaseScore = () => {
     score.value++;
@@ -45,5 +52,7 @@ export const useQuizStore = defineStore("quiz", () => {
     setCategory,
     score,
     increaseScore,
+    answeredQuestions,
+    registerAnswer,
   };
 });
