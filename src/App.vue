@@ -15,7 +15,6 @@ import NavFooter from "./components/NavFooter.vue";
 <style scoped>
 #viewport {
   margin: 0 auto;
-  max-width: 375px;
   width: 100%;
   display: flex;
   flex-direction: column;

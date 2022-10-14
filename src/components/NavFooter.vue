@@ -1,58 +1,139 @@
 <template>
-  <div class="footer-container">
-    <div class="footer-item">
-      <h3>Created by</h3>
-      <ul>
-        <li><a href="https://github.com/helenahalldiniths">Helena</a></li>
-        <li><a href="https://github.com/Philippevial">Philippe</a></li>
-        <li><a href="https://github.com/FelixJacobsen">Felix</a></li>
-        <li><a href="https://github.com/ErikssonF">Fredrik</a></li>
-        <li><a href="https://github.com/LordRekishi">Patrik</a></li>
-      </ul>
+  <div class="container">
+    <div class="row">
+      <!-- Item 1 -->
+      <div class="footer-col">
+        <ul>
+          <li>
+            <img src="../assets/images/logo.svg" alt="logo" />
+          </li>
+        </ul>
+      </div>
+      <!-- Item 2 -->
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">Quiz-App</a></li>
+        </ul>
+      </div>
+      <!-- Item 3 -->
+      <div class="footer-col">
+        <h4>Created by</h4>
+        <ul>
+          <li><a href="https://github.com/helenahalldiniths">Helena</a></li>
+          <li><a href="https://github.com/Philippevial">Philippe</a></li>
+          <li><a href="https://github.com/FelixJacobsen">Felix</a></li>
+          <li><a href="https://github.com/ErikssonF">Fredrik</a></li>
+          <li><a href="https://github.com/LordRekishi">Patrik</a></li>
+        </ul>
+      </div>
+      <!-- Item 3 -->
+      <div class="footer-col">
+        <h4>Help and support</h4>
+        <ul>
+          <li><a href="mailto:felix.jacobsen@iths.se">Email Us</a></li>
+          <li><a href="#">Common questions</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-item">
-      <h3>About</h3>
-      <ul>
-        <li><a href="#">Company</a></li>
-        <li><a href="#">Team</a></li>
-      </ul>
-    </div>
-    <div class="footer-item">
-      <h3>Contact</h3>
-      <ul>
-        <li><a href="#">Contact us here</a></li>
-      </ul>
+    <div class="test">
+      <label>© Copyright 2022 Paefax. All rights reserved.</label>
     </div>
   </div>
-  <p class="copyright">Paefax © {{ getYear }}</p>
 </template>
 
-<script setup>
-const getYear = new Date().getFullYear.value;
-</script>
+<script setup></script>
 
 <style scoped>
-a {
-  text-decoration: none;
-  color: white;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-h3 {
-  font-size: 18px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.5;
+  font-family: "Poppins", sans-serif;
+}
+.test {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  color: #bbbbbb;
+  margin-top: 2vw;
+}
+.container {
+  background-image: linear-gradient(#247680, #185359);
+  margin: auto;
+  width: 100vw;
+  bottom: 0px;
+  position: relative;
+  margin-top: 28vw;
 }
 ul {
-  list-style-type: none;
+  list-style: none;
 }
-
-.footer-item {
-  display: inline-block;
-  margin: 1rem 1rem 1rem 1rem;
-}
-
-.footer-container {
-  background: black;
+.row {
   display: flex;
-  position: absolute;
-  bottom: 0;
+  flex-wrap: wrap;
+}
+img {
+  margin-top: 5vw;
+  margin-left: 5vw;
+  width: 150px;
+}
+.footer-col {
+  width: 25%;
+  padding: 0;
+}
+
+.footer-col h4 {
+  font-size: 19px;
+  color: #bbbbbb;
+  text-transform: capitalize;
+  margin-bottom: 30px;
+  font-weight: 00;
+  position: relative;
+  margin-top: 2vw;
+}
+
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 16px;
+  text-transform: capitalize;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbbbbb;
+  display: block;
+}
+
+.footer-col ul li a:hover {
+  color: #ffffff;
+  padding-left: 10px;
+}
+
+/* Media queries */
+
+@media (min-width: 768px) {
+}
+
+@media (max-width: 767px) {
+  .footer-col {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 574px) {
+  .footer-col {
+    width: 100%;
+  }
+  img {
+    display: none;
+  }
 }
 </style>
