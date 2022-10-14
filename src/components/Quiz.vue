@@ -72,7 +72,7 @@ const nextQuestion = () => {
 };
 
 onMounted(() => {
-  fetch("/questions.json")
+  fetch("http://localhost:3000/fruit/swedish")
     .then((response) => response.json())
     .then((data) => {
       quiz.setQuestions(data.questions);

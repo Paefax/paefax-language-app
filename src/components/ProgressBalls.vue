@@ -1,18 +1,25 @@
 <template>
   <section class="dot-container">
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
+    <span v-for="defineDots in defineDots" class="dot">{{
+      amountOfBalls
+    }}</span>
   </section>
 </template>
 
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
 import AnswerItems from "../components/AnswerItems.vue";
+import { onMounted, ref } from "vue";
 
-import "form-wizard-vue3/dist/form-wizard-vue3.css";
-import Wizard from "form-wizard-vue3";
+const quiz = useQuizStore();
+
+const defineDots = quiz.numberOfQuestions;
+
+const setColor = computed({
+  //Get colors
+  //Return reactive ref
+  //Set colors
+});
 </script>
 
 <style scoped>
