@@ -1,6 +1,6 @@
 <template>
   <main id="viewport">
-    <NavHeader />
+    <NavHeader v-show="$route.name !== 'home'" />
     <RouterView />
     <NavFooter />
   </main>

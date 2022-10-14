@@ -35,7 +35,7 @@ npm run dev
 
 [LoFi wireframe](https://www.figma.com/file/BulVWVa1zG2pkhOGge8UJg/Quiz-App?node-id=13%3A2), our first draft for the look of the frontend with basic functionality.
 
-[HiFi wireframe](https://www.figma.com/file/B01yY6eOuxlaKGoEf4T2Y3/HIFI-Quiz-app?node-id=0%3A1), our LoFi with added color theme and fonts.
+[HiFi wireframe](https://www.figma.com/file/QOfOGDtR8PTI5WiDOgNKvH/Language-Quiz---HIFI-wireframe?node-id=24%3A71), our LoFi with added color theme and fonts.
 
 [Backend repository](https://github.com/Paefax/paefax-language-backend), our backend repository.
 
