@@ -2,6 +2,7 @@
   <main>
     <h1>You finished the quiz!</h1>
     <h2>Score: {{ quiz.score }} / {{ quiz.numberOfQuestions }}</h2>
+    <ResultsChart />
     <h1>Good job!</h1>
     <button class="button2">Take new quiz</button>
     <RouterLink to="/category">
@@ -15,6 +16,8 @@
 
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
+import ResultChart from "../components/ResultsChart.vue";
+import ResultsChart from "../components/ResultsChart.vue";
 
 const quiz = useQuizStore();
 </script>
