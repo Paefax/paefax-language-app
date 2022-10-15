@@ -7,7 +7,6 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
-    "form-wizard-vue3": "^0.3.3",
     "pinia": "^2.0.22",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"

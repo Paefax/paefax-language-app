@@ -3,7 +3,12 @@
     <ProgressBalls />
     <h1>{{ quiz.category }}</h1>
     <p>{{ wordToTranslate }}</p>
-    <AnswerItems @button-clicked="checkAnswer" :answers="answers" />
+    <AnswerItems
+      v-if="!answeredQuestion"
+      @button-clicked="checkAnswer"
+      :answers="answers"
+    />
+    <p v-if="answeredQuestion">{{ currentAnswer }}</p>
     <p v-if="answeredCorrectly && answeredQuestion">Correct answer!</p>
     <p v-else-if="answeredQuestion && !answeredCorrectly">Wrong answer</p>
     <button v-show="answeredQuestion" @click.prevent="nextQuestion">
@@ -27,9 +32,12 @@ const correctAnswer = ref("");
 const currentQuestion = ref();
 const answeredQuestion = ref(false);
 const answeredCorrectly = ref(false);
+const currentAnswer = ref("");
 
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
+  currentAnswer.value = answer;
+
   if (answer === correctAnswer.value) {
     answeredCorrectly.value = true;
     quiz.increaseScore();
@@ -66,6 +74,7 @@ const nextQuestion = () => {
   quiz.nextQuestion();
 
   if (noMoreQuestions) {
+    quiz.resetProgressBalls();
     router.push("/result");
   } else {
     setQuestionInfo();
@@ -74,7 +83,7 @@ const nextQuestion = () => {
 };
 
 onMounted(() => {
-  fetch("http://localhost:3000/fruit/swedish")
+  fetch("questions.json")
     .then((response) => response.json())
     .then((data) => {
       quiz.setQuestions(data.questions);

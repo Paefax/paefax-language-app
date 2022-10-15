@@ -12,14 +12,13 @@
 
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
-import { onMounted, ref } from "vue";
-import { computed } from "@vue/reactivity";
+import { computed } from "vue";
 
 const quiz = useQuizStore();
 
-const remainingQuestions = computed(() => {
-  return quiz.numberOfQuestions - quiz.answeredQuestions.length;
-});
+const remainingQuestions = computed(
+  () => quiz.numberOfQuestions - quiz.answeredQuestions.length
+);
 </script>
 
 <style scoped>
