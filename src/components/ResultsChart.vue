@@ -37,6 +37,8 @@
   </table>
 </template>
 
+<script setup></script>
+
 <style scoped>
 .content-table {
   margin: 25px 0;

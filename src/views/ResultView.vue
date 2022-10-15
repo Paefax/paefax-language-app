@@ -11,12 +11,14 @@
     <RouterLink to="/language">
       <button class="button1">Change language</button>
     </RouterLink>
+    <RouterLink to="/account">
+      <button class="button3">Account</button>
+    </RouterLink>
   </main>
 </template>
 
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
-import ResultChart from "../components/ResultsChart.vue";
 import ResultsChart from "../components/ResultsChart.vue";
 
 const quiz = useQuizStore();
@@ -43,6 +45,20 @@ main {
   padding: 14px 40px;
   transition: all 0.3s;
 }
+.button3 {
+  background: #fff;
+  color: black;
+  border-radius: 10px;
+  border-style: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  height: 50px;
+  line-height: 1.5;
+  padding: 15px;
+  transition: all 0.3s;
+}
+
 .button2 {
   background: #fff;
   color: black;
