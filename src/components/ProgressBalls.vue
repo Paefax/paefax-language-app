@@ -37,6 +37,7 @@ const remainingQuestions = computed(() => {
   display: inline-block;
 }
 
+/* kebab-casing does not work here */
 .dotFail {
   background: red;
 }
