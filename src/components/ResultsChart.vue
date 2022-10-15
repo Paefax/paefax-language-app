@@ -39,13 +39,11 @@
 
 <style scoped>
 .content-table {
-  border-collapse: collapse;
   margin: 25px 0;
-  font-size: 0.9em;
-  min-width: 400px;
-  border-radius: 5px 5px 0 0;
-  overflow: hidden;
+  border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background: white;
+  color: black;
 }
 
 .content-table thead tr {
@@ -56,11 +54,7 @@
 
 .content-table th,
 .content-table td {
-  padding: 12px 15px;
+  padding: 12px 25px;
   text-align: center;
-}
-
-.content-table tbody tr {
-  border-bottom: 1px solid #dddddd;
 }
 </style>
