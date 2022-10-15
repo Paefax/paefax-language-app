@@ -66,6 +66,7 @@ const nextQuestion = () => {
   quiz.nextQuestion();
 
   if (noMoreQuestions) {
+    quiz.resetProgressBalls();
     router.push("/result");
   } else {
     setQuestionInfo();
@@ -74,7 +75,7 @@ const nextQuestion = () => {
 };
 
 onMounted(() => {
-  fetch("http://localhost:3000/fruit/swedish")
+  fetch("questions.json")
     .then((response) => response.json())
     .then((data) => {
       quiz.setQuestions(data.questions);
