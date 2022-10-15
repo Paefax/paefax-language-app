@@ -10,6 +10,10 @@ export const useQuizStore = defineStore("quiz", () => {
 
   const answeredQuestions = ref([]);
 
+  const resetProgressBalls = () => {
+    answeredQuestions.value = [];
+  };
+
   const registerAnswer = (answerSuccess) => {
     answeredQuestions.value.push(answerSuccess);
   };
@@ -35,7 +39,6 @@ export const useQuizStore = defineStore("quiz", () => {
       return questions.value[0];
     }
   };
-  // Reset the quiz. Clear score and questions.
 
   const increaseScore = () => {
     score.value++;
@@ -54,5 +57,6 @@ export const useQuizStore = defineStore("quiz", () => {
     increaseScore,
     answeredQuestions,
     registerAnswer,
+    resetProgressBalls,
   };
 });
