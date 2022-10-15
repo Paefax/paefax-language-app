@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="row">
-      <!-- Item 1 -->
       <div class="footer-col">
         <ul>
           <li>
@@ -9,14 +8,12 @@
           </li>
         </ul>
       </div>
-      <!-- Item 2 -->
       <div class="footer-col">
         <h4>Products</h4>
         <ul>
           <li><a href="#">Quiz-App</a></li>
         </ul>
       </div>
-      <!-- Item 3 -->
       <div class="footer-col">
         <h4>Created by</h4>
         <ul>
@@ -27,7 +24,6 @@
           <li><a href="https://github.com/LordRekishi">Patrik</a></li>
         </ul>
       </div>
-      <!-- Item 3 -->
       <div class="footer-col">
         <h4>Help and support</h4>
         <ul>
@@ -36,15 +32,14 @@
         </ul>
       </div>
     </div>
-    <div class="test">
+    <div class="copyright-label">
       <label>© Copyright 2022 Paefax. All rights reserved.</label>
     </div>
   </div>
 </template>
 
-<script setup></script>
-
 <style scoped>
+/* Import our font instead */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 * {
@@ -54,20 +49,15 @@
   line-height: 1.5;
   font-family: "Poppins", sans-serif;
 }
-.test {
-  display: flex;
+.copyright-label {
   text-align: center;
-  align-items: center;
-  justify-content: center;
-  font-weight: 400;
+  font-weight: 500;
   color: #bbbbbb;
   margin-top: 2vw;
 }
 .container {
   background-image: linear-gradient(#247680, #185359);
-  margin: auto;
   width: 100vw;
-  bottom: 0px;
   position: relative;
   margin-top: 28vw;
 }
@@ -85,7 +75,6 @@ img {
 }
 .footer-col {
   width: 25%;
-  padding: 0;
 }
 
 .footer-col h4 {
@@ -126,6 +115,10 @@ img {
     width: 50%;
     margin-bottom: 30px;
   }
+
+  .footer-col {
+    padding-left: 30px;
+  }
 }
 
 @media (max-width: 574px) {
@@ -134,6 +127,9 @@ img {
   }
   img {
     display: none;
+  }
+  .row {
+    margin-left: 10vw;
   }
 }
 </style>
