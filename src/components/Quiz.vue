@@ -1,8 +1,14 @@
 <template>
   <main>
+    <ProgressBalls />
     <h1>{{ quiz.category }}</h1>
     <p>{{ wordToTranslate }}</p>
-    <AnswerItems @button-clicked="checkAnswer" :answers="answers" />
+    <AnswerItems
+      v-if="!answeredQuestion"
+      @button-clicked="checkAnswer"
+      :answers="answers"
+    />
+    <p v-if="answeredQuestion">{{ currentAnswer }}</p>
     <p v-if="answeredCorrectly && answeredQuestion">Correct answer!</p>
     <p v-else-if="answeredQuestion && !answeredCorrectly">Wrong answer</p>
     <button v-show="answeredQuestion" @click.prevent="nextQuestion">
@@ -15,6 +21,7 @@
 import { onMounted, ref } from "vue";
 import { useQuizStore } from "@/stores/quiz";
 import AnswerItems from "../components/AnswerItems.vue";
+import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
 
 const quiz = useQuizStore();
@@ -25,15 +32,20 @@ const correctAnswer = ref("");
 const currentQuestion = ref();
 const answeredQuestion = ref(false);
 const answeredCorrectly = ref(false);
+const currentAnswer = ref("");
 
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
+  currentAnswer.value = answer;
+
   if (answer === correctAnswer.value) {
     answeredCorrectly.value = true;
     quiz.increaseScore();
   } else {
     answeredCorrectly.value = false;
   }
+
+  quiz.registerAnswer(answeredCorrectly.value);
 };
 
 const setQuestionInfo = () => {
@@ -62,6 +74,7 @@ const nextQuestion = () => {
   quiz.nextQuestion();
 
   if (noMoreQuestions) {
+    quiz.resetProgressBalls();
     router.push("/result");
   } else {
     setQuestionInfo();
