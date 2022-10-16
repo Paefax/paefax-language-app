@@ -1,109 +1,61 @@
 <template>
-  <main>
+  <main id="language-box">
     <h1>Language</h1>
     <section id="language-cards">
-      <label v-for="language in languages">
-        {{ language.name }}
-      </label>
-
-      <button
+      <LanguageCard
         v-for="language in languages"
-        :class="{
-          swedishButton: language.name === 'Swedish',
-          chineseButton: language.name === 'Chinese',
-          frenchButton: language.name === 'French',
-          spanishButton: language.name === 'Spanish',
-        }"
-      ></button>
+        :key="language.id"
+        :name="language.name"
+        :img="language.img"
+        :alt="language.alt"
+        :link="language.link"
+      />
     </section>
   </main>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import { RouterLink } from "vue-router";
 import LanguageCard from "../components/LanguageCard.vue";
 
 const languages = ref([
   {
+    id: 0,
     name: "Swedish",
+    img: "swedish-flag.png",
+    alt: "swedish flag",
+    link: "/category",
   },
   {
-    name: "Chinese",
-  },
-  {
+    id: 1,
     name: "Spanish",
+    img: "spanish-flag.png",
+    alt: "spanish flag",
+    link: "/category",
   },
   {
+    id: 2,
     name: "French",
+    img: "french-flag.png",
+    alt: "french flag",
+    link: "/category",
+  },
+  {
+    id: 3,
+    name: "Chinese",
+    img: "chinese-flag.png",
+    alt: "chinese flag",
+    link: "/category",
   },
 ]);
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-* {
-  font-family: "Poppins", sans-serif;
-}
-
-a {
-  flex-basis: 40%;
-}
-
-label {
-  color: grey;
-}
-
-button {
-  color: black;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 700;
-  height: 100px;
-  width: 160px;
-  line-height: 1.5;
-  padding: 15px;
-  transition: all 0.3s ease 0s;
-  border: 0.1em solid #000000;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-}
-
-.swedishButton {
-  background: url("../assets/images/swedish-flag.png");
-  background-size: cover;
-}
-
-.chineseButton {
-  background: url("../assets/images/chinese-flag.png");
-  background-size: cover;
-}
-.frenchButton {
-  background: url("../assets/images/french-flag.png");
-  background-size: cover;
-}
-
-.spanishButton {
-  background: url("../assets/images/spanish-flag.png");
-  background-size: cover;
-}
-
-button:hover {
-  box-shadow: 0px 5px 10px black;
-  transform: translateY(-4px);
-}
-
-main {
+#language-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-h1 {
-  margin-bottom: 10vw;
-  font-weight: 400;
-  font-size: 50px;
 }
 
 #language-cards {
@@ -111,6 +63,5 @@ h1 {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
 }
 </style>
