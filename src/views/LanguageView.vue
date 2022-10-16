@@ -9,10 +9,10 @@
       <button
         v-for="language in languages"
         :class="{
-          swedishButton: language.isSwedish,
-          chineseButton: language.isChinese,
-          frenchButton: language.isFrench,
-          spanishButton: language.isSpanish,
+          swedishButton: language.name === 'Swedish',
+          chineseButton: language.name === 'Chinese',
+          frenchButton: language.name === 'French',
+          spanishButton: language.name === 'Spanish',
         }"
       ></button>
     </section>
@@ -21,36 +21,21 @@
 
 <script setup>
 import { ref } from "vue";
+import { RouterLink } from "vue-router";
 import LanguageCard from "../components/LanguageCard.vue";
 
 const languages = ref([
   {
     name: "Swedish",
-    isSwedish: true,
-    isChinese: false,
-    isSpanish: false,
-    isFrench: false,
   },
   {
     name: "Chinese",
-    isSwedish: false,
-    isChinese: true,
-    isSpanish: false,
-    isFrench: false,
   },
   {
     name: "Spanish",
-    isSwedish: false,
-    isChinese: false,
-    isSpanish: true,
-    isFrench: false,
   },
   {
     name: "French",
-    isSwedish: false,
-    isChinese: false,
-    isSpanish: false,
-    isFrench: true,
   },
 ]);
 </script>
