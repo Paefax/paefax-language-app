@@ -1,6 +1,6 @@
 <template>
   <RouterLink to="/category">
-    <button>{{ props.name }}</button>
+    <label>{{ props.name }}</label>
   </RouterLink>
 </template>
 
@@ -11,5 +11,9 @@ const props = defineProps(["name"]);
 <style scoped>
 a {
   flex-basis: 40%;
+}
+
+label {
+  color: grey;
 }
 </style>
