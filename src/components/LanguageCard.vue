@@ -14,9 +14,7 @@ const props = defineProps(["name", "img", "alt", "link"]);
 <style scoped>
 #language-card-box {
   max-width: 150px;
-  width: 100%;
   max-height: 100px;
-  height: 100%;
   border: 2px solid black;
   border-radius: 15px;
 }
@@ -27,8 +25,10 @@ const props = defineProps(["name", "img", "alt", "link"]);
 }
 
 img {
-  width: 100%;
-  border-radius: 15px;
+  width: 150px;
+  height: 100px;
+  border-radius: 13px;
+  object-fit: cover;
 }
 
 h4 {
