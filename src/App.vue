@@ -14,9 +14,28 @@ import NavHeader from "./components/NavHeader.vue";
 #viewport {
   margin: 0 auto;
   max-width: 375px;
+  min-width: 250px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media only screen and (min-width: 376px) {
+  #viewport {
+    max-width: 768px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  #viewport {
+    max-width: 1280px;
+  }
+}
+
+@media only screen and (min-width: 1281px) {
+  #viewport {
+    max-width: 1440px;
+  }
 }
 </style>
