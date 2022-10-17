@@ -1,6 +1,4 @@
 <template>
-  <p>{{ answers }}</p>
-  <p>{{ correctAnswer }}</p>
   <table class="content-table">
     <thead>
       <tr>
