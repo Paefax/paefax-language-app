@@ -9,7 +9,7 @@
       <button class="get-started-btn">Get Started</button>
     </RouterLink>
     <RouterLink to="/login">
-      <button>Already have a account?</button>
+      <h4>Already have an account?</h4>
     </RouterLink>
   </main>
 </template>
@@ -41,5 +41,12 @@ main {
   padding: 10px 20px;
   transition: all 0.3s;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
+  margin-top: 10vw;
+}
+
+h4 {
+  font-weight: 300;
+  color: #30a5bf;
+  margin: 0;
 }
 </style>
