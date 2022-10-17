@@ -45,7 +45,7 @@ const checkAnswer = (answer) => {
     answeredCorrectly.value = false;
   }
 
-  quiz.registerAnswer(answeredCorrectly.value);
+  quiz.registerAnswer(answeredCorrectly.value, answer);
 };
 
 const setQuestionInfo = () => {
