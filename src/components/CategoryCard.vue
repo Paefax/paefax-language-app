@@ -13,8 +13,8 @@ const props = defineProps(["name", "img", "alt", "link"]);
 
 <style scoped>
 #category-card-box {
-  min-width: 300px;
-  min-height: 120px;
+  width: 300px;
+  height: 120px;
   border: 2px solid black;
   border-radius: 15px;
   background: white;
@@ -39,5 +39,23 @@ h4 {
   text-align: center;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+@media only screen and (min-width: 769px) {
+  #category-card-box {
+    min-width: 600px;
+    min-height: 240px;
+    border-radius: 40px;
+  }
+
+  img {
+    width: 260px;
+    border-radius: 35px;
+  }
+
+  h4 {
+    font-size: 1.8em;
+    margin-top: 30px;
+  }
 }
 </style>
