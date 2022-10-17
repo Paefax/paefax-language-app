@@ -35,13 +35,6 @@ const categories = ref([
   },
   {
     id: 2,
-    name: "Numbers",
-    img: "numbers.png",
-    alt: "number flag",
-    link: "/quiz",
-  },
-  {
-    id: 3,
     name: "Occupation",
     img: "occupation.png",
     alt: "occupation flag",
