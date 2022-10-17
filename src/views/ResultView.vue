@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import QuizResult from "./QuizResult.vue";
+import QuizResult from "../components/QuizResult.vue";
 </script>
 
 <style scoped>
