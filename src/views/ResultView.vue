@@ -1,8 +1,6 @@
 <template>
   <main>
-    <h1>Good job!</h1>
-    <h2>You finish the quiz</h2>
-    <h3>Score: {{ quiz.score }} / {{ quiz.numberOfQuestions }}</h3>
+    <QuizResult />
     <RouterLink to="/category">
       <button>Choose new category</button>
     </RouterLink>
@@ -13,9 +11,7 @@
 </template>
 
 <script setup>
-import { useQuizStore } from "@/stores/quiz";
-
-const quiz = useQuizStore();
+import QuizResult from "./QuizResult.vue";
 </script>
 
 <style scoped>
