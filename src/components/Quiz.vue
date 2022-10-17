@@ -23,7 +23,9 @@ import { useQuizStore } from "@/stores/quiz";
 import AnswerItems from "../components/AnswerItems.vue";
 import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
+import { useGeneralStore } from "@/stores/general";
 
+const general = useGeneralStore();
 const quiz = useQuizStore();
 
 const answers = ref([]);
@@ -83,7 +85,8 @@ const nextQuestion = () => {
 };
 
 onMounted(() => {
-  fetch("questions.json")
+  let url = `http://localhost:3000/${general.getCategory()}/${general.getLanguage()}`;
+  fetch(url)
     .then((response) => response.json())
     .then((data) => {
       quiz.setQuestions(data.questions);

@@ -1,5 +1,5 @@
 <template>
-  <RouterLink :to="props.link">
+  <RouterLink @click="setLanguage" :to="props.link">
     <h4>{{ props.name }}</h4>
     <main id="language-card-box">
       <img :src="'/src/assets/images/' + props.img" />
@@ -8,7 +8,13 @@
 </template>
 
 <script setup>
+import { useGeneralStore } from "@/stores/general";
+const general = useGeneralStore();
 const props = defineProps(["name", "img", "alt", "link"]);
+
+const setLanguage = () => {
+  general.setLanguage(props.name);
+};
 </script>
 
 <style scoped>
