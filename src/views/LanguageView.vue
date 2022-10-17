@@ -64,4 +64,10 @@ const languages = ref([
   align-items: center;
   flex-wrap: wrap;
 }
+
+@media only screen and (min-width: 769px) {
+  h1 {
+    font-size: 2.5em;
+  }
+}
 </style>
