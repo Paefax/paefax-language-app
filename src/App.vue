@@ -1,6 +1,19 @@
 <template>
   <main id="viewport">
-    <NavHeader v-show="$route.name !== 'home'" />
+    <NavHeader
+      v-show="
+        $route.name !== 'home' &&
+        $route.name !== 'language' &&
+        $route.name !== 'category'
+      "
+    />
+    <WizardComp
+      v-show="
+        $route.name === 'home' ||
+        $route.name === 'language' ||
+        $route.name === 'category'
+      "
+    />
     <RouterView />
   </main>
 </template>
@@ -8,6 +21,7 @@
 <script setup>
 import { RouterView } from "vue-router";
 import NavHeader from "./components/NavHeader.vue";
+import WizardComp from "./components/WizardComp.vue";
 </script>
 
 <style scoped>
