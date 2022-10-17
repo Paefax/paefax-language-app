@@ -13,10 +13,16 @@ const props = defineProps(["name", "img", "alt", "link"]);
 
 <style scoped>
 #category-card-box {
-  max-width: 150px;
-  max-height: 100px;
+  min-width: 300px;
+  min-height: 120px;
   border: 2px solid black;
   border-radius: 15px;
+  background: white;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 
 #category-card-box:hover {
@@ -25,10 +31,8 @@ const props = defineProps(["name", "img", "alt", "link"]);
 }
 
 img {
-  width: 150px;
-  height: 100px;
+  width: 130px;
   border-radius: 13px;
-  object-fit: cover;
 }
 
 h4 {

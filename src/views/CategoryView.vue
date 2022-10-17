@@ -1,11 +1,14 @@
 <template>
   <main>
-    <h1>Choose a category</h1>
+    <h1>Category</h1>
     <section id="category-card">
       <CategoryCard
         v-for="(category, index) in categories"
-        :key="index"
+        :key="category.id"
         :name="category.name"
+        :img="category.img"
+        :alt="category.alt"
+        :link="category.link"
       />
     </section>
   </main>
@@ -19,28 +22,28 @@ const categories = ref([
   {
     id: 0,
     name: "Fruit",
-    img: "fruit-flag.png",
+    img: "fruits.png",
     alt: "fruit flag",
     link: "/quiz",
   },
   {
     id: 1,
     name: "Animals",
-    img: "animal-flag.png",
+    img: "animal.png",
     alt: "animal flag",
     link: "/quiz",
   },
   {
     id: 2,
     name: "Numbers",
-    img: "number-flag.png",
+    img: "numbers.png",
     alt: "number flag",
     link: "/quiz",
   },
   {
     id: 3,
     name: "Occupation",
-    img: "occupation-flag.png",
+    img: "occupation.png",
     alt: "occupation flag",
     link: "/quiz",
   },
