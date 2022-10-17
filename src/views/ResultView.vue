@@ -1,21 +1,21 @@
 <template>
   <main>
-    <h1>Good job!</h1>
-    <h2>You finish the quiz</h2>
-    <h3>Score: {{ quiz.score }} / {{ quiz.numberOfQuestions }}</h3>
+    <QuizResult />
+    <button class="button2">Take new quiz</button>
     <RouterLink to="/category">
-      <button>Choose new category</button>
+      <button class="button1">Change category</button>
     </RouterLink>
-    <RouterLink to="/">
-      <button>Home</button>
+    <RouterLink to="/language">
+      <button class="button1">Change language</button>
+    </RouterLink>
+    <RouterLink to="/account">
+      <button class="button3">Account</button>
     </RouterLink>
   </main>
 </template>
 
 <script setup>
-import { useQuizStore } from "@/stores/quiz";
-
-const quiz = useQuizStore();
+import QuizResult from "../components/QuizResult.vue";
 </script>
 
 <style scoped>
@@ -24,5 +24,46 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.button1 {
+  background: #185359;
+  color: #fff;
+  border-radius: 10px;
+  border-style: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  height: 50px;
+  line-height: 1.5;
+  padding: 14px 40px;
+  transition: all 0.3s;
+}
+.button3 {
+  background: #fff;
+  color: black;
+  border-radius: 10px;
+  border-style: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  height: 50px;
+  line-height: 1.5;
+  padding: 15px;
+  transition: all 0.3s;
+}
+
+.button2 {
+  background: #fff;
+  color: black;
+  border-radius: 10px;
+  border-style: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  height: 50px;
+  line-height: 1.5;
+  padding: 14px 40px;
+  transition: all 0.3s;
 }
 </style>
