@@ -17,16 +17,32 @@ import CategoryCard from "../components/CategoryCard.vue";
 
 const categories = ref([
   {
+    id: 0,
     name: "Fruit",
+    img: "fruit-flag.png",
+    alt: "fruit flag",
+    link: "/quiz",
   },
   {
+    id: 1,
     name: "Animals",
+    img: "animal-flag.png",
+    alt: "animal flag",
+    link: "/quiz",
   },
   {
-    name: "Vehicles",
-  },
-  {
+    id: 2,
     name: "Numbers",
+    img: "number-flag.png",
+    alt: "number flag",
+    link: "/quiz",
+  },
+  {
+    id: 3,
+    name: "Occupation",
+    img: "occupation-flag.png",
+    alt: "occupation flag",
+    link: "/quiz",
   },
 ]);
 </script>
