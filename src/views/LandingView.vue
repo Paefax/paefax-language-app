@@ -2,8 +2,8 @@
   <main>
     <img
       id="logo-img"
-      src="../assets/images/logo.svg"
-      alt="Paefax logo globe with flags"
+      src="../assets/images/official-paefax-logo-white.svg"
+      alt="Official Paefax logo"
     />
     <RouterLink to="/language">
       <button>Get Started</button>
