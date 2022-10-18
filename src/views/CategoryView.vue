@@ -28,7 +28,7 @@ const categories = ref([
   },
   {
     id: 1,
-    name: "Animals",
+    name: "Animal",
     img: "animal.jpg",
     alt: "animals",
     link: "/quiz",
@@ -60,9 +60,9 @@ main {
 }
 
 @media only screen and (min-width: 376px) {
- main {
-  max-width: 500px;
- }
+  main {
+    max-width: 500px;
+  }
 }
 
 @media only screen and (min-width: 769px) {
