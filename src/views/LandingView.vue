@@ -1,4 +1,5 @@
 <template>
+  <WizardBalls :position="0" />
   <main>
     <img
       id="logo-img"
@@ -14,7 +15,9 @@
   </main>
 </template>
 
-<script setup></script>
+<script setup>
+import WizardBalls from "../components/WizardBalls.vue";
+</script>
 
 <style scoped>
 main {

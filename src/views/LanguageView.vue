@@ -1,4 +1,11 @@
 <template>
+  <section class="wizard">
+    <RouterLink to="/">
+      <ArrowLeftCircleOutline size="38px" />
+    </RouterLink>
+    <WizardBalls :position="1" />
+    <div id="space"></div>
+  </section>
   <main id="language-box">
     <h1>Language</h1>
     <section id="language-cards">
@@ -17,6 +24,8 @@
 <script setup>
 import { ref } from "vue";
 import LanguageCard from "../components/LanguageCard.vue";
+import WizardBalls from "../components/WizardBalls.vue";
+import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOutline.vue";
 
 const languages = ref([
   {
@@ -51,6 +60,17 @@ const languages = ref([
 </script>
 
 <style scoped>
+#space {
+  margin: 20px;
+}
+
+.wizard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 100px;
+}
+
 #language-box {
   display: flex;
   flex-direction: column;

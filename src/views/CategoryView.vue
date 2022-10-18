@@ -1,4 +1,11 @@
 <template>
+  <section class="wizard">
+    <RouterLink to="/language">
+      <ArrowLeftCircleOutline size="38px" />
+    </RouterLink>
+    <WizardBalls :position="2" />
+    <div id="space"></div>
+  </section>
   <main>
     <h1>Category</h1>
     <section id="category-card">
@@ -17,6 +24,8 @@
 <script setup>
 import { ref } from "vue";
 import CategoryCard from "../components/CategoryCard.vue";
+import WizardBalls from "../components/WizardBalls.vue";
+import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOutline.vue";
 
 const categories = ref([
   {
@@ -51,6 +60,17 @@ main {
   align-items: center;
 }
 
+#space {
+  margin: 20px;
+}
+
+.wizard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 100px;
+}
+
 #category-card {
   display: flex;
   justify-content: space-evenly;
@@ -60,9 +80,9 @@ main {
 }
 
 @media only screen and (min-width: 376px) {
- main {
-  max-width: 500px;
- }
+  main {
+    max-width: 500px;
+  }
 }
 
 @media only screen and (min-width: 769px) {
