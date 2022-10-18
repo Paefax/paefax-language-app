@@ -19,6 +19,7 @@ const quiz = useQuizStore();
 
 onMounted(() => {
   quiz.resetProgressBalls();
+  quiz.resetQuizProgress();
 });
 
 </script>
