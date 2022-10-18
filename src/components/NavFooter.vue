@@ -127,8 +127,5 @@ img {
   img {
     display: none;
   }
-  .row {
-    margin-left: 10vw;
-  }
 }
 </style>
