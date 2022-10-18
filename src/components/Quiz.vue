@@ -2,15 +2,20 @@
   <main>
     <ProgressBalls />
     <h1>{{ quiz.category }}</h1>
-    <p>{{ wordToTranslate }}</p>
+    <h2>
+      {{ wordToTranslate.charAt(0).toUpperCase() + wordToTranslate.slice(1) }}
+    </h2>
     <AnswerItems
       v-if="!answeredQuestion"
       @button-clicked="checkAnswer"
       :answers="answers"
     />
-    <p v-if="answeredQuestion">{{ currentAnswer }}</p>
+    <span v-if="answeredQuestion">Your answer: </span>
+    <h4 v-if="answeredQuestion">
+      {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
+    </h4>
     <p v-if="answeredCorrectly && answeredQuestion">Correct answer!</p>
-    <p v-else-if="answeredQuestion && !answeredCorrectly">Wrong answer</p>
+    <p v-else-if="answeredQuestion && !answeredCorrectly">Wrong answer!</p>
     <button v-show="answeredQuestion" @click.prevent="nextQuestion">
       Next question
     </button>
@@ -47,7 +52,7 @@ const checkAnswer = (answer) => {
     answeredCorrectly.value = false;
   }
 
-  quiz.registerAnswer(answeredCorrectly.value);
+  quiz.registerAnswer(answeredCorrectly.value, answer);
 };
 
 const setQuestionInfo = () => {
@@ -102,5 +107,53 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+button {
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  border: 1px solid black;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+span {
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+h4 {
+  margin-top: 10px;
+}
+
+@media only screen and (min-width: 769px) {
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2.5em;
+  }
+
+  button {
+    width: 200px;
+    height: 65px;
+    border-radius: 15px;
+    font-size: 1.5em;
+  }
+
+  span {
+    font-size: 1.2em;
+  }
+
+  h4 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 1.5em;
+  }
 }
 </style>

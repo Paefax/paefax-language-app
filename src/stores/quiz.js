@@ -7,15 +7,20 @@ export const useQuizStore = defineStore("quiz", () => {
   const idCurrentQuestion = ref(0);
   const numberOfQuestions = computed(() => questions.value.length);
   const score = ref(0);
-
+  const answers = ref([]);
   const answeredQuestions = ref([]);
+
+  const getAnswers = () => {
+    return answers.value;
+  };
 
   const resetProgressBalls = () => {
     answeredQuestions.value = [];
   };
 
-  const registerAnswer = (answerSuccess) => {
+  const registerAnswer = (answerSuccess, answer) => {
     answeredQuestions.value.push(answerSuccess);
+    answers.value.push(answer);
   };
 
   const setQuestions = (newQuestions) => {
@@ -58,5 +63,7 @@ export const useQuizStore = defineStore("quiz", () => {
     answeredQuestions,
     registerAnswer,
     resetProgressBalls,
+    getAnswers,
+    answers,
   };
 });
