@@ -1,10 +1,6 @@
 <template>
   <main>
-    <img
-      id="logo-img"
-      src="../assets/images/official-paefax-logo-white.svg"
-      alt="Official Paefax logo"
-    />
+    <img id="logo-img" src="../assets/images/official-paefax-logo-white.svg" alt="Official Paefax logo" />
     <RouterLink to="/language">
       <button class="get-started-btn">Get Started</button>
     </RouterLink>
@@ -14,7 +10,18 @@
   </main>
 </template>
 
-<script setup></script>
+<script setup>
+
+import { onMounted } from 'vue';
+import { useQuizStore } from "@/stores/quiz";
+
+const quiz = useQuizStore();
+
+onMounted(() => {
+  quiz.resetProgressBalls();
+});
+
+</script>
 
 <style scoped>
 main {
