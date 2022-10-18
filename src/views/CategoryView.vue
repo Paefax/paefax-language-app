@@ -58,4 +58,16 @@ main {
   flex-wrap: wrap;
   gap: 10px;
 }
+
+@media only screen and (min-width: 376px) {
+ main {
+  max-width: 500px;
+ }
+}
+
+@media only screen and (min-width: 769px) {
+  h1 {
+    font-size: 2.5em;
+  }
+}
 </style>

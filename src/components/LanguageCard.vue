@@ -36,4 +36,23 @@ h4 {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+@media only screen and (min-width: 769px) {
+  #language-card-box {
+    max-width: 300px;
+    max-height: 200px;
+    border-radius: 40px;
+  }
+
+  img {
+    width: 300px;
+    height: 200px;
+    border-radius: 35px;
+  }
+
+  h4 {
+    font-size: 1.8em;
+    margin-top: 30px;
+  }
+}
 </style>

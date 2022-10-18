@@ -20,33 +20,49 @@
 main {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
   max-width: 375px;
 }
 
 #logo-img {
   max-width: 80%;
-  margin-top: 30px;
 }
+
 .get-started-btn {
   background: #185359;
   color: #fff;
   border: 1px solid black;
   border-radius: 15px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1.3em;
   font-weight: 500;
   padding: 10px 20px;
   transition: all 0.3s;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
-  margin-top: 10vw;
+  margin-top: 50px;
+  margin-bottom: 10px;
 }
 
 h4 {
   font-weight: 300;
   color: #30a5bf;
   margin: 0;
+}
+
+@media only screen and (min-width: 769px) {
+  main {
+    margin-top: 80px;
+    max-width: 500px;
+  }
+
+  .get-started-btn {
+    font-size: 1.7em;
+  }
+
+  h4 {
+    font-size: 1.2em;
+  }
 }
 </style>

@@ -24,13 +24,14 @@ const remainingQuestions = computed(
 <style scoped>
 .dot-container {
   display: flex;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 15px;
+  margin-bottom: 50px;
   gap: 20px;
 }
+
 .dot {
-  height: 25px;
-  width: 25px;
+  height: 15px;
+  width: 15px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -41,5 +42,16 @@ const remainingQuestions = computed(
 }
 .dotSuccess {
   background: green;
+}
+
+@media only screen and (min-width: 769px) {
+  .dot-container {
+    margin-bottom: 50px;
+  }
+
+  .dot {
+    height: 20px;
+    width: 20px;
+  }
 }
 </style>

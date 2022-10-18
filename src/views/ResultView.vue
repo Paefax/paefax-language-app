@@ -26,44 +26,56 @@ main {
   align-items: center;
 }
 
+a {
+  padding: 0;
+}
+
+button {
+  border-radius: 10px;
+  border-style: none;
+  cursor: pointer;
+  font-size: 15px;
+  width: 200px;
+  height: 50px;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+
 .button1 {
   background: #185359;
   color: #fff;
-  border-radius: 10px;
-  border-style: none;
-  cursor: pointer;
-  font-size: 15px;
   font-weight: 500;
-  height: 50px;
-  line-height: 1.5;
-  padding: 14px 40px;
-  transition: all 0.3s;
-}
-.button3 {
-  background: #fff;
-  color: black;
-  border-radius: 10px;
-  border-style: none;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 700;
-  height: 50px;
-  line-height: 1.5;
-  padding: 15px;
-  transition: all 0.3s;
 }
 
 .button2 {
   background: #fff;
   color: black;
-  border-radius: 10px;
-  border-style: none;
-  cursor: pointer;
-  font-size: 15px;
   font-weight: 500;
-  height: 50px;
-  line-height: 1.5;
-  padding: 14px 40px;
-  transition: all 0.3s;
+}
+
+.button3 {
+  background: #fff;
+  color: black;
+  font-weight: 700;
+  width: 100px;
+  height: 40px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+@media only screen and (min-width: 769px) {
+  button {
+    border-radius: 10px;
+    font-size: 25px;
+    width: 300px;
+    height: 60px;
+    margin-top: 15px;
+  }
+
+  .button3 {
+    width: 160px;
+    height: 50px;
+    margin-top: 40px;
+  }
 }
 </style>

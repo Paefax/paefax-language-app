@@ -21,6 +21,7 @@
 import { useQuizStore } from "@/stores/quiz";
 import ResultOverviewItem from "./ResultOverviewItem.vue";
 import { onMounted, ref } from "vue";
+
 const quiz = useQuizStore();
 const answers = quiz.answers;
 const questions = quiz.questions;
@@ -44,6 +45,8 @@ onMounted(() => {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   background: white;
   color: black;
+  max-width: 90%;
+  margin-bottom: 40px;
 }
 
 .content-table thead tr {
@@ -56,5 +59,15 @@ onMounted(() => {
 .content-table td {
   padding: 12px 25px;
   text-align: center;
+}
+
+@media only screen and (min-width: 769px) {
+  .content-table {
+    margin-bottom: 70px;
+  }
+
+  th {
+    font-size: 1.5em;
+  }
 }
 </style>
