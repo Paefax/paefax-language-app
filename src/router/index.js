@@ -4,7 +4,9 @@ import LanguageView from "../views/LanguageView.vue";
 import LandingView from "../views/LandingView.vue";
 import CategoryView from "../views/CategoryView.vue";
 import ResultView from "../views/ResultView.vue";
-import ComingSoonView from "../views/ComingSoonView.vue";
+import SettingsView from "../views/SettingsView.vue";
+import AccountView from "../views/AccountView.vue";
+import LoginView from "../views/LoginView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,17 +40,17 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
-      component: ComingSoonView,
+      component: LoginView,
     },
     {
       path: "/settings",
       name: "settings",
-      component: ComingSoonView,
+      component: SettingsView,
     },
     {
       path: "/account",
       name: "account",
-      component: ComingSoonView,
+      component: AccountView,
     },
   ],
 });
