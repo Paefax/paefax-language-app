@@ -4,7 +4,10 @@
       <div class="footer-col">
         <ul>
           <li>
-            <img src="../assets/images/logo.svg" alt="logo" />
+            <img
+              src="../assets/images/white-logo-without-text.png"
+              alt="logo"
+            />
           </li>
         </ul>
       </div>
@@ -33,7 +36,7 @@
       </div>
     </div>
     <div class="copyright-label">
-      <label>© Copyright 2022 Paefax. All rights reserved.</label>
+      <label>© Copyright 2022 Paefax</label>
     </div>
   </div>
 </template>
@@ -50,13 +53,14 @@
 }
 .copyright-label {
   text-align: center;
-  font-weight: 500;
+  font-weight: 400;
   color: #bbbbbb;
   margin-top: 2vw;
+  margin-bottom: 1vw;
 }
 .container {
-  background-image: linear-gradient(#247680, #185359);
-  width: 100vw;
+  background: #185359;
+  width: 98.9vw;
   position: relative;
   margin-top: 28vw;
 }
@@ -106,10 +110,18 @@ img {
 
 /* Media queries */
 
-@media (min-width: 768px) {
+@media (max-width: 1100px) and (min-width: 770px) {
+  img {
+    margin-top: 5vw;
+    margin-left: 2vw;
+  }
+
+  .container {
+    width: 100vw;
+  }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 769px) {
   .footer-col {
     width: 50%;
     margin-bottom: 30px;
