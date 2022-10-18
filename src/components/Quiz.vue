@@ -1,7 +1,9 @@
 <template>
   <main>
     <ProgressBalls />
-    <h1>{{ quiz.category }}</h1>
+    <h1>
+      {{ quiz.category.charAt(0).toUpperCase() + quiz.category.slice(1) }}
+    </h1>
     <h2>
       {{ wordToTranslate.charAt(0).toUpperCase() + wordToTranslate.slice(1) }}
     </h2>
