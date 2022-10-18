@@ -2,8 +2,8 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useGeneralStore = defineStore("general", () => {
-  const category = ref("fruit"); //Fruit is default
-  const language = ref("swedish"); //Swedish is default
+  const category = ref("fruit");
+  const language = ref("swedish");
 
   const getCategory = () => {
     return category.value;
