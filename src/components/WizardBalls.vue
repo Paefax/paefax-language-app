@@ -30,8 +30,8 @@ const props = defineProps({
   align-items: center;
 }
 .dot {
-  height: 25px;
-  width: 25px;
+  height: 10px;
+  width: 10px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -39,7 +39,7 @@ const props = defineProps({
 
 .currentDot {
   background: yellow;
-  height: 35px;
-  width: 35px;
+  height: 20px;
+  width: 20px;
 }
 </style>
