@@ -13,11 +13,19 @@
       :answers="answers"
     />
     <span v-if="answeredQuestion">Your answer: </span>
-    <h4 v-if="answeredQuestion">
+    <h4 class="answer-test" v-if="answeredQuestion && answeredCorrectly">
       {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
+      <CheckBold fillColor="green" />
     </h4>
-    <p v-if="answeredCorrectly && answeredQuestion">Correct answer!</p>
-    <p v-else-if="answeredQuestion && !answeredCorrectly">Wrong answer!</p>
+    <h4 class="answer-test" v-if="answeredQuestion && !answeredCorrectly">
+      {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
+      <CloseThick fillColor="red" />
+    </h4>
+    <div class="wrong-answer" v-if="!answeredCorrectly && answeredQuestion">
+      Correct answer:
+      <h4>{{ correctAnswer }}</h4>
+    </div>
+
     <button v-show="answeredQuestion" @click.prevent="nextQuestion">
       Next question
     </button>
@@ -31,6 +39,8 @@ import AnswerItems from "../components/AnswerItems.vue";
 import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
 import { useGeneralStore } from "@/stores/general";
+import CloseThick from "vue-material-design-icons/CloseThick.vue";
+import CheckBold from "vue-material-design-icons/CheckBold.vue";
 
 const general = useGeneralStore();
 const quiz = useQuizStore();
@@ -127,7 +137,19 @@ span {
 }
 
 h4 {
-  margin-top: 10px;
+  margin-top: 8px;
+}
+
+.wrong-answer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.answer-test {
+  display: flex;
+  justify-content: center;
+  margin-top: 3px;
 }
 
 @media only screen and (min-width: 769px) {
