@@ -61,7 +61,11 @@ main {
 #signup-form label {
   width: 100%;
   padding: 10px 0px;
-  font-size: 20px;
+}
+
+#signup-form input {
+  font-size: large;
+  padding-left: 10px;
 }
 
 #create-account-btn {
@@ -78,6 +82,10 @@ main {
   #confirm-password,
   #create-account-btn {
     height: 50px;
+  }
+
+  #signup-form label {
+    font-size: 20px;
   }
 }
 </style>
