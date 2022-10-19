@@ -1,7 +1,11 @@
 <template>
   <main id="viewport">
     <NavHeader v-show="$route.name !== 'home'" />
-    <RouterView />
+    <router-view v-slot="{ Component }">
+      <transition name="slide" mode="out-in">
+        <component :is="Component" :key="$route.path"></component>
+      </transition>
+    </router-view>
     <NavFooter />
   </main>
 </template>
@@ -21,6 +25,17 @@ import NavFooter from "./components/NavFooter.vue";
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transition: translateX(-30%);
 }
 
 @media only screen and (min-width: 376px) {
