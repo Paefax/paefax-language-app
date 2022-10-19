@@ -61,14 +61,14 @@ const languages = ref([
 
 <style scoped>
 #space {
-  margin: 20px;
+  width: 99px;
 }
 
 .wizard {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 100px;
+  width: 100%;
+  justify-content: space-around;
 }
 
 #language-box {
