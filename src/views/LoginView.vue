@@ -70,6 +70,10 @@ main {
   width: 100%;
   padding: 10px 0px;
 }
+#login-form input {
+  font-size: large;
+  padding-left: 10px;
+}
 
 #sing-up-button {
   border-radius: 10px;
