@@ -1,5 +1,5 @@
 <template>
-  <RouterLink :to="props.link">
+  <RouterLink :to="props.link" @click="setCategory">
     <h4>{{ props.name }}</h4>
     <main id="category-card-box">
       <img :src="'/src/assets/images/' + props.img" />
@@ -8,7 +8,13 @@
 </template>
 
 <script setup>
+import { useGeneralStore } from "@/stores/general";
 const props = defineProps(["name", "img", "alt", "link"]);
+const general = useGeneralStore();
+
+const setCategory = () => {
+  general.setCategory(props.name);
+};
 </script>
 
 <style scoped>

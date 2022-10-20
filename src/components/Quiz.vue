@@ -1,7 +1,9 @@
 <template>
   <main>
     <ProgressBalls />
-    <h1>{{ quiz.category }}</h1>
+    <h1>
+      {{ quiz.category.charAt(0).toUpperCase() + quiz.category.slice(1) }}
+    </h1>
     <h2>
       {{ wordToTranslate.charAt(0).toUpperCase() + wordToTranslate.slice(1) }}
     </h2>
@@ -28,7 +30,9 @@ import { useQuizStore } from "@/stores/quiz";
 import AnswerItems from "../components/AnswerItems.vue";
 import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
+import { useGeneralStore } from "@/stores/general";
 
+const general = useGeneralStore();
 const quiz = useQuizStore();
 
 const answers = ref([]);
@@ -88,7 +92,8 @@ const nextQuestion = () => {
 };
 
 onMounted(() => {
-  fetch("questions.json")
+  let url = `http://localhost:3000/${general.getCategory()}/${general.getLanguage()}`;
+  fetch(url)
     .then((response) => response.json())
     .then((data) => {
       quiz.setQuestions(data.questions);

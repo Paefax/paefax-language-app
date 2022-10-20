@@ -37,7 +37,7 @@ const categories = ref([
   },
   {
     id: 1,
-    name: "Animals",
+    name: "Animal",
     img: "animal.jpg",
     alt: "animals",
     link: "/quiz",
