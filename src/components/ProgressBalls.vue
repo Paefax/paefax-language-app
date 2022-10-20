@@ -35,10 +35,5 @@ const remainingQuestions = computed(
   .dot-container {
     margin-bottom: 50px;
   }
-
-  .dot {
-    height: 20px;
-    width: 20px;
-  }
 }
 </style>
