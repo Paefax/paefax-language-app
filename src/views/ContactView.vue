@@ -1,16 +1,32 @@
 <template>
   <main>
     <h1>Contact</h1>
-    <form id="contact-form">
+
+    <div id="contact-form">
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email" />
+      <input type="email" id="email" name="email" v-model="email" />
       <label for="message">Message:</label>
-      <textarea id="message" name="message"></textarea>
-      <input type="submit" id="contact-btn" value="SUBMIT" />
-    </form>
+      <textarea id="message" name="message" v-model="message"></textarea>
+      <button @click="sendMail" id="contact-btn">SUBMIT</button>
+    </div>
   </main>
 </template>
+<script setup>
+import { computed, ref } from "vue";
+const message = ref("");
+const email = ref("");
+const mailto = computed(
+  () =>
+    "mailto:helena.halldin@hotmail.com? &subject=Contact via form - Paefax &body=" +
+    message.value
+);
 
+const sendMail = () => {
+  window.location = mailto.value;
+  message.value = "";
+  email.value = "";
+};
+</script>
 <style scoped>
 main {
   display: flex;
