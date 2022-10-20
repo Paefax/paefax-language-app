@@ -83,7 +83,6 @@ const nextQuestion = () => {
   quiz.nextQuestion();
 
   if (noMoreQuestions) {
-    quiz.resetProgressBalls();
     router.push("/result");
   } else {
     setQuestionInfo();
@@ -92,14 +91,23 @@ const nextQuestion = () => {
 };
 
 onMounted(() => {
-  let url = `http://localhost:3000/${general.getCategory()}/${general.getLanguage()}`;
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      quiz.setQuestions(data.questions);
-      quiz.setCategory(data.category);
-      setQuestionInfo();
-    });
+  if (quiz.resetQuestions) {
+    let url = `http://localhost:3000/${general.getCategory()}/${general.getLanguage()}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        quiz.setQuestions(data.questions);
+        quiz.setCategory(data.category);
+        quiz.setNumberOfQuestions(data.questions.length);
+        quiz.setResetQuestions(false);
+        setQuestionInfo();
+      });
+  } else {
+    quiz.setQuestions(quiz.originalQuestions);
+    quiz.resetProgressBalls();
+    quiz.resetQuizProgress();
+    setQuestionInfo();
+  }
 });
 </script>
 
