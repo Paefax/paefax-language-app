@@ -28,8 +28,8 @@ button {
 
 @media only screen and (min-width: 769px) {
   button {
-    width: 200px;
-    height: 65px;
+    width: 250px;
+    height: 75px;
     border-radius: 15px;
     font-size: 2em;
   }
