@@ -13,6 +13,7 @@
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
 import { computed } from "vue";
+import CheckboxBlankCircle from "vue-material-design-icons/CheckboxBlankCircle.vue";
 
 const quiz = useQuizStore();
 

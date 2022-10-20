@@ -1,17 +1,20 @@
 <template>
   <section class="dot-container">
-    <span
-      v-for="(balls, index) in numberOfBalls"
-      :key="index"
-      class="dot"
-      :class="{
-        currentDot: props.position === index,
-      }"
-    ></span>
+    <span v-for="(ball, index) in numberOfBalls" :key="index">
+      <div>
+        <CheckboxBlankCircle
+          :class="{
+            color: props.position === index,
+          }"
+        />
+      </div>
+    </span>
   </section>
 </template>
 
 <script setup>
+import CheckboxBlankCircle from "vue-material-design-icons/CheckboxBlankCircle.vue";
+
 const numberOfBalls = 3;
 const props = defineProps({
   position: {
@@ -29,17 +32,8 @@ const props = defineProps({
   gap: 20px;
   align-items: center;
 }
-.dot {
-  height: 10px;
-  width: 10px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-}
 
-.currentDot {
-  background: yellow;
-  height: 20px;
-  width: 20px;
+.color {
+  color: yellow;
 }
 </style>

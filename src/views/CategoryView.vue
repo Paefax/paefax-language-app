@@ -76,14 +76,8 @@ main {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  flex-wrap: wrap;
   gap: 10px;
-}
-
-@media only screen and (min-width: 376px) {
-  main {
-    max-width: 500px;
-  }
+  flex-direction: column;
 }
 
 @media only screen and (min-width: 769px) {
