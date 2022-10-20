@@ -1,8 +1,11 @@
 import { defineStore } from "pinia";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 
 export const useQuizStore = defineStore("quiz", () => {
+  const originalCategory = ref("");
   const category = ref("");
+  const originalLanguage = ref("");
+  const language = ref("");
   const originalQuestions = ref([]);
   const questions = ref([]);
   const idCurrentQuestion = ref(0);
@@ -44,7 +47,19 @@ export const useQuizStore = defineStore("quiz", () => {
   };
 
   const setCategory = (categoryName) => {
-    category.value = categoryName;
+    category.value = categoryName.toLowerCase();
+  };
+
+  const setOriginalCategory = (categoryName) => {
+    originalCategory.value = categoryName.toLowerCase();
+  };
+
+  const setLanguage = (languageName) => {
+    language.value = languageName.toLowerCase();
+  };
+
+  const setOriginalLanguage = (languageName) => {
+    originalLanguage.value = languageName.toLowerCase();
   };
 
   const nextQuestion = () => {
@@ -85,5 +100,11 @@ export const useQuizStore = defineStore("quiz", () => {
     setResetQuestions,
     originalQuestions,
     setNumberOfQuestions,
+    language,
+    setLanguage,
+    originalCategory,
+    originalLanguage,
+    setOriginalCategory,
+    setOriginalLanguage,
   };
 });
