@@ -15,7 +15,17 @@
 </template>
 
 <script setup>
+import { onUnmounted } from "vue";
 import QuizResult from "../components/QuizResult.vue";
+import { useQuizStore } from "@/stores/quiz";
+
+const quiz = useQuizStore();
+
+onUnmounted(() => {
+  quiz.resetProgressBalls();
+  quiz.resetQuizProgress();
+  quiz.setResetQuestions(true);
+});
 </script>
 
 <style scoped>
