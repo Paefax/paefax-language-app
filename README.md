@@ -1,6 +1,5 @@
 # Paefax Language Quiz project
 ![build](https://github.com/Paefax/paefax-language-app/actions/workflows/build.yml/badge.svg)
-![lines](https://img.shields.io/tokei/lines/github/Paefax/paefax-language-app)
 ![pulls](https://img.shields.io/github/issues-pr-closed/Paefax/paefax-language-app)
 
 This app is part of our final project in our Agile course and Web application course at IT-Högskolan in Gothenburg.

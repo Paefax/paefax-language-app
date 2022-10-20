@@ -1,18 +1,20 @@
 <template>
   <section class="dot-container">
-    <span
-      v-for="answer in quiz.answeredQuestions"
-      :class="{ dotFail: !answer, dotSuccess: answer }"
-      class="dot"
-    ></span>
+    <span v-for="answer in quiz.answeredQuestions">
+      <CheckCircleOutline v-if="answer" fillColor="green" size="35px" />
+      <CloseCircleOutline v-else="!answer" fillColor="red" size="35px" />
+    </span>
 
-    <span v-for="dot in remainingQuestions" class="dot"></span>
+    <CheckboxBlankCircle v-for="dot in remainingQuestions" size="35px" />
   </section>
 </template>
 
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
 import { computed } from "vue";
+import CheckCircleOutline from "vue-material-design-icons/CheckCircleOutline.vue";
+import CloseCircleOutline from "vue-material-design-icons/CloseCircleOutline.vue";
+import CheckboxBlankCircle from "vue-material-design-icons/CheckboxBlankCircle.vue";
 
 const quiz = useQuizStore();
 
@@ -27,21 +29,6 @@ const remainingQuestions = computed(
   margin-top: 15px;
   margin-bottom: 50px;
   gap: 20px;
-}
-
-.dot {
-  height: 15px;
-  width: 15px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dotFail {
-  background: red;
-}
-.dotSuccess {
-  background: green;
 }
 
 @media only screen and (min-width: 769px) {
