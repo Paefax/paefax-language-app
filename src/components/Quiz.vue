@@ -91,14 +91,21 @@ const nextQuestion = () => {
 };
 
 onMounted(() => {
-  if (quiz.resetQuestions) {
+  if (
+    quiz.resetQuestions ||
+    quiz.category != quiz.originalCategory ||
+    quiz.language != quiz.originalLanguage
+  ) {
     let url = `http://localhost:3000/${general.getCategory()}/${general.getLanguage()}`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         quiz.setQuestions(data.questions);
-        quiz.setCategory(data.category);
         quiz.setNumberOfQuestions(data.questions.length);
+        quiz.setOriginalLanguage(general.getLanguage());
+        quiz.setOriginalCategory(general.getCategory());
+        quiz.resetProgressBalls();
+        quiz.resetQuizProgress();
         quiz.setResetQuestions(false);
         setQuestionInfo();
       });
