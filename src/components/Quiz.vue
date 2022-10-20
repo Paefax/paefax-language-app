@@ -21,6 +21,7 @@
     <button v-show="answeredQuestion" @click.prevent="nextQuestion">
       Next question
     </button>
+    <UserInputQuiz />
   </main>
 </template>
 
@@ -31,6 +32,7 @@ import AnswerItems from "../components/AnswerItems.vue";
 import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
 import { useGeneralStore } from "@/stores/general";
+import UserInputQuiz from "./UserInputQuiz.vue";
 
 const general = useGeneralStore();
 const quiz = useQuizStore();
