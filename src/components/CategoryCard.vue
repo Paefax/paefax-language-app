@@ -9,11 +9,15 @@
 
 <script setup>
 import { useGeneralStore } from "@/stores/general";
+import { useQuizStore } from "@/stores/quiz";
 const props = defineProps(["name", "img", "alt", "link"]);
+
 const general = useGeneralStore();
+const quiz = useQuizStore();
 
 const setCategory = () => {
   general.setCategory(props.name);
+  quiz.setCategory(props.name);
 };
 </script>
 
