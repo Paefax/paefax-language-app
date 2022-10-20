@@ -8,9 +8,6 @@
     <RouterLink to="/language">
       <button class="button1">Change language</button>
     </RouterLink>
-    <RouterLink to="/account">
-      <button class="button3">Account</button>
-    </RouterLink>
   </main>
 </template>
 
@@ -53,16 +50,6 @@ button {
   font-weight: 500;
 }
 
-.button3 {
-  background: #fff;
-  color: black;
-  font-weight: 700;
-  width: 100px;
-  height: 40px;
-  margin-top: 30px;
-  margin-bottom: 50px;
-}
-
 @media only screen and (min-width: 769px) {
   button {
     border-radius: 10px;
@@ -70,12 +57,6 @@ button {
     width: 300px;
     height: 60px;
     margin-top: 15px;
-  }
-
-  .button3 {
-    width: 160px;
-    height: 50px;
-    margin-top: 40px;
   }
 }
 </style>
