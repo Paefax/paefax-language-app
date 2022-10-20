@@ -13,15 +13,18 @@
       :answers="answers"
     />
     <span v-if="answeredQuestion">Your answer: </span>
-    <h4 class="answer-test" v-if="answeredQuestion && answeredCorrectly">
+    <h4 class="show-answer" v-if="answeredQuestion && answeredCorrectly">
       {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
-      <CheckBold fillColor="green" />
+      <CheckBold fillColor="green" class="check-bold" />
     </h4>
-    <h4 class="answer-test" v-if="answeredQuestion && !answeredCorrectly">
+    <h4 class="show-wrong-answer" v-if="answeredQuestion && !answeredCorrectly">
       {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
-      <CloseThick fillColor="red" />
+      <CloseThick fillColor="red" class="close-thick" />
     </h4>
-    <div class="wrong-answer" v-if="!answeredCorrectly && answeredQuestion">
+    <div
+      class="show-correct-answer"
+      v-if="!answeredCorrectly && answeredQuestion"
+    >
       Correct answer:
       <h4>{{ correctAnswer }}</h4>
     </div>
@@ -140,18 +143,31 @@ h4 {
   margin-top: 8px;
 }
 
-.wrong-answer {
+.show-correct-answer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.answer-test {
+.show-wrong-answer {
   display: flex;
-  justify-content: center;
-  margin-top: 3px;
+  align-items: center;
 }
 
+.show-answer {
+  display: flex;
+  align-items: center;
+}
+
+.check-bold {
+  padding-left: 5px;
+  padding-bottom: 6px;
+}
+
+.close-thick {
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
 @media only screen and (min-width: 769px) {
   h1 {
     font-size: 3em;
