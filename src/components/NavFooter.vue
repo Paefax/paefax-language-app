@@ -133,10 +133,7 @@ img {
 }
 
 @media (max-width: 574px) {
-  .footer-col {
-    width: 100%;
-  }
-  img {
+  .container {
     display: none;
   }
 }
