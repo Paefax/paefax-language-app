@@ -2,21 +2,35 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useUserStore = defineStore("user", () => {
+  const categoriesPerLanguage = ref([
+    {
+      language: "swedish",
+      categories: 3,
+    },
+    {
+      language: "spanish",
+      categories: 3,
+    },
+    {
+      language: "german",
+      categories: 3,
+    },
+  ]);
   const progress = ref([
     {
       language: "swedish",
       category: "fruit",
-      progress: 20,
+      progress: 50,
     },
     {
       language: "swedish",
       category: "occupation",
-      progress: 40,
+      progress: 30,
     },
     {
       language: "spanish",
       category: "animal",
-      progress: 30,
+      progress: 40,
     },
   ]);
 
@@ -39,7 +53,13 @@ export const useUserStore = defineStore("user", () => {
         totalProgress.value = totalProgress.value + progress.value[i].progress;
       }
     }
-    return totalProgress.value;
+    const numberOfCategories = ref(0);
+    for (let i = 0; i < categoriesPerLanguage.value.length; i++) {
+      if (categoriesPerLanguage.value[i].language === language) {
+        numberOfCategories.value = categoriesPerLanguage.value[i].categories;
+      }
+    }
+    return totalProgress.value / numberOfCategories.value;
   };
 
   const increaseProgress = (affectedLanguage, affectedCategory) => {
@@ -50,7 +70,9 @@ export const useUserStore = defineStore("user", () => {
         progress.value[i].language === affectedLanguage &&
         progress.value[i].category === affectedCategory
       ) {
-        progress.value[i].progress = progress.value[i].progress + 10;
+        if (progress.value[i].progress < 100) {
+          progress.value[i].progress = progress.value[i].progress + 10;
+        }
         firstProgress.value = false;
       }
     }
