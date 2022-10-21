@@ -1,11 +1,11 @@
 <template>
   <main>
-    <Quiz />
+    <QuizItem />
   </main>
 </template>
 
 <script setup>
-import Quiz from "../components/Quiz.vue";
+import QuizItem from "../components/QuizItem.vue";
 </script>
 
 <style scoped></style>
