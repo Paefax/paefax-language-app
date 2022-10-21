@@ -7,9 +7,24 @@
 
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
+import { useUserStore } from "@/stores/user";
+import { useGeneralStore } from "@/stores/general";
+import { onMounted } from "vue";
 import ResultOverview from "./ResultOverview.vue";
 
 const quiz = useQuizStore();
+const user = useUserStore();
+const general = useGeneralStore();
+
+const increaseScore = () => {
+  if (quiz.score >= 4) {
+    user.increaseProgress(general.getLanguage(), general.getCategory());
+  }
+};
+
+onMounted(() => {
+  increaseScore();
+});
 </script>
 
 <style scoped>
