@@ -1,7 +1,6 @@
 <template>
   <main>
     <h1>Contact</h1>
-
     <div id="contact-form">
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" v-model="email" />
@@ -77,13 +76,12 @@ textarea {
 }
 
 @media only screen and (min-width: 769px) {
-  #email,
-  #contact-btn {
-    height: 50px;
+  #contact-form {
+    max-width: 500px;
   }
 
   #message {
-    height: 150px;
+    height: 250px;
   }
 }
 </style>
