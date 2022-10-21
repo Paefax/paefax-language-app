@@ -34,9 +34,7 @@ export const useUserStore = defineStore("user", () => {
 
   const getLanguageProgress = (language) => {
     const totalProgress = ref(0);
-
     for (let i = 0; i < progress.value.length; i++) {
-      console.log("lop:", i);
       if (progress.value[i].language === language) {
         totalProgress.value = totalProgress.value + progress.value[i].progress;
       }
