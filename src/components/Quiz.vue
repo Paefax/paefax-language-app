@@ -8,17 +8,20 @@
       {{ wordToTranslate.charAt(0).toUpperCase() + wordToTranslate.slice(1) }}
     </h2>
 
-    <!-- <AnswerItems
-      v-if="!answeredQuestion"
-      @button-clicked="checkAnswer"
-      :answers="answers"
-    /> -->
-
-    <UserInputQuiz
-      v-if="!answeredQuestion"
-      @checkInputAnswer="checkInputAnswer"
-      :input="input"
-    />
+    <div v-if="progress >= 50">
+      <UserInputQuiz
+        v-if="!answeredQuestion"
+        @checkInputAnswer="checkInputAnswer"
+        :input="input"
+      />
+    </div>
+    <div v-else>
+      <AnswerItems
+        v-if="!answeredQuestion"
+        @button-clicked="checkAnswer"
+        :answers="answers"
+      />
+    </div>
 
     <span v-if="answeredQuestion">Your answer: </span>
     <h4 v-if="answeredQuestion">
@@ -40,9 +43,11 @@ import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
 import { useGeneralStore } from "@/stores/general";
 import UserInputQuiz from "./UserInputQuiz.vue";
+import { useUserStore } from "@/stores/user";
 
 const general = useGeneralStore();
 const quiz = useQuizStore();
+const user = useUserStore();
 
 const answers = ref([]);
 const wordToTranslate = ref("");
@@ -52,6 +57,9 @@ const answeredQuestion = ref(false);
 const answeredCorrectly = ref(false);
 const currentAnswer = ref("");
 const input = ref("");
+const progress = ref(
+  user.getProgress(general.getLanguage(), general.getCategory())
+);
 
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
