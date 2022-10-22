@@ -8,7 +8,7 @@
 <script setup>
 import { ref } from "vue";
 
-const input = ref();
+const input = ref("");
 
 const emits = defineEmits(["checkInputAnswer"]);
 
