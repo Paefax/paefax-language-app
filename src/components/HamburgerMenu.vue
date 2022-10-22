@@ -1,27 +1,31 @@
 <template>
-    <Slide right noOverlay :closeOnNavigation="true">
-      <nav class="menu-options">
-        <div class="menu-item">
-          <RouterLink to="/account">
-            Account
-            <AccountCircleOutline class="menu-item-img" />
-          </RouterLink>
-        </div>
+  <Slide right noOverlay :closeOnNavigation="true">
+    <nav class="menu-options">
+      <div class="menu-item">
+        <RouterLink to="/account">
+          Account
+          <AccountCircleOutline class="menu-item-img" />
+        </RouterLink>
+      </div>
 
-        <div class="menu-item">
-          <RouterLink to="/settings">
-            Settings
-            <CogOutline class="menu-item-img" />
-          </RouterLink>
-        </div>
+      <div class="menu-item">
+        <RouterLink to="/settings">
+          Settings
+          <CogOutline class="menu-item-img" />
+        </RouterLink>
+      </div>
 
-        <div class="menu-item">
-          <RouterLink to="/language">
-            Quiz <AlphaQCircleOutline class="menu-item-img" />
-          </RouterLink>
-        </div>
-      </nav>
-    </Slide>
+      <div class="menu-item">
+        <RouterLink to="/language">
+          Quiz <AlphaQCircleOutline class="menu-item-img" />
+        </RouterLink>
+      </div>
+
+      <div class="menu-item">
+        <RouterLink to="/contact"> Contact </RouterLink>
+      </div>
+    </nav>
+  </Slide>
 </template>
 
 <script setup>
