@@ -69,9 +69,9 @@ const checkAnswer = (answer) => {
 
 const checkInputAnswer = (input) => {
   answeredQuestion.value = true;
-  currentAnswer.value = input;
+  currentAnswer.value = input.toLowerCase();
 
-  if (input === correctAnswer.value) {
+  if (input.toLowerCase() === correctAnswer.value.toLowerCase()) {
     answeredCorrectly.value = true;
     quiz.increaseScore();
   } else {
