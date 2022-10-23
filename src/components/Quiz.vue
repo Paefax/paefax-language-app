@@ -7,11 +7,19 @@
     <h2>
       {{ wordToTranslate.charAt(0).toUpperCase() + wordToTranslate.slice(1) }}
     </h2>
-    <AnswerItems
+
+    <!-- <AnswerItems
       v-if="!answeredQuestion"
       @button-clicked="checkAnswer"
       :answers="answers"
+    /> -->
+
+    <UserInputQuiz
+      v-if="!answeredQuestion"
+      @checkInputAnswer="checkInputAnswer"
+      :input="input"
     />
+
     <span v-if="answeredQuestion">Your answer: </span>
     <h4 v-if="answeredQuestion">
       {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
@@ -31,6 +39,7 @@ import AnswerItems from "../components/AnswerItems.vue";
 import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
 import { useGeneralStore } from "@/stores/general";
+import UserInputQuiz from "./UserInputQuiz.vue";
 
 const general = useGeneralStore();
 const quiz = useQuizStore();
@@ -42,6 +51,7 @@ const currentQuestion = ref();
 const answeredQuestion = ref(false);
 const answeredCorrectly = ref(false);
 const currentAnswer = ref("");
+const input = ref("");
 
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
@@ -55,6 +65,20 @@ const checkAnswer = (answer) => {
   }
 
   quiz.registerAnswer(answeredCorrectly.value, answer);
+};
+
+const checkInputAnswer = (input) => {
+  answeredQuestion.value = true;
+  currentAnswer.value = input;
+
+  if (input === correctAnswer.value) {
+    answeredCorrectly.value = true;
+    quiz.increaseScore();
+  } else {
+    answeredCorrectly.value = false;
+  }
+
+  quiz.registerAnswer(answeredCorrectly.value, input);
 };
 
 const setQuestionInfo = () => {
