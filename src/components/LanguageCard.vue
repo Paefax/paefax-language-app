@@ -2,7 +2,7 @@
   <RouterLink @click="setLanguage" :to="props.link">
     <h4>{{ props.name }}</h4>
     <main id="language-card-box">
-      <img :src="'/src/assets/images/' + props.img" />
+      <img :src="props.img" />
     </main>
   </RouterLink>
 </template>
