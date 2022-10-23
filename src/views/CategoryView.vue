@@ -22,34 +22,21 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import CategoryCard from "../components/CategoryCard.vue";
 import WizardBalls from "../components/WizardBalls.vue";
 import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOutline.vue";
 
-const categories = ref([
-  {
-    id: 0,
-    name: "Fruit",
-    img: "fruits.png",
-    alt: "fruits",
-    link: "/quiz",
-  },
-  {
-    id: 1,
-    name: "Animal",
-    img: "animal.jpg",
-    alt: "animals",
-    link: "/quiz",
-  },
-  {
-    id: 2,
-    name: "Occupation",
-    img: "occupation.jpg",
-    alt: "occupations",
-    link: "/quiz",
-  },
-]);
+const categories = ref([]);
+
+onMounted(() => {
+  let url = `http://localhost:3000/categories`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      categories.value = data;
+    });
+});
 </script>
 
 <style scoped>
