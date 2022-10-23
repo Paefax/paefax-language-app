@@ -8,17 +8,17 @@
       {{ wordToTranslate.charAt(0).toUpperCase() + wordToTranslate.slice(1) }}
     </h2>
 
-    <!-- <AnswerItems
+    <AnswerItems
       v-if="!answeredQuestion"
       @button-clicked="checkAnswer"
       :answers="answers"
-    /> -->
+    />
 
-    <UserInputQuiz
+    <!--     <UserInputQuiz
       v-if="!answeredQuestion"
       @checkInputAnswer="checkInputAnswer"
       :input="input"
-    />
+    /> -->
 
     <span v-if="answeredQuestion">Your answer: </span>
     <h4 v-if="answeredQuestion">
