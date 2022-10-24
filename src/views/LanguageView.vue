@@ -44,9 +44,9 @@ const languages = ref([
   },
   {
     id: 2,
-    name: "French",
-    img: "french-flag.png",
-    alt: "french flag",
+    name: "German",
+    img: "german-flag.png",
+    alt: "german flag",
     link: "/category",
   },
   {
