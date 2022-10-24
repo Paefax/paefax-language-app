@@ -13,22 +13,21 @@
     </div>
   </main>
 </template>
+
 <script setup>
 import { computed, ref } from "vue";
 const message = ref("");
-const email = ref("");
 const mailto = computed(
   () =>
     "mailto:helena.halldin@hotmail.com? &subject=Contact via form - Paefax &body=" +
     message.value
 );
-
 const sendMail = () => {
   window.location = mailto.value;
   message.value = "";
-  email.value = "";
 };
 </script>
+
 <style scoped>
 main {
   display: flex;
