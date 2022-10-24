@@ -185,7 +185,7 @@ h4 {
   }
 
   span {
-    font-size: 1.2em;
+    font-size: 1.5em;
   }
 
   h4 {
@@ -194,6 +194,10 @@ h4 {
 
   p {
     font-size: 1.5em;
+  }
+
+  .show-correct-answer {
+    font-size: 1.2em;
   }
 }
 </style>
