@@ -2,10 +2,13 @@
   <main>
     <h1>Contact</h1>
     <div id="contact-form">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" v-model="email" />
       <label for="message">Message:</label>
       <textarea id="message" name="message" v-model="message"></textarea>
+      <p id="information">
+        Note: This requires a default e-mail client software installed on your
+        computer. If you don't have this but you wish to contact us you can send
+        an email to helena.halldin@hotmail.com with you question or problem.
+      </p>
       <button @click="sendMail" id="contact-btn">SUBMIT</button>
     </div>
   </main>
@@ -43,7 +46,6 @@ main {
   align-items: center;
 }
 
-#email,
 #message,
 #contact-btn {
   width: 100%;
@@ -74,6 +76,10 @@ textarea {
   font-size: large;
   padding-left: 10px;
 }
+#information {
+  font-size: 12px;
+  font-style: italic;
+}
 
 @media only screen and (min-width: 769px) {
   #contact-form {
@@ -82,6 +88,13 @@ textarea {
 
   #message {
     height: 250px;
+  }
+  #contact-form label {
+    font-size: large;
+  }
+  #information {
+    font-size: 14px;
+    font-style: italic;
   }
 }
 </style>
