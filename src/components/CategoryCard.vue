@@ -2,7 +2,7 @@
   <RouterLink :to="props.link" @click="setCategory">
     <h4>{{ props.name }}</h4>
     <main id="category-card-box">
-      <img :src="'/src/assets/images/' + props.img" />
+      <img :src="props.img" />
     </main>
   </RouterLink>
 </template>
