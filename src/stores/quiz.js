@@ -34,6 +34,8 @@ export const useQuizStore = defineStore("quiz", () => {
   const resetQuizProgress = () => {
     idCurrentQuestion.value = 0;
     score.value = 0;
+    answers.value = [];
+    answeredQuestions.value = [];
   };
 
   const registerAnswer = (answerSuccess, answer) => {
