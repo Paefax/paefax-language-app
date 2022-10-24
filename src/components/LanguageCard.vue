@@ -9,11 +9,16 @@
 
 <script setup>
 import { useGeneralStore } from "@/stores/general";
-const general = useGeneralStore();
+import { useQuizStore } from "@/stores/quiz";
+
 const props = defineProps(["name", "img", "alt", "link"]);
+
+const general = useGeneralStore();
+const quiz = useQuizStore();
 
 const setLanguage = () => {
   general.setLanguage(props.name);
+  quiz.setLanguage(props.name);
 };
 </script>
 
