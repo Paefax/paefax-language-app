@@ -12,14 +12,17 @@
 
 <script setup>
 import ProgressBar from "./ProgressBar.vue";
+import { useUserStore } from "@/stores/user";
+const userInfo = useUserStore();
 const props = defineProps({
   language: {
     type: String,
     required: true,
   },
 });
-
-const progress = "70%";
+const progress = `${userInfo.getLanguageProgress(
+  props.language.toLowerCase()
+)}%`;
 </script>
 
 <style scoped>
