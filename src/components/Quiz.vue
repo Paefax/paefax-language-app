@@ -7,11 +7,22 @@
     <h2>
       {{ wordToTranslate.charAt(0).toUpperCase() + wordToTranslate.slice(1) }}
     </h2>
-    <AnswerItems
-      v-if="!answeredQuestion"
-      @button-clicked="checkAnswer"
-      :answers="answers"
-    />
+
+    <div v-if="progress >= 50">
+      <UserInputQuiz
+        v-if="!answeredQuestion"
+        @checkInputAnswer="checkInputAnswer"
+        :input="input"
+      />
+    </div>
+    <div v-else>
+      <AnswerItems
+        v-if="!answeredQuestion"
+        @button-clicked="checkAnswer"
+        :answers="answers"
+      />
+    </div>
+
     <span v-if="answeredQuestion">Your answer: </span>
     <h4 class="show-answer" v-if="answeredQuestion && answeredCorrectly">
       {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
@@ -42,11 +53,14 @@ import AnswerItems from "../components/AnswerItems.vue";
 import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
 import { useGeneralStore } from "@/stores/general";
+import UserInputQuiz from "./UserInputQuiz.vue";
+import { useUserStore } from "@/stores/user";
 import CloseThick from "vue-material-design-icons/CloseThick.vue";
 import CheckBold from "vue-material-design-icons/CheckBold.vue";
 
 const general = useGeneralStore();
 const quiz = useQuizStore();
+const user = useUserStore();
 
 const answers = ref([]);
 const wordToTranslate = ref("");
@@ -55,6 +69,10 @@ const currentQuestion = ref();
 const answeredQuestion = ref(false);
 const answeredCorrectly = ref(false);
 const currentAnswer = ref("");
+const input = ref("");
+const progress = ref(
+  user.getProgress(general.getLanguage(), general.getCategory())
+);
 
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
@@ -68,6 +86,20 @@ const checkAnswer = (answer) => {
   }
 
   quiz.registerAnswer(answeredCorrectly.value, answer);
+};
+
+const checkInputAnswer = (input) => {
+  answeredQuestion.value = true;
+  currentAnswer.value = input;
+
+  if (input === correctAnswer.value) {
+    answeredCorrectly.value = true;
+    quiz.increaseScore();
+  } else {
+    answeredCorrectly.value = false;
+  }
+
+  quiz.registerAnswer(answeredCorrectly.value, input);
 };
 
 const setQuestionInfo = () => {
