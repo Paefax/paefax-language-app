@@ -22,41 +22,21 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import LanguageCard from "../components/LanguageCard.vue";
 import WizardBalls from "../components/WizardBalls.vue";
 import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOutline.vue";
 
-const languages = ref([
-  {
-    id: 0,
-    name: "Swedish",
-    img: "swedish-flag.png",
-    alt: "swedish flag",
-    link: "/category",
-  },
-  {
-    id: 1,
-    name: "Spanish",
-    img: "spanish-flag.png",
-    alt: "spanish flag",
-    link: "/category",
-  },
-  {
-    id: 2,
-    name: "German",
-    img: "german-flag.png",
-    alt: "german flag",
-    link: "/category",
-  },
-  {
-    id: 3,
-    name: "Chinese",
-    img: "chinese-flag.png",
-    alt: "chinese flag",
-    link: "/category",
-  },
-]);
+const languages = ref([]);
+
+onMounted(() => {
+  let url = `http://localhost:3000/languages`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      languages.value = data;
+    });
+});
 </script>
 
 <style scoped>
