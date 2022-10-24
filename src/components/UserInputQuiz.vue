@@ -1,8 +1,6 @@
 <template>
-  <form action="">
-    <input class="input-field" type="text" v-model="input" />
-    <button class="submit-button" @click="submitAnswer">Submit</button>
-  </form>
+  <input class="input-field" type="text" v-model="input" />
+  <button class="submit-button" @click="submitAnswer">Submit</button>
 </template>
 
 <script setup>
