@@ -7,17 +7,39 @@
     <h2>
       {{ wordToTranslate.charAt(0).toUpperCase() + wordToTranslate.slice(1) }}
     </h2>
-    <AnswerItems
-      v-if="!answeredQuestion"
-      @button-clicked="checkAnswer"
-      :answers="answers"
-    />
+
+    <div v-if="progress >= 50">
+      <UserInputQuiz
+        v-if="!answeredQuestion"
+        @checkInputAnswer="checkInputAnswer"
+        :input="input"
+      />
+    </div>
+    <div v-else>
+      <AnswerItems
+        v-if="!answeredQuestion"
+        @button-clicked="checkAnswer"
+        :answers="answers"
+      />
+    </div>
+
     <span v-if="answeredQuestion">Your answer: </span>
-    <h4 v-if="answeredQuestion">
+    <h4 class="show-answer" v-if="answeredQuestion && answeredCorrectly">
       {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
+      <CheckBold fillColor="green" class="check-bold" />
     </h4>
-    <p v-if="answeredCorrectly && answeredQuestion">Correct answer!</p>
-    <p v-else-if="answeredQuestion && !answeredCorrectly">Wrong answer!</p>
+    <h4 class="show-wrong-answer" v-if="answeredQuestion && !answeredCorrectly">
+      {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
+      <CloseThick fillColor="red" class="close-thick" />
+    </h4>
+    <div
+      class="show-correct-answer"
+      v-if="!answeredCorrectly && answeredQuestion"
+    >
+      Correct answer:
+      <h4>{{ correctAnswer }}</h4>
+    </div>
+
     <button v-show="answeredQuestion" @click.prevent="nextQuestion">
       Next question
     </button>
@@ -31,9 +53,14 @@ import AnswerItems from "../components/AnswerItems.vue";
 import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
 import { useGeneralStore } from "@/stores/general";
+import UserInputQuiz from "./UserInputQuiz.vue";
+import { useUserStore } from "@/stores/user";
+import CloseThick from "vue-material-design-icons/CloseThick.vue";
+import CheckBold from "vue-material-design-icons/CheckBold.vue";
 
 const general = useGeneralStore();
 const quiz = useQuizStore();
+const user = useUserStore();
 
 const answers = ref([]);
 const wordToTranslate = ref("");
@@ -42,6 +69,10 @@ const currentQuestion = ref();
 const answeredQuestion = ref(false);
 const answeredCorrectly = ref(false);
 const currentAnswer = ref("");
+const input = ref("");
+const progress = ref(
+  user.getProgress(general.getLanguage(), general.getCategory())
+);
 
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
@@ -55,6 +86,20 @@ const checkAnswer = (answer) => {
   }
 
   quiz.registerAnswer(answeredCorrectly.value, answer);
+};
+
+const checkInputAnswer = (input) => {
+  answeredQuestion.value = true;
+  currentAnswer.value = input;
+
+  if (input === correctAnswer.value) {
+    answeredCorrectly.value = true;
+    quiz.increaseScore();
+  } else {
+    answeredCorrectly.value = false;
+  }
+
+  quiz.registerAnswer(answeredCorrectly.value, input);
 };
 
 const setQuestionInfo = () => {
@@ -142,9 +187,34 @@ span {
 }
 
 h4 {
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
+.show-correct-answer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.show-wrong-answer {
+  display: flex;
+  align-items: center;
+}
+
+.show-answer {
+  display: flex;
+  align-items: center;
+}
+
+.check-bold {
+  padding-left: 5px;
+  padding-bottom: 6px;
+}
+
+.close-thick {
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
 @media only screen and (min-width: 769px) {
   h1 {
     font-size: 3em;
@@ -162,7 +232,7 @@ h4 {
   }
 
   span {
-    font-size: 1.2em;
+    font-size: 1.5em;
   }
 
   h4 {
@@ -171,6 +241,10 @@ h4 {
 
   p {
     font-size: 1.5em;
+  }
+
+  .show-correct-answer {
+    font-size: 1.2em;
   }
 }
 </style>
