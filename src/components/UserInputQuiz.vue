@@ -1,12 +1,15 @@
 <template>
-  <input class="input-field" type="text" v-model="input" />
-  <button class="submit-button" @click="submitAnswer">Submit</button>
+  <form action="">
+    <label>Your Answer</label>
+    <input class="input-field" type="text" v-model="input" />
+    <button class="submit-button" @click="submitAnswer">Submit</button>
+  </form>
 </template>
 
 <script setup>
 import { ref } from "vue";
 
-const input = ref();
+const input = ref("");
 
 const emits = defineEmits(["checkInputAnswer"]);
 
@@ -16,7 +19,23 @@ const submitAnswer = () => {
 </script>
 
 <style scoped>
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+label {
+  font-size: 1em;
+  font-style: italic;
+}
+
 .input-field {
+  max-width: 150px;
+  width: 100%;
   height: 40px;
   border-radius: 10px;
   background-color: rgb(255, 255, 255, 0.56);
@@ -29,14 +48,25 @@ const submitAnswer = () => {
   background: #185359;
   color: #fff;
   border: 1px solid black;
-  border-radius: 15px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 500;
   padding: 10px 20px;
   transition: all 0.3s;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
-  margin-top: 50px;
-  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 769px) {
+  .input-field {
+    max-width: 200px;
+    width: 100%;
+    height: 50px;
+    font-size: larger;
+  }
+
+  .submit-button {
+    font-size: 2em;
+  }
 }
 </style>
