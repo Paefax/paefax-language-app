@@ -1,27 +1,33 @@
 <template>
-    <Slide right noOverlay :closeOnNavigation="true">
-      <nav class="menu-options">
-        <div class="menu-item">
-          <RouterLink to="/account">
-            Account
-            <AccountCircleOutline class="menu-item-img" />
-          </RouterLink>
-        </div>
+  <Slide right noOverlay :closeOnNavigation="true">
+    <nav class="menu-options">
+      <div class="menu-item">
+        <RouterLink to="/account">
+          Account
+          <AccountCircleOutline class="menu-item-img" />
+        </RouterLink>
+      </div>
 
-        <div class="menu-item">
-          <RouterLink to="/settings">
-            Settings
-            <CogOutline class="menu-item-img" />
-          </RouterLink>
-        </div>
+      <div class="menu-item">
+        <RouterLink to="/settings">
+          Settings
+          <CogOutline class="menu-item-img" />
+        </RouterLink>
+      </div>
 
-        <div class="menu-item">
-          <RouterLink to="/language">
-            Quiz <AlphaQCircleOutline class="menu-item-img" />
-          </RouterLink>
-        </div>
-      </nav>
-    </Slide>
+      <div class="menu-item">
+        <RouterLink to="/language">
+          Quiz <AlphaQCircleOutline class="menu-item-img" />
+        </RouterLink>
+      </div>
+
+      <div class="menu-item">
+        <RouterLink to="/contact">
+          Contact <EmailOutline class="menu-item-img"
+        /></RouterLink>
+      </div>
+    </nav>
+  </Slide>
 </template>
 
 <script setup>
@@ -29,6 +35,7 @@ import { Slide } from "vue3-burger-menu";
 import AccountCircleOutline from "vue-material-design-icons/AccountCircleOutline.vue";
 import CogOutline from "vue-material-design-icons/CogOutline.vue";
 import AlphaQCircleOutline from "vue-material-design-icons/AlphaQCircleOutline.vue";
+import EmailOutline from "vue-material-design-icons/EmailOutline.vue";
 
 const isOpen = false;
 </script>

@@ -14,7 +14,7 @@
       <div class="footer-col">
         <h4>Products</h4>
         <ul>
-          <li><a href="#">Quiz-App</a></li>
+          <li><a href="/">Quiz-App</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -30,8 +30,8 @@
       <div class="footer-col">
         <h4>Help and support</h4>
         <ul>
-          <li><a href="mailto:felix.jacobsen@iths.se">Email Us</a></li>
-          <li><a href="#">Common questions</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/">FAQ</a></li>
         </ul>
       </div>
     </div>
