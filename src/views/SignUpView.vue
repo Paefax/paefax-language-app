@@ -6,23 +6,52 @@
       alt="Paefax logo"
     />
     <h1>Sign up</h1>
-    <form id="signup-form">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" />
+    <form id="signup-form" @submit.prevent="signUp()">
+      <label for="name">Username:</label>
+      <input type="text" id="name" name="name" v-model="name" />
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" />
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" />
+      <input type="password" id="password" name="password" v-model="password" />
       <label for="confirm-password">Confirm password:</label>
-      <input
-        type="password"
-        id="confirm-password"
-        name="confirm-password"
-      /><br />
+      <input type="password" id="confirm-password" name="confirm-password" />
+      <br />
       <input type="submit" id="create-account-btn" value="CREATE ACCOUNT" />
     </form>
   </main>
 </template>
+
+<script setup>
+import { ref } from "vue";
+import router from "../router/index";
+
+const name = ref("");
+const password = ref("");
+
+const signUp = () => {
+  const url = "http://localhost:3000/user/create";
+
+  const data = {
+    name: name.value,
+    password: password.value,
+  };
+
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response)
+    .then((data) => {
+      console.log("Success:", data);
+    });
+
+  name.value = "";
+  password.value = "";
+
+  router.push("/login");
+};
+</script>
 
 <style scoped>
 main {
@@ -46,7 +75,7 @@ main {
 }
 
 #password,
-#username,
+#name,
 #email,
 #confirm-password,
 #create-account-btn {
@@ -77,7 +106,7 @@ main {
 
 @media only screen and (min-width: 769px) {
   #password,
-  #username,
+  #name,
   #email,
   #confirm-password,
   #create-account-btn {
