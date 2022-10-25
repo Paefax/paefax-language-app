@@ -1,9 +1,14 @@
 <template>
   <section class="dot-container">
     <span v-for="answer in quiz.answeredQuestions">
-      <CheckCircleOutline v-if="answer" fillColor="#11814B" :size="35" />
-
-      <CloseCircleOutline v-else="!answer" fillColor="#FF0000" :size="35" />
+      <div v-if="answer">
+        <CheckBold fillColor="#11814B" :size="35" class="check" />
+        <CheckboxBlankCircle :size="38" class="circle" />
+      </div>
+      <div v-else="!answer">
+        <CloseThick fillColor="#FF0000" :size="38" class="cross" />
+        <CheckboxBlankCircle :size="38" class="circle" />
+      </div>
     </span>
 
     <span v-for="(dot, index) in remainingQuestions" :key="index">
@@ -16,9 +21,9 @@
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
 import { computed } from "vue";
-import CheckCircleOutline from "vue-material-design-icons/CheckCircleOutline.vue";
-import CloseCircleOutline from "vue-material-design-icons/CloseCircleOutline.vue";
 import CheckboxBlankCircle from "vue-material-design-icons/CheckboxBlankCircle.vue";
+import CloseThick from "vue-material-design-icons/CloseThick.vue";
+import CheckBold from "vue-material-design-icons/CheckBold.vue";
 
 const quiz = useQuizStore();
 
@@ -35,9 +40,19 @@ const remainingQuestions = computed(
   margin-bottom: 50px;
   gap: 20px;
 }
-.material-design-icon__svg {
-  background-color: white;
-  border-radius: 50%;
+
+.cross {
+  position: absolute;
+  z-index: 1;
+}
+
+.circle {
+  z-index: -1;
+}
+
+.check {
+  position: absolute;
+  z-index: 1;
 }
 
 @media only screen and (min-width: 769px) {
