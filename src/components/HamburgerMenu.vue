@@ -22,7 +22,9 @@
       </div>
 
       <div class="menu-item">
-        <RouterLink to="/contact"> Contact </RouterLink>
+        <RouterLink to="/contact">
+          Contact <EmailOutline class="menu-item-img"
+        /></RouterLink>
       </div>
     </nav>
   </Slide>
@@ -33,6 +35,7 @@ import { Slide } from "vue3-burger-menu";
 import AccountCircleOutline from "vue-material-design-icons/AccountCircleOutline.vue";
 import CogOutline from "vue-material-design-icons/CogOutline.vue";
 import AlphaQCircleOutline from "vue-material-design-icons/AlphaQCircleOutline.vue";
+import EmailOutline from "vue-material-design-icons/EmailOutline.vue";
 
 const isOpen = false;
 </script>
