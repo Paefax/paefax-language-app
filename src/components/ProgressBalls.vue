@@ -1,11 +1,12 @@
 <template>
   <section class="dot-container">
     <span v-for="answer in quiz.answeredQuestions">
-      <CheckCircleOutline v-if="answer" fillColor="green" size="35px" />
-      <CloseCircleOutline v-else="!answer" fillColor="red" size="35px" />
+      <CheckCircleOutline v-if="answer" fillColor="#11814B" :size="35" />
+
+      <CloseCircleOutline v-else="!answer" fillColor="#FF0000" :size="35" />
     </span>
 
-    <CheckboxBlankCircle v-for="dot in remainingQuestions" size="35px" />
+    <CheckboxBlankCircle v-for="dot in remainingQuestions" :size="35" />
   </section>
 </template>
 
@@ -29,6 +30,10 @@ const remainingQuestions = computed(
   margin-top: 15px;
   margin-bottom: 50px;
   gap: 20px;
+}
+.material-design-icon__svg {
+  background-color: white;
+  border-radius: 50%;
 }
 
 @media only screen and (min-width: 769px) {

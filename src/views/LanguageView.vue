@@ -1,7 +1,7 @@
 <template>
   <section class="wizard">
     <RouterLink to="/">
-      <ArrowLeftCircleOutline size="38px" />
+      <ArrowLeftCircleOutline :size="38" />
     </RouterLink>
     <WizardBalls :position="1" />
     <div id="space"></div>
