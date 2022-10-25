@@ -6,7 +6,10 @@
       <CloseCircleOutline v-else="!answer" fillColor="#FF0000" :size="35" />
     </span>
 
-    <CheckboxBlankCircle v-for="dot in remainingQuestions" :size="35" />
+    <span v-for="(dot, index) in remainingQuestions" :key="index">
+      <CheckboxBlankCircle v-if="!index" :size="48" />
+      <CheckboxBlankCircle v-else="index" :size="36" />
+    </span>
   </section>
 </template>
 
@@ -27,6 +30,7 @@ const remainingQuestions = computed(
 <style scoped>
 .dot-container {
   display: flex;
+  align-items: center;
   margin-top: 15px;
   margin-bottom: 50px;
   gap: 20px;
