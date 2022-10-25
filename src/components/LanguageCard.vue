@@ -3,6 +3,7 @@
     <h4>{{ props.name }}</h4>
     <main id="language-card-box">
       <img :src="props.img" />
+      <ProgressBar id="progress-bar" :progress="progress" v-if="hasProgress" />
     </main>
   </RouterLink>
 </template>
@@ -10,16 +11,24 @@
 <script setup>
 import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
+import ProgressBar from "./ProgressBar.vue";
+import { useUserStore } from "@/stores/user";
+import { ref } from "vue";
 
 const props = defineProps(["name", "img", "alt", "link"]);
 
+const userInfo = useUserStore();
 const general = useGeneralStore();
 const quiz = useQuizStore();
 
 const setLanguage = () => {
   general.setLanguage(props.name);
-  quiz.setLanguage(props.name);
+  quiz.setLanguage(props.name); 
 };
+
+const progress = `${userInfo.getLanguageProgress(props.name)}%`;
+
+const hasProgress = ref(userInfo.getLanguageProgress(props.name) > 0);
 </script>
 
 <style scoped>
@@ -33,6 +42,10 @@ const setLanguage = () => {
 #language-card-box:hover {
   box-shadow: 0px 5px 10px black;
   transform: translateY(4px);
+}
+
+#progress-bar {
+  max-width: 80%;
 }
 
 img {
