@@ -2,12 +2,12 @@
   <section class="dot-container">
     <span v-for="answer in quiz.answeredQuestions">
       <div v-if="answer">
-        <CheckBold fillColor="#11814B" :size="35" class="check" />
-        <CheckboxBlankCircle :size="38" class="circle" />
+        <CheckBold :size="35" class="check" />
+        <CheckboxBlankCircle fillColor="#11814B" :size="38" class="circle" />
       </div>
       <div v-else="!answer">
-        <CloseThick fillColor="#FF0000" :size="38" class="cross" />
-        <CheckboxBlankCircle :size="38" class="circle" />
+        <CloseThick :size="38" class="cross" />
+        <CheckboxBlankCircle fillColor="#FF0000" :size="38" class="circle" />
       </div>
     </span>
 
