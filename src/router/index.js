@@ -9,6 +9,7 @@ import AccountView from "../views/AccountView.vue";
 import LoginView from "../views/LoginView.vue";
 import SignUpView from "../views/SignUpView.vue";
 import ContactView from "../views/ContactView.vue";
+import MakeQuizView from "../views/MakeQuizView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -63,6 +64,11 @@ const router = createRouter({
       path: "/contact",
       name: "contact",
       component: ContactView,
+    },
+    {
+      path: "/quiz/make",
+      name: "make quiz",
+      component: MakeQuizView,
     },
   ],
 });
