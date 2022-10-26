@@ -1,6 +1,6 @@
 <template>
-  <section class="language-card">
-    <img :src="'/src/assets/images/' + props.language + '-flag.png'" />
+  <section class="language-card" v-if="hasProgress">
+    <img :src="props.img" />
     <div class="progress-info">
       <div class="language">{{ props.language }}</div>
       <div class="progress-bar">
@@ -13,19 +13,19 @@
 <script setup>
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
+import { ref } from "vue";
 
 const userInfo = useUserStore();
 
-const props = defineProps({
-  language: {
-    type: String,
-    required: true,
-  },
-});
+const props = defineProps(["language", "img"]);
 
 const progress = `${userInfo.getLanguageProgress(
   props.language.toLowerCase()
 )}%`;
+
+const hasProgress = ref(
+  userInfo.getLanguageProgress(props.language.toLowerCase()) > 0
+);
 </script>
 
 <style scoped>
