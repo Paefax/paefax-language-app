@@ -34,6 +34,8 @@ export const useUserStore = defineStore("user", () => {
     },
   ]);
 
+  const token = ref("");
+
   const getProgress = (language, category) => {
     for (let i = 0; i < progress.value.length; i++) {
       if (
@@ -86,5 +88,19 @@ export const useUserStore = defineStore("user", () => {
     }
   };
 
-  return { getProgress, increaseProgress, getLanguageProgress };
+  const getToken = () => {
+    return token.value;
+  };
+
+  const setToken = (newToken) => {
+    token.value = newToken;
+  };
+
+  return {
+    getProgress,
+    increaseProgress,
+    getLanguageProgress,
+    setToken,
+    getToken,
+  };
 });
