@@ -16,6 +16,7 @@ export const useUserStore = defineStore("user", () => {
       categories: 3,
     },
   ]);
+
   const progress = ref([
     {
       language: "swedish",
@@ -36,6 +37,8 @@ export const useUserStore = defineStore("user", () => {
 
   const token = ref("");
 
+  const userMadeQuizzes = ref([]);
+
   const getProgress = (language, category) => {
     for (let i = 0; i < progress.value.length; i++) {
       if (
@@ -55,12 +58,14 @@ export const useUserStore = defineStore("user", () => {
         totalProgress.value = totalProgress.value + progress.value[i].progress;
       }
     }
+
     const numberOfCategories = ref(0);
     for (let i = 0; i < categoriesPerLanguage.value.length; i++) {
       if (categoriesPerLanguage.value[i].language === language) {
         numberOfCategories.value = categoriesPerLanguage.value[i].categories;
       }
     }
+
     return totalProgress.value / numberOfCategories.value;
   };
 
@@ -96,11 +101,19 @@ export const useUserStore = defineStore("user", () => {
     token.value = newToken;
   };
 
+  const addUserMadeQuiz = (newQuiz) => {
+    userMadeQuizzes.value.push(newQuiz);
+    console.log(newQuiz);
+    console.log(userMadeQuizzes.value);
+  };
+
   return {
     getProgress,
     increaseProgress,
     getLanguageProgress,
     setToken,
     getToken,
+    userMadeQuizzes,
+    addUserMadeQuiz,
   };
 });
