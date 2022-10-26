@@ -26,11 +26,11 @@
     <span v-if="answeredQuestion">Your answer: </span>
     <h4 class="show-answer" v-if="answeredQuestion && answeredCorrectly">
       {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
-      <CheckBold fillColor="green" class="check-bold" />
+      <CheckBold fillColor="#11814B" class="check-bold" />
     </h4>
     <h4 class="show-wrong-answer" v-if="answeredQuestion && !answeredCorrectly">
       {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
-      <CloseThick fillColor="red" class="close-thick" />
+      <CloseThick fillColor="#ff0000" class="close-thick" />
     </h4>
     <div
       class="show-correct-answer"

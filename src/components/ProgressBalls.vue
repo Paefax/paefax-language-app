@@ -1,20 +1,29 @@
 <template>
   <section class="dot-container">
     <span v-for="answer in quiz.answeredQuestions">
-      <CheckCircleOutline v-if="answer" fillColor="green" size="35px" />
-      <CloseCircleOutline v-else="!answer" fillColor="red" size="35px" />
+      <div v-if="answer">
+        <CheckBold :size="35" class="check" />
+        <CheckboxBlankCircle fillColor="#11814B" :size="38" class="circle" />
+      </div>
+      <div v-else="!answer">
+        <CloseThick :size="38" class="cross" />
+        <CheckboxBlankCircle fillColor="#FF0000" :size="38" class="circle" />
+      </div>
     </span>
 
-    <CheckboxBlankCircle v-for="dot in remainingQuestions" size="35px" />
+    <span v-for="(dot, index) in remainingQuestions" :key="index">
+      <CheckboxBlankCircle v-if="!index" :size="48" />
+      <CheckboxBlankCircle v-else="index" :size="36" />
+    </span>
   </section>
 </template>
 
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
 import { computed } from "vue";
-import CheckCircleOutline from "vue-material-design-icons/CheckCircleOutline.vue";
-import CloseCircleOutline from "vue-material-design-icons/CloseCircleOutline.vue";
 import CheckboxBlankCircle from "vue-material-design-icons/CheckboxBlankCircle.vue";
+import CloseThick from "vue-material-design-icons/CloseThick.vue";
+import CheckBold from "vue-material-design-icons/CheckBold.vue";
 
 const quiz = useQuizStore();
 
@@ -26,9 +35,24 @@ const remainingQuestions = computed(
 <style scoped>
 .dot-container {
   display: flex;
+  align-items: center;
   margin-top: 15px;
   margin-bottom: 50px;
   gap: 20px;
+}
+
+.cross {
+  position: absolute;
+  z-index: 1;
+}
+
+.circle {
+  z-index: -1;
+}
+
+.check {
+  position: absolute;
+  z-index: 1;
 }
 
 @media only screen and (min-width: 769px) {
