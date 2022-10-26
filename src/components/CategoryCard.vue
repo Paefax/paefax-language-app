@@ -3,6 +3,7 @@
     <h4>{{ props.name }}</h4>
     <main id="category-card-box">
       <img :src="props.img" />
+      <ProgressBar id="progress-bar" :progress="progress" v-if="hasProgress" />
     </main>
   </RouterLink>
 </template>
@@ -10,8 +11,13 @@
 <script setup>
 import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
+import ProgressBar from "./ProgressBar.vue";
+import { useUserStore } from "@/stores/user";
+import { ref } from "vue";
+
 const props = defineProps(["name", "img", "alt", "link"]);
 
+const userInfo = useUserStore();
 const general = useGeneralStore();
 const quiz = useQuizStore();
 
@@ -19,6 +25,12 @@ const setCategory = () => {
   general.setCategory(props.name);
   quiz.setCategory(props.name);
 };
+
+const progress = `${userInfo.getProgress(general.getLanguage(), props.name)}%`;
+
+const hasProgress = ref(
+  userInfo.getProgress(general.getLanguage(), props.name) > 0
+);
 </script>
 
 <style scoped>
@@ -29,6 +41,7 @@ const setCategory = () => {
   border-radius: 15px;
   background: white;
   display: flex;
+  flex-direction: column;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
@@ -38,6 +51,10 @@ const setCategory = () => {
 #category-card-box:hover {
   box-shadow: 0px 5px 10px black;
   transform: translateY(4px);
+}
+
+#progress-bar {
+  max-width: 80%;
 }
 
 img {

@@ -34,11 +34,13 @@ export const useUserStore = defineStore("user", () => {
     },
   ]);
 
+  const token = ref("");
+
   const getProgress = (language, category) => {
     for (let i = 0; i < progress.value.length; i++) {
       if (
-        progress.value[i].language === language &&
-        progress.value[i].category === category
+        progress.value[i].language === language.toLowerCase() &&
+        progress.value[i].category === category.toLowerCase()
       ) {
         return progress.value[i].progress;
       }
@@ -86,5 +88,19 @@ export const useUserStore = defineStore("user", () => {
     }
   };
 
-  return { getProgress, increaseProgress, getLanguageProgress };
+  const getToken = () => {
+    return token.value;
+  };
+
+  const setToken = (newToken) => {
+    token.value = newToken;
+  };
+
+  return {
+    getProgress,
+    increaseProgress,
+    getLanguageProgress,
+    setToken,
+    getToken,
+  };
 });

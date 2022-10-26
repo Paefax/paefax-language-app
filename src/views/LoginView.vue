@@ -6,11 +6,12 @@
       alt="Paefax logo"
     />
     <h1>Log in</h1>
-    <form id="login-form">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" />
+    <form id="login-form" @submit.prevent="logIn()">
+      <label for="name">Username:</label>
+      <input type="text" id="name" name="name" v-model="name" />
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" /><br />
+      <input type="password" id="password" name="password" v-model="password" />
+      <br />
       <input type="submit" id="login-btn" value="LOG IN" />
     </form>
     <p id="forgot-psw-text">forgot password?</p>
@@ -24,6 +25,42 @@
     </RouterLink>
   </main>
 </template>
+
+<script setup>
+import { ref } from "vue";
+import router from "../router/index";
+import { useUserStore } from "../stores/user";
+
+const userInfo = useUserStore();
+
+const name = ref("");
+const password = ref("");
+
+const logIn = async () => {
+  const url = "http://localhost:3000/user/login";
+
+  const data = {
+    name: name.value,
+    password: password.value,
+  };
+
+  await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+      userInfo.setToken(data.accessToken);
+    });
+
+  name.value = "";
+  password.value = "";
+
+  router.push("/account");
+};
+</script>
 
 <style scoped>
 main {
@@ -47,7 +84,7 @@ main {
 }
 
 #password,
-#username,
+#name,
 #login-btn {
   width: 100%;
   height: 40px;
@@ -108,7 +145,7 @@ hr {
   }
 
   #password,
-  #username,
+  #name,
   #login-btn {
     height: 50px;
   }
