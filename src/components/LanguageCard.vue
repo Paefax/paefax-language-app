@@ -3,7 +3,12 @@
     <h4>{{ props.name }}</h4>
     <main id="language-card-box">
       <img :src="props.img" />
-      <ProgressBar id="progress-bar" :progress="progress" v-if="hasProgress" />
+      <section id="progress-box" v-if="hasProgress">
+        <ProgressBar
+          id="progress-bar"
+          :progress="progress"
+        />
+      </section>
     </main>
   </RouterLink>
 </template>
@@ -23,7 +28,7 @@ const quiz = useQuizStore();
 
 const setLanguage = () => {
   general.setLanguage(props.name);
-  quiz.setLanguage(props.name); 
+  quiz.setLanguage(props.name);
 };
 
 const progress = `${userInfo.getLanguageProgress(props.name)}%`;
@@ -44,15 +49,30 @@ const hasProgress = ref(userInfo.getLanguageProgress(props.name) > 0);
   transform: translateY(4px);
 }
 
-#progress-bar {
-  max-width: 80%;
-}
-
 img {
+  z-index: 0;
   width: 150px;
   height: 100px;
   border-radius: 13px;
   object-fit: cover;
+}
+
+#progress-box {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.56);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  height: 35px;
+  position: relative;
+  top: -37px;
+}
+
+#progress-bar {
+  z-index: 1;
+  max-width: 80%;
+  position: relative;
+  top: 9px;
+  left: 14px;
 }
 
 h4 {
@@ -72,6 +92,18 @@ h4 {
     width: 300px;
     height: 200px;
     border-radius: 35px;
+  }
+
+  #progress-box {
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    height: 60px;
+    top: -62px;
+  }
+  
+  #progress-bar {
+    top: 20px;
+    left: 28px;
   }
 
   h4 {
