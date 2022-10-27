@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>Make Quiz</h1>
+    <h1>Create Quiz</h1>
     <form id="create-quiz-form">
       <form id="quiz-data-form">
         <label for="quiz-name">Quiz name</label>
