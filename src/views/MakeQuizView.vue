@@ -84,13 +84,17 @@ const answerToAdd = ref("");
 const addedQuestions = ref([]);
 
 const addQuestion = () => {
-  addedQuestions.value.push({
-    question: questionToAdd.value,
-    correctAnswer: answerToAdd.value,
-  });
+  if (questionToAdd.value === "" || answerToAdd.value === "") {
+    console.error("You need to input both a question and answer");
+  } else {
+    addedQuestions.value.push({
+      question: questionToAdd.value,
+      correctAnswer: answerToAdd.value,
+    });
 
-  questionToAdd.value = "";
-  answerToAdd.value = "";
+    questionToAdd.value = "";
+    answerToAdd.value = "";
+  }
 };
 
 const deleteQuestion = (index) => {
@@ -98,17 +102,25 @@ const deleteQuestion = (index) => {
 };
 
 const createQuiz = () => {
-  let quiz = {
-    name: quizName.value,
-    language: quizLanguage.value,
-    questions: addedQuestions.value,
-  };
+  if (
+    quizName.value === "" ||
+    quizLanguage.value === "Select Language" ||
+    addedQuestions.value.length === 0
+  ) {
+    console.error("You need to fill in all fields to create a quiz");
+  } else {
+    let quiz = {
+      name: quizName.value,
+      language: quizLanguage.value,
+      questions: addedQuestions.value,
+    };
 
-  userInfo.addUserMadeQuiz(quiz);
+    userInfo.addUserMadeQuiz(quiz);
 
-  quizName.value = "";
-  quizLanguage.value = "";
-  addedQuestions.value = [];
+    quizName.value = "";
+    quizLanguage.value = "";
+    addedQuestions.value = [];
+  }
 };
 
 onMounted(() => {
@@ -247,6 +259,10 @@ button {
 
   #questions-line {
     min-width: 375px;
+  }
+
+  #create-button {
+    margin-bottom: 0;
   }
 }
 </style>
