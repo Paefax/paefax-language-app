@@ -4,10 +4,7 @@
     <main id="language-card-box">
       <img :src="props.img" />
       <section id="progress-box" v-if="hasProgress">
-        <ProgressBar
-          id="progress-bar"
-          :progress="progress"
-        />
+        <ProgressBar id="progress-bar" :progress="progress" />
       </section>
     </main>
   </RouterLink>
@@ -18,7 +15,7 @@ import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
-import { ref } from "vue";
+import { computed } from "vue";
 
 const props = defineProps(["name", "img", "alt", "link"]);
 
@@ -31,9 +28,28 @@ const setLanguage = () => {
   quiz.setLanguage(props.name);
 };
 
-const progress = `${userInfo.getLanguageProgress(props.name)}%`;
+const progress = computed(
+  () =>
+    `${
+      userInfo.progress
+        .filter((x) => x.language === props.name.toLowerCase())
+        .map((x) => x.progress)
+        .reduce((partialSum, a) => partialSum + a, 0) / 3 //3 is number of categories
+    }%`
+);
 
-const hasProgress = ref(userInfo.getLanguageProgress(props.name) > 0);
+const hasProgress = computed(
+  () =>
+    userInfo.progress
+      .filter((x) => x.language === props.name.toLowerCase())
+      .map((x) => x.progress)
+      .reduce((partialSum, a) => partialSum + a, 0) /
+      3 >
+    0 //3 is number of categories
+);
+//const progress = `${userInfo.getLanguageProgress(props.name)}%`;
+
+//const hasProgress = ref(userInfo.getLanguageProgress(props.name) > 0);
 </script>
 
 <style scoped>
@@ -100,7 +116,7 @@ h4 {
     height: 60px;
     top: -62px;
   }
-  
+
   #progress-bar {
     top: 20px;
     left: 28px;
