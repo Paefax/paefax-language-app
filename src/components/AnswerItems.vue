@@ -6,16 +6,21 @@
 
 <script setup>
 import AnswerItem from "./AnswerItem.vue";
+import { useQuizStore } from "@/stores/quiz";
+import { ref } from "vue";
 
+const quiz = useQuizStore();
 const props = defineProps({
   answers: {
     type: Array,
     required: true,
   },
 });
+
 const emits = defineEmits(["button-clicked"]);
 
 const buttonClicked = (answer) => {
   emits("button-clicked", answer);
+  quiz.setAnswerChosen(answer);
 };
 </script>

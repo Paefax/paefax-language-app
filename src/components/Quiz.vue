@@ -16,14 +16,10 @@
       />
     </div>
     <div v-else>
-      <AnswerItems
-        v-if="!answeredQuestion"
-        @button-clicked="checkAnswer"
-        :answers="answers"
-      />
+      <AnswerItems @button-clicked="checkAnswer" :answers="answers" />
     </div>
 
-    <span v-if="answeredQuestion">Your answer: </span>
+    <!--  <span v-if="answeredQuestion">Your answer: </span>
     <h4 class="show-answer" v-if="answeredQuestion && answeredCorrectly">
       {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
       <CheckBold fillColor="#11814B" class="check-bold" />
@@ -38,7 +34,7 @@
     >
       Correct answer:
       <h4>{{ correctAnswer }}</h4>
-    </div>
+    </div> -->
 
     <button v-show="answeredQuestion" @click.prevent="nextQuestion">
       Next question
@@ -77,7 +73,6 @@ const progress = ref(
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
   currentAnswer.value = answer;
-
   if (answer === correctAnswer.value) {
     answeredCorrectly.value = true;
     quiz.increaseScore();
@@ -215,6 +210,7 @@ h4 {
   padding-left: 5px;
   padding-bottom: 5px;
 }
+
 @media only screen and (min-width: 769px) {
   h1 {
     font-size: 3em;
