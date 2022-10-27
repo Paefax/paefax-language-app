@@ -3,6 +3,12 @@
     <h4>{{ props.name }}</h4>
     <main id="language-card-box">
       <img :src="props.img" />
+      <section id="progress-box" v-if="hasProgress">
+        <ProgressBar
+          id="progress-bar"
+          :progress="progress"
+        />
+      </section>
     </main>
   </RouterLink>
 </template>
@@ -10,9 +16,13 @@
 <script setup>
 import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
+import ProgressBar from "./ProgressBar.vue";
+import { useUserStore } from "@/stores/user";
+import { ref } from "vue";
 
 const props = defineProps(["name", "img", "alt", "link"]);
 
+const userInfo = useUserStore();
 const general = useGeneralStore();
 const quiz = useQuizStore();
 
@@ -20,6 +30,10 @@ const setLanguage = () => {
   general.setLanguage(props.name);
   quiz.setLanguage(props.name);
 };
+
+const progress = `${userInfo.getLanguageProgress(props.name)}%`;
+
+const hasProgress = ref(userInfo.getLanguageProgress(props.name) > 0);
 </script>
 
 <style scoped>
@@ -36,10 +50,29 @@ const setLanguage = () => {
 }
 
 img {
+  z-index: 0;
   width: 150px;
   height: 100px;
   border-radius: 13px;
   object-fit: cover;
+}
+
+#progress-box {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.56);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  height: 35px;
+  position: relative;
+  top: -37px;
+}
+
+#progress-bar {
+  z-index: 1;
+  max-width: 80%;
+  position: relative;
+  top: 9px;
+  left: 14px;
 }
 
 h4 {
@@ -59,6 +92,18 @@ h4 {
     width: 300px;
     height: 200px;
     border-radius: 35px;
+  }
+
+  #progress-box {
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    height: 60px;
+    top: -62px;
+  }
+  
+  #progress-bar {
+    top: 20px;
+    left: 28px;
   }
 
   h4 {
