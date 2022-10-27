@@ -1,28 +1,23 @@
 <template>
     <main>
-        <button @click="toggleDark" id="darkModeToggle">Change color scheme</button>
+        <button @click="clickToggle" id="darkModeToggle" class="toggle">Change color scheme</button>
     </main>
 </template>
 
 
 <script setup>
+import { useTheme } from "@/stores/theme";
 
-let toggled = true;
-const toggleDark = () => {
+const theme = useTheme();
 
-    console.log(document.getElementsByClassName("container"));
-    if (toggled) {
-        document.body.style.backgroundColor = "#79A3B1";
-        document.body.style.color = "#000";
-        document.getElementsByClassName("container")[0].style.backgroundColor = "#456268"
+const clickToggle = () => {
+    theme.toggleDarkMode();
+}
 
-        toggled = false;
-    } else {
-        document.body.style.backgroundColor = "rgba(11, 43, 64, 1)"
-        document.body.style.color = "#FFFF"
-        document.getElementsByClassName("container")[0].style.backgroundColor = "#185359"
-
-        toggled = true;
-    }
-};
 </script>
+
+<style scoped>
+.toggle {
+    color: v-bind(theme.theme.color)
+}
+</style>
