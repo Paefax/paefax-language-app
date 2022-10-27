@@ -1,6 +1,6 @@
 <template>
   <RouterLink :to="props.link" @click="setCategory">
-    <h4>{{ props.name }}</h4>
+    <h4>{{ props.name.charAt(0).toUpperCase() + props.name.slice(1) }}</h4>
     <main id="category-card-box">
       <img :src="props.img" />
       <ProgressBar id="progress-bar" :progress="progress" v-if="hasProgress" />
