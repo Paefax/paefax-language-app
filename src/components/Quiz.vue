@@ -9,10 +9,18 @@
     </h2>
 
     <div v-if="progress >= 50">
-      <UserInputQuiz v-if="!answeredQuestion" @checkInputAnswer="checkInputAnswer" :input="input" />
+      <UserInputQuiz
+        v-if="!answeredQuestion"
+        @checkInputAnswer="checkInputAnswer"
+        :input="input"
+      />
     </div>
     <div v-else>
-      <AnswerItems v-if="!answeredQuestion" @button-clicked="checkAnswer" :answers="answers" />
+      <AnswerItems
+        v-if="!answeredQuestion"
+        @button-clicked="checkAnswer"
+        :answers="answers"
+      />
     </div>
 
     <span v-if="answeredQuestion">Your answer: </span>
@@ -24,18 +32,31 @@
       {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
       <CloseThick fillColor="#ff0000" class="close-thick" />
     </h4>
-    <div class="show-correct-answer" v-if="!answeredCorrectly && answeredQuestion">
+    <div
+      class="show-correct-answer"
+      v-if="!answeredCorrectly && answeredQuestion"
+    >
       Correct answer:
       <h4>{{ correctAnswer }}</h4>
     </div>
 
-    <button v-if="answeredQuestion && quiz.idCurrentQuestion === quiz.numberOfQuestions - 1"
-      @click.prevent="showResult">
+    <button
+      v-if="
+        answeredQuestion &&
+        quiz.idCurrentQuestion === quiz.numberOfQuestions - 1
+      "
+      @click.prevent="showResult"
+    >
       Show result
     </button>
 
-    <button v-show="answeredQuestion && !(quiz.idCurrentQuestion === quiz.numberOfQuestions - 1)"
-      @click.prevent="nextQuestion">
+    <button
+      v-show="
+        answeredQuestion &&
+        !(quiz.idCurrentQuestion === quiz.numberOfQuestions - 1)
+      "
+      @click.prevent="nextQuestion"
+    >
       Next question
     </button>
   </main>
@@ -66,7 +87,13 @@ const answeredCorrectly = ref(false);
 const currentAnswer = ref("");
 const input = ref("");
 const progress = ref(
-  user.getProgress(general.getLanguage(), general.getCategory())
+  user.progress
+    .filter(
+      (x) =>
+        x.language === general.getLanguage() &&
+        x.category === general.getCategory()
+    )
+    .map((x) => x.progress)
 );
 
 const checkAnswer = (answer) => {
@@ -119,13 +146,10 @@ const shuffleAnswers = (answers) => {
 };
 
 const showResult = () => {
-
   router.push("/result");
-
-}
+};
 
 const nextQuestion = () => {
-
   let noMoreQuestions = quiz.idCurrentQuestion < quiz.numberOfQuestions - 1;
   quiz.nextQuestion();
 
