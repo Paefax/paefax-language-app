@@ -88,8 +88,8 @@ const addQuestion = () => {
     console.error("You need to input both a question and answer");
   } else {
     addedQuestions.value.push({
-      question: questionToAdd.value,
-      correctAnswer: answerToAdd.value,
+      question: questionToAdd.value.toLowerCase(),
+      correctAnswer: answerToAdd.value.toLowerCase(),
     });
 
     questionToAdd.value = "";
@@ -110,15 +110,15 @@ const createQuiz = () => {
     console.error("You need to fill in all fields to create a quiz");
   } else {
     let quiz = {
-      name: quizName.value,
-      language: quizLanguage.value,
+      name: quizName.value.toLowerCase(),
+      language: quizLanguage.value.toLowerCase(),
       questions: addedQuestions.value,
     };
 
     userInfo.addUserMadeQuiz(quiz);
 
     quizName.value = "";
-    quizLanguage.value = "";
+    quizLanguage.value = "Select Language";
     addedQuestions.value = [];
   }
 };
