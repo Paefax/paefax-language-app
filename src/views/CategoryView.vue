@@ -26,8 +26,9 @@ import { onMounted, ref } from "vue";
 import CategoryCard from "../components/CategoryCard.vue";
 import WizardBalls from "../components/WizardBalls.vue";
 import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOutline.vue";
-
+import { useUserStore } from "@/stores/user";
 const categories = ref([]);
+const userInfo = useUserStore();
 
 onMounted(() => {
   let url = `http://localhost:3000/categories`;
@@ -36,6 +37,7 @@ onMounted(() => {
     .then((data) => {
       categories.value = data;
     });
+  userInfo.getProgressFromDB();
 });
 </script>
 
