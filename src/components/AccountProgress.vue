@@ -13,18 +13,29 @@
 <script setup>
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
-import { ref } from "vue";
+import { computed } from "vue";
 
 const userInfo = useUserStore();
-
 const props = defineProps(["language", "img"]);
 
-const progress = `${userInfo.getLanguageProgress(
-  props.language.toLowerCase()
-)}%`;
+const progress = computed(
+  () =>
+    `${
+      userInfo.progress
+        .filter((x) => x.language === props.language.toLowerCase())
+        .map((x) => x.progress)
+        .reduce((partialSum, a) => partialSum + a, 0) / 3 //3 is number of categories
+    }%`
+);
 
-const hasProgress = ref(
-  userInfo.getLanguageProgress(props.language.toLowerCase()) > 0
+const hasProgress = computed(
+  () =>
+    userInfo.progress
+      .filter((x) => x.language === props.language.toLowerCase())
+      .map((x) => x.progress)
+      .reduce((partialSum, a) => partialSum + a, 0) /
+      3 >
+    0 //3 is number of categories
 );
 </script>
 
