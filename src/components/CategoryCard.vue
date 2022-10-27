@@ -13,7 +13,7 @@ import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
-import { ref, computed, onMounted } from "vue";
+import { computed } from "vue";
 
 const props = defineProps(["name", "img", "alt", "link"]);
 
@@ -29,22 +29,22 @@ const setCategory = () => {
 const progress = computed(() => {
   return `${userInfo.progress
     .filter(
-      (x) =>
-        x.language === general.getLanguage() &&
-        x.category === props.name.toLowerCase()
+      (obj) =>
+        obj.language === general.getLanguage() &&
+        obj.category === props.name.toLowerCase()
     )
-    .map((x) => x.progress)}%`;
+    .map((obj) => obj.progress)}%`;
 });
 
 const hasProgress = computed(() => {
   return (
     userInfo.progress
       .filter(
-        (x) =>
-          x.language === general.getLanguage() &&
-          x.category === props.name.toLowerCase()
+        (obj) =>
+          obj.language === general.getLanguage() &&
+          obj.category === props.name.toLowerCase()
       )
-      .map((x) => x.progress) > 0
+      .map((obj) => obj.progress) > 0
   );
 });
 </script>

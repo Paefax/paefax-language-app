@@ -4,7 +4,6 @@ import { ref } from "vue";
 export const useUserStore = defineStore("user", () => {
   const progress = ref([]);
   const token = ref("");
-  const languageProgress = ref([]);
 
   const getProgressFromDB = () => {
     let url = "http://localhost:3000/progress";
@@ -40,7 +39,6 @@ export const useUserStore = defineStore("user", () => {
     getProgressFromDB,
     progress,
     token,
-    languageProgress,
     increaseScoreInDB,
   };
 });

@@ -47,9 +47,6 @@ const hasProgress = computed(
       3 >
     0 //3 is number of categories
 );
-//const progress = `${userInfo.getLanguageProgress(props.name)}%`;
-
-//const hasProgress = ref(userInfo.getLanguageProgress(props.name) > 0);
 </script>
 
 <style scoped>
