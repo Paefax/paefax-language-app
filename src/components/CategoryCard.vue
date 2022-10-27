@@ -3,7 +3,11 @@
     <h4>{{ props.name }}</h4>
     <main id="category-card-box">
       <img :src="props.img" />
-      <ProgressBar id="progress-bar" :progress="progress" v-if="hasProgress" />
+      <ProgressBar
+        id="progress-bar"
+        :progress="`${progress}%`"
+        v-if="progress > 0"
+      />
     </main>
   </RouterLink>
 </template>
@@ -27,25 +31,11 @@ const setCategory = () => {
 };
 
 const progress = computed(() => {
-  return `${userInfo.progress
-    .filter(
-      (obj) =>
-        obj.language === general.getLanguage() &&
-        obj.category === props.name.toLowerCase()
-    )
-    .map((obj) => obj.progress)}%`;
-});
-
-const hasProgress = computed(() => {
-  return (
-    userInfo.progress
-      .filter(
-        (obj) =>
-          obj.language === general.getLanguage() &&
-          obj.category === props.name.toLowerCase()
-      )
-      .map((obj) => obj.progress) > 0
-  );
+  return userInfo.progress.find(
+    (obj) =>
+      obj.language === general.getLanguage() &&
+      obj.category === props.name.toLowerCase()
+  ).progress;
 });
 </script>
 
