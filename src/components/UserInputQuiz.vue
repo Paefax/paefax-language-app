@@ -1,5 +1,5 @@
 <template>
-  <form action="">
+  <form>
     <label>Your Answer</label>
     <input class="input-field" type="text" v-model="input" />
     <button class="submit-button" @click="submitAnswer">Submit</button>
