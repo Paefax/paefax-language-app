@@ -51,13 +51,13 @@ export const useUserStore = defineStore("user", () => {
   const getLanguageProgress = (language) => {
     const totalProgress = ref(0);
     for (let i = 0; i < progress.value.length; i++) {
-      if (progress.value[i].language === language) {
+      if (progress.value[i].language === language.toLowerCase()) {
         totalProgress.value = totalProgress.value + progress.value[i].progress;
       }
     }
     const numberOfCategories = ref(0);
     for (let i = 0; i < categoriesPerLanguage.value.length; i++) {
-      if (categoriesPerLanguage.value[i].language === language) {
+      if (categoriesPerLanguage.value[i].language === language.toLowerCase()) {
         numberOfCategories.value = categoriesPerLanguage.value[i].categories;
       }
     }
