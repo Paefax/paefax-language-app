@@ -1,10 +1,6 @@
 <template>
   <main>
-    <img
-      id="paefax-img"
-      src="../assets/images/official-paefax-logo-white.svg"
-      alt="Paefax logo"
-    />
+    <img id="paefax-img" src="../assets/images/official-paefax-logo-light.svg" alt="Paefax logo" />
     <h1>Log in</h1>
     <form id="login-form" @submit.prevent="logIn()">
       <label for="name">Username:</label>
@@ -107,6 +103,7 @@ main {
   width: 100%;
   padding: 10px 0px;
 }
+
 #login-form input {
   font-size: large;
   padding-left: 10px;
@@ -126,6 +123,7 @@ main {
   font-size: 15px;
   margin-top: 20px;
 }
+
 hr {
   width: 120px;
   height: 0px;
