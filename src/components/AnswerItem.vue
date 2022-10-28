@@ -5,6 +5,10 @@
 </template>
 
 <script setup>
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
+
 const props = defineProps({
   answer: {
     type: String,
@@ -19,8 +23,8 @@ button {
   height: 50px;
   border-radius: 10px;
   font-size: 1.2em;
-  background-color: #185359;
-  color: white;
+  background-color: v-bind('theme.theme.footerBackgroundColor');
+  color: v-bind('theme.theme.color');
   border: 1px solid black;
   cursor: pointer;
   margin-top: 8px;

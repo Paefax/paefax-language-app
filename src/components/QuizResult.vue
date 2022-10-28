@@ -12,9 +12,12 @@ import { useGeneralStore } from "@/stores/general";
 import { onMounted } from "vue";
 import ResultOverview from "./ResultOverview.vue";
 
+
 const quiz = useQuizStore();
 const user = useUserStore();
 const general = useGeneralStore();
+
+
 
 const increaseScore = () => {
   if (quiz.score >= 4) {
@@ -31,6 +34,7 @@ onMounted(() => {
 @media only screen and (min-width: 769px) {
   h1 {
     font-size: 3em;
+
   }
 
   h2 {

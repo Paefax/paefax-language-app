@@ -44,6 +44,8 @@ const remainingQuestions = computed(
 .cross {
   position: absolute;
   z-index: 1;
+  color: "#E9ECFC"
+
 }
 
 .circle {
