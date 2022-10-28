@@ -1,24 +1,38 @@
 <template>
-  <main id="viewport">
-    <NavHeader
-      v-show="
-        $route.name !== 'home' &&
-        $route.name !== 'language' &&
-        $route.name !== 'category'
-      "
-    />
-    <RouterView />
-    <NavFooter />
-  </main>
+  <div id="app">
+    <main id="viewport">
+      <NavHeader v-show="
+  $route.name !== 'home' &&
+  $route.name !== 'language' &&
+  $route.name !== 'category'
+      " />
+      <RouterView />
+      <NavFooter />
+    </main>
+  </div>
 </template>
 
 <script setup>
 import { RouterView } from "vue-router";
 import NavHeader from "./components/NavHeader.vue";
 import NavFooter from "./components/NavFooter.vue";
+
+import { useTheme } from "./stores/theme"
+
+const theme = useTheme();
+
+
 </script>
 
+
 <style scoped>
+#app {
+  width: 100%;
+  height: 100%;
+  background-color: v-bind('theme.theme.backgroundColor');
+  color: v-bind('theme.theme.color')
+}
+
 #viewport {
   margin: 0 auto;
   max-width: 375px;
@@ -27,6 +41,8 @@ import NavFooter from "./components/NavFooter.vue";
   display: flex;
   flex-direction: column;
   align-items: center;
+
+
 }
 
 @media only screen and (min-width: 376px) {
