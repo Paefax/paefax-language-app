@@ -17,12 +17,15 @@ export const useTheme = defineStore("theme", () => {
   const buttonColorDark = "#185359";
   const buttonColorLight = "#79A3B1"
 
+  
+
   const theme = computed (() => {
     return {
         color: darkMode.value ? fontColorLight : fontColorDark,
         backgroundColor: darkMode.value ? backgroundColorLight : backgroundColorDark,
         footerBackgroundColor: darkMode.value ? footerColorLight : footerColorDark,
         buttonColor: darkMode.value ? buttonColorLight : buttonColorDark,
+        logo: darkMode.value ? true : false,
 
     }
   }) 

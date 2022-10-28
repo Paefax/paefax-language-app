@@ -1,7 +1,7 @@
 <template>
   <section class="dot-container">
     <span v-for="(ball, index) in numberOfBalls" :key="index">
-      <CheckboxBlankCircle v-if="props.position === index" fillColor="yellow" :size="30" />
+      <CheckboxBlankCircle v-if="props.position === index" fillColor="#FF5677" :size="30" />
       <CheckboxBlankCircle v-else="props.position === !index" fillColor="white" />
     </span>
   </section>
