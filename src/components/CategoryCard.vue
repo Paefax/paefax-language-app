@@ -31,11 +31,13 @@ const setCategory = () => {
 };
 
 const progress = computed(() => {
-  return userInfo.progress.find(
-    (obj) =>
-      obj.language === general.getLanguage() &&
-      obj.category === props.name.toLowerCase()
-  ).progress;
+  return userInfo.progress
+    .filter(
+      (obj) =>
+        obj.language === general.getLanguage() &&
+        obj.category === props.name.toLowerCase()
+    )
+    .map((obj) => obj.progress);
 });
 </script>
 

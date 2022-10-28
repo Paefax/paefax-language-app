@@ -89,11 +89,11 @@ const input = ref("");
 const progress = ref(
   user.progress
     .filter(
-      (x) =>
-        x.language === general.getLanguage() &&
-        x.category === general.getCategory()
+      (obj) =>
+        obj.language === general.getLanguage() &&
+        obj.category === general.getCategory()
     )
-    .map((x) => x.progress)
+    .map((obj) => obj.progress)
 );
 
 const checkAnswer = (answer) => {
