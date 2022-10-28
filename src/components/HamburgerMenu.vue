@@ -17,14 +17,16 @@
 
       <div class="menu-item">
         <RouterLink to="/language">
-          Quiz <AlphaQCircleOutline class="menu-item-img" />
+          Quiz
+          <AlphaQCircleOutline class="menu-item-img" />
         </RouterLink>
       </div>
 
       <div class="menu-item">
         <RouterLink to="/contact">
-          Contact <EmailOutline class="menu-item-img"
-        /></RouterLink>
+          Contact
+          <EmailOutline class="menu-item-img" />
+        </RouterLink>
       </div>
     </nav>
   </Slide>
@@ -36,8 +38,13 @@ import AccountCircleOutline from "vue-material-design-icons/AccountCircleOutline
 import CogOutline from "vue-material-design-icons/CogOutline.vue";
 import AlphaQCircleOutline from "vue-material-design-icons/AlphaQCircleOutline.vue";
 import EmailOutline from "vue-material-design-icons/EmailOutline.vue";
+import { useTheme } from "../stores/theme";
 
 const isOpen = false;
+
+
+
+const theme = useTheme();
 </script>
 
 <style>
@@ -58,7 +65,8 @@ a {
 }
 
 .bm-burger-bars {
-  background-color: #e9ecfc;
+  background-color: v-bind('theme.theme.color');
+
 }
 
 .line-style {
