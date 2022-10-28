@@ -2,9 +2,10 @@
   <button
     @click.prevent="$emit('button-clicked', props.answer)"
     :class="{
-      correctHighlight: props.answer === correctAnswer && quiz.answerChosen,
+      correctHighlight: props.answer === findCorrectAnswer && quiz.answerChosen,
       incorrectHighlight:
-        props.answer !== correctAnswer && quiz.answerChosen === props.answer,
+        props.answer !== findCorrectAnswer &&
+        quiz.answerChosen === props.answer,
     }"
   >
     {{ props.answer.charAt(0).toUpperCase() + props.answer.slice(1) }}
@@ -16,16 +17,13 @@ import { useQuizStore } from "@/stores/quiz";
 import { computed } from "vue";
 
 const quiz = useQuizStore();
-
 const emits = defineEmits(["button-clicked"]);
-
-console.log(props.chosenAnswer);
-
+console.log();
 const buttonClicked = () => {
   emits("button-clicked", props.answer);
 };
 
-const correctAnswer = computed(() => {
+const findCorrectAnswer = computed(() => {
   return quiz.questions.find(
     (question) => question.id === quiz.idCurrentQuestion
   ).correctAnswer;
