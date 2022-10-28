@@ -1,26 +1,9 @@
 <template>
-  <form>
+  <div class="form">
     <label>Your Answer</label>
     <input class="input-field" type="text" v-model="input" />
     <button class="submit-button" @click="submitAnswer">Submit</button>
-  </form>
-
-  <!--   <span v-if="answeredQuestion">Your answer: </span>
-  <h4 class="show-answer" v-if="answeredQuestion && answeredCorrectly">
-    {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
-    <CheckBold fillColor="#11814B" class="check-bold" />
-  </h4>
-  <h4 class="show-wrong-answer" v-if="answeredQuestion && !answeredCorrectly">
-    {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
-    <CloseThick fillColor="#ff0000" class="close-thick" />
-  </h4>
-  <div
-    class="show-correct-answer"
-    v-if="!answeredCorrectly && answeredQuestion"
-  >
-    Correct answer:
-    <h4>{{ correctAnswer }}</h4>
-  </div> -->
+  </div>
 </template>
 
 <script setup>
@@ -36,7 +19,7 @@ const submitAnswer = () => {
 </script>
 
 <style scoped>
-form {
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,6 +31,10 @@ form {
 label {
   font-size: 1em;
   font-style: italic;
+}
+
+h4 {
+  margin-top: 8px;
 }
 
 .input-field {
@@ -72,32 +59,6 @@ label {
   padding: 10px 20px;
   transition: all 0.3s;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
-}
-
-.show-correct-answer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.show-wrong-answer {
-  display: flex;
-  align-items: center;
-}
-
-.show-answer {
-  display: flex;
-  align-items: center;
-}
-
-.check-bold {
-  padding-left: 5px;
-  padding-bottom: 6px;
-}
-
-.close-thick {
-  padding-left: 5px;
-  padding-bottom: 5px;
 }
 
 @media only screen and (min-width: 769px) {
