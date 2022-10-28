@@ -8,7 +8,14 @@
     <h1>{{ username }}</h1>
     <h2>My Languages:</h2>
     <div v-for="(language, index) in languages" :key="index">
-      <AccountProgress :language="language.name" :img="language.img" />
+      <LanguageCard
+        v-for="language in languages"
+        :key="language.id"
+        :name="language.name"
+        :img="language.img"
+        :alt="language.alt"
+        :link="language.link"
+      />
     </div>
     <button>EDIT PROFILE</button>
   </main>
@@ -16,7 +23,7 @@
 
 <script setup>
 import { onMounted, ref } from "vue";
-import AccountProgress from "../components/AccountProgress.vue";
+import LanguageCard from "../components/LanguageCard.vue";
 const username = "fake_username";
 const profilePicture = "fake-profile.jpeg";
 const languages = ref([]);
