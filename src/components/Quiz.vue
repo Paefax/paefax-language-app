@@ -198,7 +198,7 @@ button {
   font-size: 1.2em;
   border: 1px solid black;
   cursor: pointer;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 span {
