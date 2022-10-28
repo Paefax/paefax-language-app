@@ -29,9 +29,6 @@
 <script setup>
 import { ref } from "vue";
 import router from "../router/index";
-import { useUserStore } from "../stores/user";
-
-const userInfo = useUserStore();
 
 const name = ref("");
 const password = ref("");
@@ -52,7 +49,7 @@ const logIn = async () => {
     .then((response) => response.json())
     .then((data) => {
       console.log("Success:", data);
-      userInfo.setToken(data.accessToken);
+      localStorage.setItem("token", data.accessToken);
     });
 
   name.value = "";
