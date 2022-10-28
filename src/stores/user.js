@@ -3,6 +3,7 @@ import { ref } from "vue";
 
 export const useUserStore = defineStore("user", () => {
   const progress = ref([]);
+  const username = ref("");
   const token = ref("");
 
   const getProgressFromDB = () => {
@@ -34,11 +35,26 @@ export const useUserStore = defineStore("user", () => {
     token.value = newToken;
   };
 
+  const getUsernameFromDB = () => {
+    let url = "http://localhost:3000/user";
+    fetch(url, {
+      headers: {
+        Authorization: "Bearer " + token.value,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        username.value = data.find((obj) => obj.id === 1).username; //OBS! hard coded user id = 1
+      });
+  };
+
   return {
     setToken,
     getProgressFromDB,
     progress,
     token,
     increaseScoreInDB,
+    username,
+    getUsernameFromDB,
   };
 });
