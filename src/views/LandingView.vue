@@ -1,9 +1,9 @@
 <template>
   <WizardBalls :position="0" />
   <main>
-    <img v-if="theme.theme.logo" id="logo-img" src="src\assets\images\official-paefax-logo-dark.svg"
+    <img v-if="theme.theme.logo" id="logo-img" src="../assets/images/official-paefax-logo-dark.svg"
       alt="Official Paefax logo" />
-    <img v-if="!theme.theme.logo" id="logo-img" src="src\assets\images\official-paefax-logo-light.svg"
+    <img v-if="!theme.theme.logo" id="logo-img" src="../assets/images/official-paefax-logo-light.svg"
       alt="Official Paefax logo" />
     <RouterLink to="/language">
       <button class="get-started-btn">Get Started</button>
