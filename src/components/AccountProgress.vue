@@ -1,10 +1,10 @@
 <template>
-  <section class="language-card" v-if="hasProgress">
+  <section class="language-card" v-if="progress > 0">
     <img :src="props.img" />
     <div class="progress-info">
       <div class="language">{{ props.language }}</div>
       <div class="progress-bar">
-        <ProgressBar :progress="progress" />
+        <ProgressBar :progress="`${progress}%`" />
       </div>
     </div>
   </section>
@@ -13,18 +13,19 @@
 <script setup>
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
-import { ref } from "vue";
+import { computed } from "vue";
 
 const userInfo = useUserStore();
-
 const props = defineProps(["language", "img"]);
+const categoriesPerLanguage = 3; //This is hardcoded for now.
 
-const progress = `${userInfo.getLanguageProgress(
-  props.language.toLowerCase()
-)}%`;
-
-const hasProgress = ref(
-  userInfo.getLanguageProgress(props.language.toLowerCase()) > 0
+const progress = computed(
+  () =>
+    userInfo.progress
+      .filter((obj) => obj.language === props.language.toLowerCase())
+      .map((obj) => obj.progress)
+      .reduce((partialSum, nextValue) => partialSum + nextValue, 0) /
+    categoriesPerLanguage
 );
 </script>
 

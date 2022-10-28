@@ -18,7 +18,7 @@ const general = useGeneralStore();
 
 const increaseScore = () => {
   if (quiz.score >= 4) {
-    user.increaseProgress(general.getLanguage(), general.getCategory());
+    user.increaseScoreInDB(general.getLanguage(), general.getCategory());
   }
 };
 

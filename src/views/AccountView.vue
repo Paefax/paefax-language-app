@@ -24,6 +24,8 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import LanguageCard from "../components/LanguageCard.vue";
+import { useUserStore } from "@/stores/user";
+const userInfo = useUserStore();
 const username = "fake_username";
 const profilePicture = "fake-profile.jpeg";
 const languages = ref([]);
@@ -35,6 +37,7 @@ onMounted(() => {
     .then((data) => {
       languages.value = data;
     });
+  userInfo.getProgressFromDB();
 });
 </script>
 
