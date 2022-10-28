@@ -67,7 +67,7 @@ const theme = useTheme();
 
 .container {
   color: v-bind('theme.theme.color');
-  background-color: v-bind('theme.theme.backgroundColor');
+  background-color: v-bind('theme.theme.footerBackgroundColor');
   width: 98.9vw;
   position: relative;
   margin-top: 28vw;
@@ -95,7 +95,7 @@ img {
 .footer-col h4 {
   font-size: 19px;
   color: v-bind('theme.theme.color');
-  background-color: v-bind('theme.theme.backgroundColor');
+  background-color: v-bind('theme.theme.footerBackgroundColor');
   text-transform: capitalize;
   margin-bottom: 30px;
   font-weight: 00;
@@ -110,7 +110,7 @@ img {
 .footer-col ul li a {
   font-size: 16px;
   text-transform: capitalize;
-  background-color: v-bind('theme.theme.backgroundColor');
+  background-color: v-bind('theme.theme.footerBackgroundColor');
   color: v-bind('theme.theme.color');
 
   text-decoration: none;
