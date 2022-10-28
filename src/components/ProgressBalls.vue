@@ -12,8 +12,8 @@
     </span>
 
     <span v-for="(dot, index) in remainingQuestions" :key="index">
-      <CheckboxBlankCircle v-if="!index" :size="48" />
-      <CheckboxBlankCircle v-else="index" :size="36" />
+      <CheckboxBlankCircle v-if="!index" :size="48" fillColor="#456268" />
+      <CheckboxBlankCircle v-else="index" :size="36" fillColor="#456268" />
     </span>
   </section>
 </template>

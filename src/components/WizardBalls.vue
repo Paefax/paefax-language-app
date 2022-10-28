@@ -1,15 +1,8 @@
 <template>
   <section class="dot-container">
     <span v-for="(ball, index) in numberOfBalls" :key="index">
-      <CheckboxBlankCircle
-        v-if="props.position === index"
-        fillColor="yellow"
-        :size="30"
-      />
-      <CheckboxBlankCircle
-        v-else="props.position === !index"
-        fillColor="white"
-      />
+      <CheckboxBlankCircle v-if="props.position === index" fillColor="yellow" :size="30" />
+      <CheckboxBlankCircle v-else="props.position === !index" fillColor="white" />
     </span>
   </section>
 </template>
@@ -33,9 +26,5 @@ const props = defineProps({
   margin-bottom: 30px;
   gap: 20px;
   align-items: center;
-}
-
-.color {
-  color: yellow;
 }
 </style>

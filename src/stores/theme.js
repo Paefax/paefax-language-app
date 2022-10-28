@@ -17,7 +17,6 @@ export const useTheme = defineStore("theme", () => {
   const buttonColorDark = "#185359";
   const buttonColorLight = "#79A3B1"
 
-
   const theme = computed (() => {
     return {
         color: darkMode.value ? fontColorLight : fontColorDark,
@@ -25,7 +24,6 @@ export const useTheme = defineStore("theme", () => {
         footerBackgroundColor: darkMode.value ? footerColorLight : footerColorDark,
         buttonColor: darkMode.value ? buttonColorLight : buttonColorDark,
 
-        
     }
   }) 
 
