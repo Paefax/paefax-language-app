@@ -8,7 +8,7 @@ export const useTheme = defineStore("theme", () => {
   const backgroundColorLight = "#DFEFF0";
   const backgroundColorDark = "#0B2B40";
 
-  const fontColorLight = "black";
+  const fontColorLight = "#333333";
   const fontColorDark = "#E9ECFC";
 
   const footerColorDark = "#185359";
