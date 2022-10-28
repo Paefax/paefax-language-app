@@ -6,7 +6,7 @@
 
 
 <script setup>
-import { useTheme } from "@/stores/theme";
+import { useTheme } from "../stores/theme";
 
 const theme = useTheme();
 
@@ -18,6 +18,8 @@ const clickToggle = () => {
 
 <style scoped>
 .toggle {
-    color: v-bind(theme.theme.color)
+    color: v-bind('theme.theme.color');
+    background-color: v-bind('theme.theme.backgroundColor');
+
 }
 </style>
