@@ -2,103 +2,51 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useUserStore = defineStore("user", () => {
-  const categoriesPerLanguage = ref([
-    {
-      language: "swedish",
-      categories: 3,
-    },
-    {
-      language: "spanish",
-      categories: 3,
-    },
-    {
-      language: "german",
-      categories: 3,
-    },
-  ]);
-
-  const progress = ref([
-    {
-      language: "swedish",
-      category: "fruit",
-      progress: 50,
-    },
-    {
-      language: "swedish",
-      category: "occupation",
-      progress: 30,
-    },
-    {
-      language: "spanish",
-      category: "animal",
-      progress: 40,
-    },
-  ]);
-
+  const progress = ref([]);
+  const username = ref("");
   const token = ref("");
-
   const userMadeQuizzes = ref([]);
 
-  const getProgress = (language, category) => {
-    for (let i = 0; i < progress.value.length; i++) {
-      if (
-        progress.value[i].language === language.toLowerCase() &&
-        progress.value[i].category === category.toLowerCase()
-      ) {
-        return progress.value[i].progress;
-      }
-    }
-    return 0;
-  };
-
-  const getLanguageProgress = (language) => {
-    const totalProgress = ref(0);
-    for (let i = 0; i < progress.value.length; i++) {
-      if (progress.value[i].language === language) {
-        totalProgress.value = totalProgress.value + progress.value[i].progress;
-      }
-    }
-
-    const numberOfCategories = ref(0);
-    for (let i = 0; i < categoriesPerLanguage.value.length; i++) {
-      if (categoriesPerLanguage.value[i].language === language) {
-        numberOfCategories.value = categoriesPerLanguage.value[i].categories;
-      }
-    }
-
-    return totalProgress.value / numberOfCategories.value;
-  };
-
-  const increaseProgress = (affectedLanguage, affectedCategory) => {
-    const firstProgress = ref(true);
-
-    for (let i = 0; i < progress.value.length; i++) {
-      if (
-        progress.value[i].language === affectedLanguage &&
-        progress.value[i].category === affectedCategory
-      ) {
-        if (progress.value[i].progress < 100) {
-          progress.value[i].progress = progress.value[i].progress + 10;
-        }
-        firstProgress.value = false;
-      }
-    }
-
-    if (firstProgress.value === true) {
-      progress.value.push({
-        language: affectedLanguage,
-        category: affectedCategory,
-        progress: 10,
+  const getProgressFromDB = () => {
+    let url = "http://localhost:3000/progress";
+    fetch(url, {
+      headers: {
+        Authorization: "Bearer " + token.value,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        progress.value = data;
       });
-    }
   };
 
-  const getToken = () => {
-    return token.value;
+  const increaseScoreInDB = (language, category) => {
+    let url = "http://localhost:3000/progress/update";
+    fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token.value,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ language: language, category: category }),
+    });
   };
 
   const setToken = (newToken) => {
     token.value = newToken;
+  };
+
+  const getUsernameFromDB = () => {
+    let url = "http://localhost:3000/user";
+    fetch(url, {
+      headers: {
+        Authorization: "Bearer " + token.value,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        username.value = data.find((obj) => obj.id === 1).username; //OBS! hard coded user id = 1
+      });
   };
 
   const addUserMadeQuiz = (newQuiz) => {
@@ -108,11 +56,13 @@ export const useUserStore = defineStore("user", () => {
   };
 
   return {
-    getProgress,
-    increaseProgress,
-    getLanguageProgress,
     setToken,
-    getToken,
+    getProgressFromDB,
+    progress,
+    token,
+    increaseScoreInDB,
+    username,
+    getUsernameFromDB,
     userMadeQuizzes,
     addUserMadeQuiz,
   };

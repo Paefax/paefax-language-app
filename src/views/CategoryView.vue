@@ -34,7 +34,7 @@ import { onMounted, ref } from "vue";
 import CategoryCard from "../components/CategoryCard.vue";
 import WizardBalls from "../components/WizardBalls.vue";
 import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOutline.vue";
-import { useUserStore } from "../stores/user";
+import { useUserStore } from "@/stores/user";
 import { useGeneralStore } from "../stores/general";
 
 const userInfo = useUserStore();
@@ -51,6 +51,8 @@ onMounted(() => {
     .then((data) => {
       categories.value = data;
     });
+    
+  userInfo.getProgressFromDB();
 
   for (let i = 0; i < userInfo.userMadeQuizzes.length; i++) {
     console.log("General", general.getLanguage());

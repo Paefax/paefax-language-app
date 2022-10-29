@@ -3,7 +3,11 @@
     <h4>{{ props.name.charAt(0).toUpperCase() + props.name.slice(1) }}</h4>
     <main id="category-card-box">
       <img :src="props.img" />
-      <ProgressBar id="progress-bar" :progress="progress" v-if="hasProgress" />
+      <ProgressBar
+        id="progress-bar"
+        :progress="`${progress}%`"
+        v-if="progress > 0"
+      />
     </main>
   </RouterLink>
 </template>
@@ -13,7 +17,7 @@ import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
-import { ref } from "vue";
+import { computed } from "vue";
 
 const props = defineProps(["name", "img", "alt", "link"]);
 
@@ -26,11 +30,15 @@ const setCategory = () => {
   quiz.setCategory(props.name);
 };
 
-const progress = `${userInfo.getProgress(general.getLanguage(), props.name)}%`;
-
-const hasProgress = ref(
-  userInfo.getProgress(general.getLanguage(), props.name) > 0
-);
+const progress = computed(() => {
+  return userInfo.progress
+    .filter(
+      (obj) =>
+        obj.language === general.getLanguage() &&
+        obj.category === props.name.toLowerCase()
+    )
+    .map((obj) => obj.progress);
+});
 </script>
 
 <style scoped>

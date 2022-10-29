@@ -26,8 +26,10 @@ import { onMounted, ref } from "vue";
 import LanguageCard from "../components/LanguageCard.vue";
 import WizardBalls from "../components/WizardBalls.vue";
 import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOutline.vue";
+import { useUserStore } from "@/stores/user";
 
 const languages = ref([]);
+const userInfo = useUserStore();
 
 onMounted(() => {
   let url = `http://localhost:3000/languages`;
@@ -36,6 +38,7 @@ onMounted(() => {
     .then((data) => {
       languages.value = data;
     });
+  userInfo.getProgressFromDB();
 });
 </script>
 

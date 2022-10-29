@@ -1,30 +1,42 @@
 <template>
-  <section class="language-card" v-if="hasProgress">
-    <img :src="props.img" />
-    <div class="progress-info">
-      <div class="language">{{ props.language }}</div>
-      <div class="progress-bar">
-        <ProgressBar :progress="progress" />
+  <RouterLink @click="setLanguage" :to="props.link">
+    <section class="language-card" v-if="progress > 0">
+      <img :src="props.img" />
+      <div class="progress-info">
+        <div class="language">{{ props.language }}</div>
+        <div class="progress-bar">
+          <ProgressBar :progress="`${progress}%`" />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </RouterLink>
 </template>
 
 <script setup>
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
-import { ref } from "vue";
+import { computed } from "vue";
+import { useGeneralStore } from "@/stores/general";
+import { useQuizStore } from "@/stores/quiz";
 
+const general = useGeneralStore();
+const quiz = useQuizStore();
 const userInfo = useUserStore();
+const props = defineProps(["language", "img", "link"]);
+const categoriesPerLanguage = 3; //This is hardcoded for now.
 
-const props = defineProps(["language", "img"]);
+const setLanguage = () => {
+  general.setLanguage(props.name);
+  quiz.setLanguage(props.name);
+};
 
-const progress = `${userInfo.getLanguageProgress(
-  props.language.toLowerCase()
-)}%`;
-
-const hasProgress = ref(
-  userInfo.getLanguageProgress(props.language.toLowerCase()) > 0
+const progress = computed(
+  () =>
+    userInfo.progress
+      .filter((obj) => obj.language === props.language.toLowerCase())
+      .map((obj) => obj.progress)
+      .reduce((partialSum, nextValue) => partialSum + nextValue, 0) /
+    categoriesPerLanguage
 );
 </script>
 
