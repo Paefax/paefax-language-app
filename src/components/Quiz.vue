@@ -55,16 +55,6 @@
     >
       Show result
     </button>
-
-    <button
-      v-show="
-        answeredQuestion &&
-        !(quiz.idCurrentQuestion === quiz.numberOfQuestions - 1)
-      "
-      @click.prevent="nextQuestion"
-    >
-      Next question
-    </button>
   </main>
 </template>
 
@@ -148,10 +138,6 @@ const shuffleAnswers = (answers) => {
     const j = Math.floor(Math.random() * (i + 1));
     [answers[i], answers[j]] = [answers[j], answers[i]];
   }
-};
-
-const showResult = () => {
-  router.push("/result");
 };
 
 const nextQuestion = () => {
