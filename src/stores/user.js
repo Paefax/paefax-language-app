@@ -5,6 +5,7 @@ export const useUserStore = defineStore("user", () => {
   const progress = ref([]);
   const username = ref("");
   const token = ref("");
+  const loggedIn = ref(false);
 
   const getProgressFromDB = () => {
     let url = "http://localhost:3000/progress";
@@ -48,6 +49,10 @@ export const useUserStore = defineStore("user", () => {
       });
   };
 
+  const isLoggedIn = () => {
+    loggedIn.value = true;
+  };
+
   return {
     setToken,
     getProgressFromDB,
@@ -56,5 +61,7 @@ export const useUserStore = defineStore("user", () => {
     increaseScoreInDB,
     username,
     getUsernameFromDB,
+    loggedIn,
+    isLoggedIn,
   };
 });

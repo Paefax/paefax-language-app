@@ -52,6 +52,7 @@ const logIn = async () => {
     .then((response) => response.json())
     .then((data) => {
       console.log("Success:", data);
+      userInfo.isLoggedIn(true);
       userInfo.setToken(data.accessToken);
     });
 
