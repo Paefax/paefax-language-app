@@ -8,18 +8,22 @@
     <h1>{{ username }}</h1>
     <h2>My Languages:</h2>
     <div v-for="(language, index) in languages" :key="index">
-      <AccountProgress :language="language.name" :img="language.img" />
+      <AccountProgress
+        :language="language.name"
+        :img="language.img"
+        :link="language.link"
+      />
     </div>
     <button>EDIT PROFILE</button>
   </main>
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import AccountProgress from "../components/AccountProgress.vue";
 import { useUserStore } from "@/stores/user";
 const userInfo = useUserStore();
-const username = "fake_username";
+const username = computed(() => userInfo.username);
 const profilePicture = "fake-profile.jpeg";
 const languages = ref([]);
 
@@ -31,6 +35,7 @@ onMounted(() => {
       languages.value = data;
     });
   userInfo.getProgressFromDB();
+  userInfo.getUsernameFromDB();
 });
 </script>
 
