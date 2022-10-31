@@ -26,6 +26,12 @@
           Contact <EmailOutline class="menu-item-img"
         /></RouterLink>
       </div>
+
+      <div class="menu-item">
+        <RouterLink to="/" @click="logout">
+          Logout <AccountArrowLeftOutline class="menu-item-img"
+        /></RouterLink>
+      </div>
     </nav>
   </Slide>
 </template>
@@ -36,8 +42,16 @@ import AccountCircleOutline from "vue-material-design-icons/AccountCircleOutline
 import CogOutline from "vue-material-design-icons/CogOutline.vue";
 import AlphaQCircleOutline from "vue-material-design-icons/AlphaQCircleOutline.vue";
 import EmailOutline from "vue-material-design-icons/EmailOutline.vue";
+import AccountArrowLeftOutline from "vue-material-design-icons/AccountArrowLeftOutline.vue";
+import { useUserStore } from "../stores/user";
 
-const isOpen = false;
+const userInfo = useUserStore();
+
+const logout = () => {
+  console.log("try to log out");
+  localStorage.clear();
+  userInfo.removeProgress();
+};
 </script>
 
 <style>

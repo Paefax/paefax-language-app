@@ -10,7 +10,7 @@ export const useUserStore = defineStore("user", () => {
     let url = "http://localhost:3000/progress";
     fetch(url, {
       headers: {
-        Authorization: "Bearer " + token.value,
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
     })
       .then((response) => response.json())
@@ -24,15 +24,15 @@ export const useUserStore = defineStore("user", () => {
     fetch(url, {
       method: "POST",
       headers: {
-        Authorization: "Bearer " + token.value,
+        Authorization: "Bearer " + localStorage.getItem("token"),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ language: language, category: category }),
     });
   };
 
-  const setToken = (newToken) => {
-    token.value = newToken;
+  const removeProgress = () => {
+    progress.value = [];
   };
 
   const getUsernameFromDB = () => {
@@ -49,12 +49,11 @@ export const useUserStore = defineStore("user", () => {
   };
 
   return {
-    setToken,
     getProgressFromDB,
     progress,
-    token,
     increaseScoreInDB,
     username,
     getUsernameFromDB,
+    removeProgress,
   };
 });
