@@ -55,6 +55,16 @@
     >
       Show result
     </button>
+
+    <button
+      v-show="
+        answeredQuestion &&
+        !(quiz.idCurrentQuestion === quiz.numberOfQuestions - 1)
+      "
+      @click.prevent="nextQuestion"
+    >
+      Next question
+    </button>
   </main>
 </template>
 
@@ -83,7 +93,13 @@ const answeredCorrectly = ref(false);
 const currentAnswer = ref("");
 const input = ref("");
 const progress = ref(
-  user.getProgress(general.getLanguage(), general.getCategory())
+  user.progress
+    .filter(
+      (obj) =>
+        obj.language === general.getLanguage() &&
+        obj.category === general.getCategory()
+    )
+    .map((obj) => obj.progress)
 );
 
 const checkAnswer = (answer) => {
@@ -132,6 +148,10 @@ const shuffleAnswers = (answers) => {
     const j = Math.floor(Math.random() * (i + 1));
     [answers[i], answers[j]] = [answers[j], answers[i]];
   }
+};
+
+const showResult = () => {
+  router.push("/result");
 };
 
 const nextQuestion = () => {
