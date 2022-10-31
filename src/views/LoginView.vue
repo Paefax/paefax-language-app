@@ -1,6 +1,9 @@
 <template>
   <main>
-    <img id="paefax-img" src="../assets/images/official-paefax-logo-light.svg" alt="Paefax logo" />
+    <img v-if="theme.theme.logo" id="paefax-img" src="../assets/images/official-paefax-logo-dark.svg"
+      alt="Official Paefax logo" />
+    <img v-if="!theme.theme.logo" id="paefax-img" src="../assets/images/official-paefax-logo-light.svg"
+      alt="Official Paefax logo" />
     <h1>Log in</h1>
     <form id="login-form" @submit.prevent="logIn()">
       <label for="name">Username:</label>
@@ -26,6 +29,9 @@
 import { ref } from "vue";
 import router from "../router/index";
 import { useUserStore } from "../stores/user";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 
 const userInfo = useUserStore();
 
@@ -85,18 +91,20 @@ main {
   width: 100%;
   height: 40px;
   border-radius: 10px;
-  background-color: rgb(255, 255, 255, 0.56);
   border-style: none;
+  background-color: rgb(255, 255, 255, 0.56);
+
 }
 
 #login-btn {
-  background-color: #185359;
-  color: white;
+  background-color: v-bind('theme.theme.footerBackgroundColor');
+  color: v-bind('theme.theme.color');
   font-size: 20px;
+  margin-top: 10px;
 }
 
 #forgot-psw-text {
-  color: #30a5bf;
+  color: v-bind('theme.theme.subleText');
 }
 
 #login-form label {
@@ -116,6 +124,8 @@ main {
   font-size: 15px;
   width: 100px;
   height: 30px;
+  background-color: v-bind('theme.theme.footerBackgroundColor');
+  color: v-bind('theme.theme.color');
 }
 
 #or-div {

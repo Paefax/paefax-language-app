@@ -27,8 +27,6 @@ const theme = useTheme();
 
 <style scoped>
 #app {
-  width: 100%;
-  height: 100%;
   background-color: v-bind('theme.theme.backgroundColor');
   color: v-bind('theme.theme.color')
 }

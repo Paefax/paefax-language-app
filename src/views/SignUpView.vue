@@ -1,6 +1,9 @@
 <template>
   <main>
-    <img id="paefax-img" src="../assets/images/official-paefax-logo-light.svg" alt="Paefax logo" />
+    <img v-if="theme.theme.logo" id="paefax-img" src="../assets/images/official-paefax-logo-dark.svg"
+      alt="Official Paefax logo" />
+    <img v-if="!theme.theme.logo" id="paefax-img" src="../assets/images/official-paefax-logo-light.svg"
+      alt="Official Paefax logo" />
     <h1>Sign up</h1>
     <form id="signup-form" @submit.prevent="signUp()">
       <label for="name">Username:</label>
@@ -20,7 +23,9 @@
 <script setup>
 import { ref } from "vue";
 import router from "../router/index";
+import { useTheme } from "../stores/theme";
 
+const theme = useTheme();
 const name = ref("");
 const password = ref("");
 

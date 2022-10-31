@@ -56,8 +56,9 @@ main {
 
 h4 {
   font-weight: 300;
-  color: #456268;
+  color: v-bind('theme.theme.subleText');
   margin: 0;
+
 }
 
 @media only screen and (min-width: 769px) {
