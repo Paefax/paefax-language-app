@@ -34,7 +34,7 @@ import CheckBold from "vue-material-design-icons/CheckBold.vue";
 
 const quiz = useQuizStore();
 const emits = defineEmits(["button-clicked"]);
-console.log();
+
 const buttonClicked = () => {
   emits("button-clicked", props.answer);
 };

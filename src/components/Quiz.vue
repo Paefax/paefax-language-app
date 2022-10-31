@@ -8,37 +8,33 @@
       {{ wordToTranslate.charAt(0).toUpperCase() + wordToTranslate.slice(1) }}
     </h2>
 
-    <div v-if="quizChooser && !answeredQuestion">
-      <UserInputQuiz @checkInputAnswer="checkInputAnswer" :input="input" />
+    <div v-if="progress >= 50">
+      <UserInputQuiz
+        v-if="!answeredQuestion"
+        @checkInputAnswer="checkInputAnswer"
+        :input="input"
+      />
+      <h4 class="show-answer" v-if="answeredQuestion && answeredCorrectly">
+        {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
+        <CheckBold fillColor="#11814B" class="check-bold" />
+      </h4>
+      <h4
+        class="show-wrong-answer"
+        v-if="answeredQuestion && !answeredCorrectly"
+      >
+        {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
+        <CloseThick fillColor="#ff0000" class="close-thick" />
+      </h4>
+      <div
+        class="show-correct-answer"
+        v-if="!answeredCorrectly && answeredQuestion"
+      >
+        Correct answer:
+        <h4>{{ correctAnswer }}</h4>
+      </div>
     </div>
     <div v-else>
-      <AnswerItems
-        v-if="!answeredQuestion"
-        @button-clicked="checkAnswer"
-        :answers="answers"
-      />
-
-      <div class="answer-container" if="quizChooser && answeredQuestion">
-        <span>Your answer: </span>
-        <h4 class="show-answer" v-if="answeredQuestion && answeredCorrectly">
-          {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
-          <CheckBold fillColor="#11814B" class="check-bold" />
-        </h4>
-        <h4
-          class="show-wrong-answer"
-          v-if="answeredQuestion && !answeredCorrectly"
-        >
-          {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
-          <CloseThick fillColor="#ff0000" class="close-thick" />
-        </h4>
-        <div
-          class="show-correct-answer"
-          v-if="!answeredCorrectly && answeredQuestion"
-        >
-          Correct answer:
-          <h4>{{ correctAnswer }}</h4>
-        </div>
-      </div>
+      <AnswerItems @button-clicked="checkAnswer" :answers="answers" />
     </div>
     <button
       v-show="
@@ -86,16 +82,9 @@ const answeredQuestion = ref(false);
 const answeredCorrectly = ref(false);
 const currentAnswer = ref("");
 const input = ref("");
-const userInput = ref(false);
 const progress = ref(
   user.getProgress(general.getLanguage(), general.getCategory())
 );
-
-const quizChooser = () => {
-  if (progress >= 50) {
-    userInput = true;
-  }
-};
 
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
@@ -235,12 +224,6 @@ h4 {
 .close-thick {
   padding-left: 5px;
   padding-bottom: 5px;
-}
-
-.answer-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
 
 @media only screen and (min-width: 769px) {
