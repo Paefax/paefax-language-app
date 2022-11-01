@@ -34,8 +34,4 @@ const props = defineProps({
   gap: 20px;
   align-items: center;
 }
-
-.color {
-  color: yellow;
-}
 </style>
