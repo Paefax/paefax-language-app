@@ -147,6 +147,7 @@ const nextQuestion = () => {
 };
 
 const showResult = () => {
+  quiz.setAnswerChosen(false);
   router.push("/result");
 };
 
