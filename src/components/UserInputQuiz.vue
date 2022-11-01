@@ -1,9 +1,9 @@
 <template>
-  <form action="">
+  <div class="form">
     <label>Your Answer</label>
     <input class="input-field" type="text" v-model="input" />
     <button class="submit-button" @click="submitAnswer">Submit</button>
-  </form>
+  </div>
 </template>
 
 <script setup>
@@ -23,7 +23,7 @@ const submitAnswer = () => {
 </script>
 
 <style scoped>
-form {
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,6 +35,10 @@ form {
 label {
   font-size: 1em;
   font-style: italic;
+}
+
+h4 {
+  margin-top: 8px;
 }
 
 .input-field {

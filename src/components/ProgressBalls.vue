@@ -26,7 +26,6 @@ import CloseThick from "vue-material-design-icons/CloseThick.vue";
 import CheckBold from "vue-material-design-icons/CheckBold.vue";
 
 const quiz = useQuizStore();
-
 const remainingQuestions = computed(
   () => quiz.numberOfQuestions - quiz.answeredQuestions.length
 );
@@ -44,8 +43,7 @@ const remainingQuestions = computed(
 .cross {
   position: absolute;
   z-index: 1;
-  color: "#E9ECFC"
-
+  color: "#E9ECFC";
 }
 
 .circle {

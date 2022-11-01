@@ -14,31 +14,37 @@
         @checkInputAnswer="checkInputAnswer"
         :input="input"
       />
+      <h4 class="show-answer" v-if="answeredQuestion && answeredCorrectly">
+        {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
+        <CheckBold fillColor="#11814B" class="check-bold" />
+      </h4>
+      <h4
+        class="show-wrong-answer"
+        v-if="answeredQuestion && !answeredCorrectly"
+      >
+        {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
+        <CloseThick fillColor="#ff0000" class="close-thick" />
+      </h4>
+      <div
+        class="show-correct-answer"
+        v-if="!answeredCorrectly && answeredQuestion"
+      >
+        Correct answer:
+        <h4>{{ correctAnswer }}</h4>
+      </div>
     </div>
     <div v-else>
-      <AnswerItems
-        v-if="!answeredQuestion"
-        @button-clicked="checkAnswer"
-        :answers="answers"
-      />
+      <AnswerItems @button-clicked="checkAnswer" :answers="answers" />
     </div>
-
-    <span v-if="answeredQuestion">Your answer: </span>
-    <h4 class="show-answer" v-if="answeredQuestion && answeredCorrectly">
-      {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
-      <CheckBold fillColor="#11814B" class="check-bold" />
-    </h4>
-    <h4 class="show-wrong-answer" v-if="answeredQuestion && !answeredCorrectly">
-      {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
-      <CloseThick fillColor="#ff0000" class="close-thick" />
-    </h4>
-    <div
-      class="show-correct-answer"
-      v-if="!answeredCorrectly && answeredQuestion"
+    <button
+      v-show="
+        answeredQuestion &&
+        !(quiz.idCurrentQuestion === quiz.numberOfQuestions - 1)
+      "
+      @click.prevent="nextQuestion"
     >
-      Correct answer:
-      <h4>{{ correctAnswer }}</h4>
-    </div>
+      Next question
+    </button>
 
     <button
       v-if="
@@ -48,16 +54,6 @@
       @click.prevent="showResult"
     >
       Show result
-    </button>
-
-    <button
-      v-show="
-        answeredQuestion &&
-        !(quiz.idCurrentQuestion === quiz.numberOfQuestions - 1)
-      "
-      @click.prevent="nextQuestion"
-    >
-      Next question
     </button>
   </main>
 </template>
@@ -99,7 +95,6 @@ const progress = ref(
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
   currentAnswer.value = answer;
-
   if (answer === correctAnswer.value) {
     answeredCorrectly.value = true;
     quiz.increaseScore();
@@ -145,18 +140,15 @@ const shuffleAnswers = (answers) => {
   }
 };
 
-const showResult = () => {
-  router.push("/result");
+const nextQuestion = () => {
+  quiz.nextQuestion();
+  setQuestionInfo();
+  answeredQuestion.value = false;
 };
 
-const nextQuestion = () => {
-  let noMoreQuestions = quiz.idCurrentQuestion < quiz.numberOfQuestions - 1;
-  quiz.nextQuestion();
-
-  if (noMoreQuestions) {
-    setQuestionInfo();
-    answeredQuestion.value = false;
-  }
+const showResult = () => {
+  quiz.setAnswerChosen(false);
+  router.push("/result");
 };
 
 onMounted(() => {
@@ -202,7 +194,7 @@ button {
   font-size: 1.2em;
   border: 1px solid black;
   cursor: pointer;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 span {
@@ -223,6 +215,7 @@ h4 {
 .show-wrong-answer {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .show-answer {
