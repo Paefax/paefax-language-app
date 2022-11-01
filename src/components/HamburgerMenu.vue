@@ -66,6 +66,7 @@ const logout = () => {
   console.log("try to log out");
   localStorage.clear();
   userInfo.removeProgress();
+  userInfo.isLoggedIn(false);
 };
 </script>
 
