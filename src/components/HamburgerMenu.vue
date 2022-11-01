@@ -63,8 +63,17 @@ const userInfo = useUserStore();
 const loggedIn = computed(() => userInfo.loggedIn);
 
 const logout = () => {
-  console.log("try to log out");
+  const url = "http://localhost:3000/user/logout";
+
+  fetch(url, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  });
+
   localStorage.clear();
+  console.log("logged out");
   userInfo.removeProgress();
   userInfo.isLoggedIn(false);
 };
