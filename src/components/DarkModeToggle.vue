@@ -1,6 +1,9 @@
 <template>
     <main>
-        <button @click="clickToggle" id="darkModeToggle" class="toggle">Change color scheme</button>
+        <img v-if="theme.theme.logo" src="../assets/images/darkmode-dark.png" alt="Official Paefax logo"
+            @click="clickToggle" class="toggle" />
+        <img v-if="!theme.theme.logo" src="../assets/images/darkmode-light.png" alt="Official Paefax logo"
+            @click="clickToggle" class="toggle" />
     </main>
 </template>
 
@@ -18,19 +21,7 @@ const clickToggle = () => {
 
 <style scoped>
 .toggle {
-    color: v-bind('theme.theme.color');
-    background-color: v-bind('theme.theme.buttonColor');
-
-}
-
-button {
-    width: 150px;
-    height: 50px;
-    border-radius: 10px;
-    font-size: 1.2em;
-    border: 1px solid black;
-    cursor: pointer;
-    margin-top: 50px;
-
+    width: 40%;
+    margin-top: 20px;
 }
 </style>

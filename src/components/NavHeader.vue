@@ -1,9 +1,10 @@
 <template>
   <section class="banner">
     <RouterLink to="/">
-      <img v-if="theme.theme.logo" src="../assets/images/official-paefax-logo-dark.svg" alt="Official Paefax logo" />
-      <img v-if="!theme.theme.logo" src="../assets/images/official-paefax-logo-light.svg" alt="Official Paefax logo" />
+      <img v-if="theme.theme.logo" src="../assets/images/lightmode-logo-no-text.png" alt="Official Paefax logo" />
+      <img v-if="!theme.theme.logo" src="../assets/images/darkmode-logo-no-text.png" alt="Official Paefax logo" />
     </RouterLink>
+    <DarkModeToggle />
     <HamburgerMenu />
   </section>
 </template>
@@ -11,11 +12,12 @@
 <script setup>
 import HamburgerMenu from "./HamburgerMenu.vue";
 import { useTheme } from "../stores/theme";
+import DarkModeToggle from '../components/DarkModeToggle.vue'
 
 const theme = useTheme();
 </script>
 
-<style scoped>
+<style >
 .banner {
   width: 100vw;
   justify-content: space-between;
@@ -26,7 +28,13 @@ const theme = useTheme();
 }
 
 img {
+  padding-left: 10px;
   width: 100px;
   justify-content: center;
+  cursor: pointer;
+}
+
+.toggle {
+  cursor: pointer;
 }
 </style>

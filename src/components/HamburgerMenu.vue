@@ -40,14 +40,16 @@ import AlphaQCircleOutline from "vue-material-design-icons/AlphaQCircleOutline.v
 import EmailOutline from "vue-material-design-icons/EmailOutline.vue";
 import { useTheme } from "../stores/theme";
 
+const theme = useTheme();
 const isOpen = false;
 
-
-
-const theme = useTheme();
 </script>
 
 <style>
+img {
+  width: 40%;
+}
+
 .menu-item {
   margin: 10px;
 }
