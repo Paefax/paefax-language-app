@@ -51,19 +51,30 @@ onMounted(() => {
     .then((data) => {
       categories.value = data;
     });
-    
+
   userInfo.getProgressFromDB();
 
-  for (let i = 0; i < userInfo.userMadeQuizzes.length; i++) {
-    console.log("General", general.getLanguage());
-    console.log("Language", userInfo.userMadeQuizzes[i].language);
-    console.log("UserInfo array", userInfo.userMadeQuizzes[i]);
+  url = `http://localhost:3000/user/quiz/1/${general.getLanguage()}`;
 
-    if (userInfo.userMadeQuizzes[i].language === general.getLanguage())
-      userQuizzes.value.push(userInfo.userMadeQuizzes[i]);
-  }
+  fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjczMzA0ODJ9.Mn6FxmaCHqVcE2FhrqeRjtIonIFjEGqVWdDNY4D7n3Q",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((row) => {
+        let userQuiz = {
+          name: row.name,
+          language: row.language,
+          questions: JSON.parse(row.questions),
+        };
 
-  console.log(userQuizzes.value);
+        userQuizzes.value.push(userQuiz);
+      });
+    });
 });
 </script>
 

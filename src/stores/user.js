@@ -49,14 +49,14 @@ export const useUserStore = defineStore("user", () => {
       });
   };
 
+  const isLoggedIn = (boolean) => {
+    loggedIn.value = boolean;
+  };
+
   const addUserMadeQuiz = (newQuiz) => {
     userMadeQuizzes.value.push(newQuiz);
     console.log(newQuiz);
     console.log(userMadeQuizzes.value);
-  };
-
-  const isLoggedIn = (boolean) => {
-    loggedIn.value = boolean;
   };
 
   return {
