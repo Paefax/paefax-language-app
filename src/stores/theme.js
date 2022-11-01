@@ -17,13 +17,13 @@ export const useTheme = defineStore("theme", () => {
   const buttonColorDark = "#185359";
   const buttonColorLight = "#79A3B1";
 
-  const subleTextLight = "#456268";
-  const subleTextDark = "#9a9ca8";
+  const subleTextLight = "#1e382b";
+  const subleTextDark = "#30a5bf";
 
   const theme = computed (() => {
     return {
         color: darkMode.value ? fontColorLight : fontColorDark,
-        categoryCardColor: darkMode.value ? "black" : "white",
+        categoryCardColor: darkMode.value ? "#79A3B1" : "#185359",
         backgroundColor: darkMode.value ? backgroundColorLight : backgroundColorDark,
         footerBackgroundColor: darkMode.value ? footerColorLight : footerColorDark,
         buttonColor: darkMode.value ? buttonColorLight : buttonColorDark,
@@ -34,8 +34,6 @@ export const useTheme = defineStore("theme", () => {
   }) 
 
   const toggleDarkMode = () => {
-    console.log(darkMode.value)
-    console.table(theme.value)
     darkMode.value = !darkMode.value;
 
   }

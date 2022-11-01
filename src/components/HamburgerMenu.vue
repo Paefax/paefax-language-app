@@ -31,20 +31,23 @@
 
       <div class="menu-item" v-show="loggedIn">
         <RouterLink to="/" @click="logout">
-          Logout <AccountArrowLeftOutline class="menu-item-img"
-        /></RouterLink>
+          Logout
+          <AccountArrowLeftOutline class="menu-item-img" />
+        </RouterLink>
       </div>
 
       <div class="menu-item" v-show="!loggedIn">
         <RouterLink to="/login">
-          Log in <AccountArrowUpOutline class="menu-item-img"
-        /></RouterLink>
+          Log in
+          <AccountArrowUpOutline class="menu-item-img" />
+        </RouterLink>
       </div>
 
       <div class="menu-item" v-show="!loggedIn">
         <RouterLink to="/signup">
-          Create account <AccountPlusOutline class="menu-item-img"
-        /></RouterLink>
+          Create account
+          <AccountPlusOutline class="menu-item-img" />
+        </RouterLink>
       </div>
     </nav>
   </Slide>
@@ -85,10 +88,6 @@ const logout = () => {
 </script>
 
 <style>
-img {
-  width: 40%;
-}
-
 .menu-item {
   margin: 10px;
 }

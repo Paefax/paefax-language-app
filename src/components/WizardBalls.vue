@@ -1,34 +1,12 @@
 <template>
   <section class="dot-container">
-    <span
-      v-show="theme.theme.logo"
-      v-for="(ball, index) in numberOfBalls"
-      :key="index"
-    >
-      <CheckboxBlankCircle
-        v-if="props.position === index"
-        fillColor="#FF5677"
-        :size="30"
-      />
-      <CheckboxBlankCircle
-        v-else="props.position === !index"
-        fillColor="gray"
-      />
+    <span v-show="theme.theme.logo" v-for="(ball, index) in numberOfBalls" :key="index">
+      <CheckboxBlankCircle v-if="props.position === index" fillColor="#faab35" :size="30" />
+      <CheckboxBlankCircle v-else="props.position === !index" fillColor="gray" />
     </span>
-    <span
-      v-show="!theme.theme.logo"
-      v-for="(ball, index) in numberOfBalls"
-      :key="index"
-    >
-      <CheckboxBlankCircle
-        v-if="props.position === index"
-        fillColor="rgb(255, 191, 0)"
-        :size="30"
-      />
-      <CheckboxBlankCircle
-        v-else="props.position === !index"
-        fillColor="gray"
-      />
+    <span v-show="!theme.theme.logo" v-for="(ball, index) in numberOfBalls" :key="index">
+      <CheckboxBlankCircle v-if="props.position === index" fillColor="rgb(255, 191, 0)" :size="30" />
+      <CheckboxBlankCircle v-else="props.position === !index" fillColor="gray" />
     </span>
   </section>
 </template>
@@ -50,6 +28,7 @@ const props = defineProps({
 
 <style scoped>
 .dot-container {
+
   display: flex;
   margin-top: 30px;
   margin-bottom: 30px;
