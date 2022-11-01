@@ -48,8 +48,17 @@ import { useUserStore } from "../stores/user";
 const userInfo = useUserStore();
 
 const logout = () => {
-  console.log("try to log out");
+  const url = "http://localhost:3000/user/logout";
+
+  fetch(url, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  }).then((response) => response.json());
+
   localStorage.clear();
+  console.log("logged out");
   userInfo.removeProgress();
 };
 </script>
