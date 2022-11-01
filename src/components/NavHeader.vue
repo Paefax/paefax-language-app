@@ -1,7 +1,8 @@
 <template>
   <section class="banner">
     <RouterLink to="/">
-      <img src="../assets/images/white-logo-without-text.png" alt="logo" />
+      <img v-if="theme.theme.logo" src="../assets/images/official-paefax-logo-dark.svg" alt="Official Paefax logo" />
+      <img v-if="!theme.theme.logo" src="../assets/images/official-paefax-logo-light.svg" alt="Official Paefax logo" />
     </RouterLink>
     <HamburgerMenu />
   </section>
@@ -9,6 +10,9 @@
 
 <script setup>
 import HamburgerMenu from "./HamburgerMenu.vue";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 </script>
 
 <style scoped>
