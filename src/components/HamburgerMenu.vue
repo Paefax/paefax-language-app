@@ -70,7 +70,7 @@ const logout = () => {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("token"),
     },
-  }).then((response) => response.json());
+  });
 
   localStorage.clear();
   console.log("logged out");
