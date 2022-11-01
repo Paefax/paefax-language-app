@@ -11,9 +11,8 @@
       </div>
     </span>
 
-    <span v-for="(dot, index) in remainingQuestions" :key="index">
-      <CheckboxBlankCircle v-if="!index" :size="48" />
-      <CheckboxBlankCircle v-else="index" :size="36" />
+    <span v-for="index in remainingQuestions" :key="index">
+      <CheckboxBlankCircle :size="36" />
     </span>
   </section>
 </template>
@@ -26,7 +25,6 @@ import CloseThick from "vue-material-design-icons/CloseThick.vue";
 import CheckBold from "vue-material-design-icons/CheckBold.vue";
 
 const quiz = useQuizStore();
-
 const remainingQuestions = computed(
   () => quiz.numberOfQuestions - quiz.answeredQuestions.length
 );
