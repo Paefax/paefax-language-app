@@ -1,14 +1,43 @@
 <template>
   <section class="dot-container">
-    <span v-for="(ball, index) in numberOfBalls" :key="index">
-      <CheckboxBlankCircle v-if="props.position === index" fillColor="#FF5677" :size="30" />
-      <CheckboxBlankCircle v-else="props.position === !index" fillColor="gray" />
+    <span
+      v-show="theme.theme.logo"
+      v-for="(ball, index) in numberOfBalls"
+      :key="index"
+    >
+      <CheckboxBlankCircle
+        v-if="props.position === index"
+        fillColor="#FF5677"
+        :size="30"
+      />
+      <CheckboxBlankCircle
+        v-else="props.position === !index"
+        fillColor="gray"
+      />
+    </span>
+    <span
+      v-show="!theme.theme.logo"
+      v-for="(ball, index) in numberOfBalls"
+      :key="index"
+    >
+      <CheckboxBlankCircle
+        v-if="props.position === index"
+        fillColor="rgb(255, 191, 0)"
+        :size="30"
+      />
+      <CheckboxBlankCircle
+        v-else="props.position === !index"
+        fillColor="gray"
+      />
     </span>
   </section>
 </template>
 
 <script setup>
 import CheckboxBlankCircle from "vue-material-design-icons/CheckboxBlankCircle.vue";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 
 const numberOfBalls = 3;
 const props = defineProps({
