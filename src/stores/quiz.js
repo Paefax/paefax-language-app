@@ -14,6 +14,7 @@ export const useQuizStore = defineStore("quiz", () => {
   const answers = ref([]);
   const answeredQuestions = ref([]);
   const resetQuestions = ref(true);
+  const answerChosen = ref(false);
 
   const setResetQuestions = (boolean) => {
     resetQuestions.value = boolean;
@@ -66,6 +67,7 @@ export const useQuizStore = defineStore("quiz", () => {
 
   const nextQuestion = () => {
     idCurrentQuestion.value++;
+    answerChosen.value = false;
   };
 
   const getCurrentQuestion = () => {
@@ -80,6 +82,8 @@ export const useQuizStore = defineStore("quiz", () => {
   const increaseScore = () => {
     score.value++;
   };
+
+  const setAnswerChosen = (boolean) => (answerChosen.value = boolean);
 
   return {
     questions,
@@ -108,5 +112,7 @@ export const useQuizStore = defineStore("quiz", () => {
     originalLanguage,
     setOriginalCategory,
     setOriginalLanguage,
+    answerChosen,
+    setAnswerChosen,
   };
 });

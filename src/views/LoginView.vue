@@ -52,7 +52,8 @@ const logIn = async () => {
     .then((response) => response.json())
     .then((data) => {
       console.log("Success:", data);
-      userInfo.setToken(data.accessToken);
+      userInfo.isLoggedIn(true);
+      localStorage.setItem("token", data.accessToken);
     });
 
   name.value = "";
