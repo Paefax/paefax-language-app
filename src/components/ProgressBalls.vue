@@ -11,8 +11,17 @@
       </div>
     </span>
 
-    <span v-for="index in remainingQuestions" :key="index">
-      <CheckboxBlankCircle :size="36" />
+    <span v-for="(dot, index) in remainingQuestions" :key="index">
+      <CheckboxBlankCircle
+        v-if="!theme.theme.logo"
+        :size="36"
+        fillColor="#E9ECFC"
+      />
+      <CheckboxBlankCircle
+        v-else="theme.theme.logo"
+        :size="36"
+        fillColor="gray"
+      />
     </span>
   </section>
 </template>
@@ -23,6 +32,9 @@ import { computed } from "vue";
 import CheckboxBlankCircle from "vue-material-design-icons/CheckboxBlankCircle.vue";
 import CloseThick from "vue-material-design-icons/CloseThick.vue";
 import CheckBold from "vue-material-design-icons/CheckBold.vue";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 
 const quiz = useQuizStore();
 const remainingQuestions = computed(
@@ -42,6 +54,7 @@ const remainingQuestions = computed(
 .cross {
   position: absolute;
   z-index: 1;
+  color: "#E9ECFC";
 }
 
 .circle {

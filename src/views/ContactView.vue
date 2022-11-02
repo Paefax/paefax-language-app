@@ -16,6 +16,9 @@
 
 <script setup>
 import { computed, ref } from "vue";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 const message = ref("");
 const mailto = computed(
   () =>
@@ -50,19 +53,26 @@ main {
   width: 100%;
   height: 40px;
   border-radius: 10px;
-  background-color: rgb(255, 255, 255, 0.56);
+  background-color: rgba(255, 255, 255, 0.836);
   border-style: none;
 }
 
 #message {
   height: 200px;
+  border: 1px solid;
+  border-color: v-bind('theme.theme.fieldColor');
 }
 
 #contact-btn {
-  background-color: #185359;
-  color: white;
+  background-color: v-bind('theme.theme.footerBackgroundColor');
+  color: v-bind('theme.theme.color');
   font-size: 20px;
   margin-top: 50px;
+  border: 1px solid;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
+  border-color: v-bind('theme.theme.fieldColor');
+
+
 }
 
 #contact-form label {
@@ -75,6 +85,7 @@ textarea {
   font-size: large;
   padding-left: 10px;
 }
+
 #information {
   font-size: 12px;
   font-style: italic;
@@ -88,9 +99,11 @@ textarea {
   #message {
     height: 250px;
   }
+
   #contact-form label {
     font-size: large;
   }
+
   #information {
     font-size: 14px;
     font-style: italic;

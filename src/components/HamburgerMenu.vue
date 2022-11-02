@@ -10,32 +10,37 @@
 
       <div class="menu-item">
         <RouterLink to="/language">
-          Quiz <AlphaQCircleOutline class="menu-item-img" />
+          Quiz
+          <AlphaQCircleOutline class="menu-item-img" />
         </RouterLink>
       </div>
 
       <div class="menu-item">
         <RouterLink to="/contact">
-          Contact <EmailOutline class="menu-item-img"
-        /></RouterLink>
+          Contact
+          <EmailOutline class="menu-item-img" />
+        </RouterLink>
       </div>
 
       <div class="menu-item" v-show="loggedIn">
         <RouterLink to="/" @click="logout">
-          Logout <AccountArrowLeftOutline class="menu-item-img"
-        /></RouterLink>
+          Logout
+          <AccountArrowLeftOutline class="menu-item-img" />
+        </RouterLink>
       </div>
 
       <div class="menu-item" v-show="!loggedIn">
         <RouterLink to="/login">
-          Log in <AccountArrowUpOutline class="menu-item-img"
-        /></RouterLink>
+          Log in
+          <AccountArrowUpOutline class="menu-item-img" />
+        </RouterLink>
       </div>
 
       <div class="menu-item" v-show="!loggedIn">
         <RouterLink to="/signup">
-          Create account <AccountPlusOutline class="menu-item-img"
-        /></RouterLink>
+          Create account
+          <AccountPlusOutline class="menu-item-img" />
+        </RouterLink>
       </div>
     </nav>
   </Slide>
@@ -46,6 +51,7 @@ import { Slide } from "vue3-burger-menu";
 import AccountCircleOutline from "vue-material-design-icons/AccountCircleOutline.vue";
 import AlphaQCircleOutline from "vue-material-design-icons/AlphaQCircleOutline.vue";
 import EmailOutline from "vue-material-design-icons/EmailOutline.vue";
+import { useTheme } from "../stores/theme";
 import AccountArrowLeftOutline from "vue-material-design-icons/AccountArrowLeftOutline.vue";
 import { useUserStore } from "../stores/user";
 import AccountArrowUpOutline from "vue-material-design-icons/AccountArrowUpOutline.vue";
@@ -53,6 +59,7 @@ import AccountPlusOutline from "vue-material-design-icons/AccountPlusOutline.vue
 import { computed } from "vue";
 const userInfo = useUserStore();
 const loggedIn = computed(() => userInfo.loggedIn);
+const theme = useTheme();
 
 const logout = () => {
   const url = "http://localhost:3000/user/logout";
@@ -65,6 +72,7 @@ const logout = () => {
   });
 
   localStorage.clear();
+  const theme = useTheme();
   console.log("logged out");
   userInfo.removeProgress();
   userInfo.isLoggedIn(false);
@@ -89,7 +97,7 @@ a {
 }
 
 .bm-burger-bars {
-  background-color: #e9ecfc;
+  background-color: v-bind("theme.theme.color");
 }
 
 .line-style {

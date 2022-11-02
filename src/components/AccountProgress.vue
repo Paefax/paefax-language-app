@@ -18,6 +18,9 @@ import { useUserStore } from "@/stores/user";
 import { computed } from "vue";
 import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 
 const general = useGeneralStore();
 const quiz = useQuizStore();
@@ -51,6 +54,7 @@ img {
   width: 100%;
   height: 100px;
   border-radius: 10px;
+  border: 1px solid black;
 }
 
 .progress-info {
@@ -80,9 +84,11 @@ img {
     width: 350px;
     height: 160px;
   }
+
   img {
     height: 140px;
   }
+
   .progress-bar {
     width: 250px;
   }

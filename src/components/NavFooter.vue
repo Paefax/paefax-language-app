@@ -4,10 +4,7 @@
       <div class="footer-col">
         <ul>
           <li>
-            <img
-              src="../assets/images/white-logo-without-text.png"
-              alt="logo"
-            />
+            <img src="../assets/images/white-logo-without-text.png" alt="logo" />
           </li>
         </ul>
       </div>
@@ -41,6 +38,14 @@
   </div>
 </template>
 
+<script setup>
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
+
+
+</script>
+
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
@@ -51,38 +56,46 @@
   line-height: 1.5;
   font-family: "Poppins", sans-serif;
 }
+
 .copyright-label {
   text-align: center;
   font-weight: 400;
-  color: #bbbbbb;
+  color: v-bind('theme.theme.color');
   margin-top: 2vw;
   margin-bottom: 1vw;
 }
+
 .container {
-  background: #185359;
+  color: v-bind('theme.theme.color');
+  background-color: v-bind('theme.theme.footerBackgroundColor');
   width: 98.9vw;
   position: relative;
   margin-top: 28vw;
 }
+
 ul {
   list-style: none;
 }
+
 .row {
   display: flex;
   flex-wrap: wrap;
 }
+
 img {
   margin-top: 5vw;
   margin-left: 5vw;
   width: 150px;
 }
+
 .footer-col {
   width: 25%;
 }
 
 .footer-col h4 {
   font-size: 19px;
-  color: #bbbbbb;
+  color: v-bind('theme.theme.color');
+  background-color: v-bind('theme.theme.footerBackgroundColor');
   text-transform: capitalize;
   margin-bottom: 30px;
   font-weight: 00;
@@ -97,14 +110,16 @@ img {
 .footer-col ul li a {
   font-size: 16px;
   text-transform: capitalize;
+  background-color: v-bind('theme.theme.footerBackgroundColor');
+  color: v-bind('theme.theme.color');
+
   text-decoration: none;
   font-weight: 300;
-  color: #bbbbbb;
   display: block;
 }
 
 .footer-col ul li a:hover {
-  color: #ffffff;
+  color: v-bind('theme.theme.color');
   padding-left: 10px;
 }
 
