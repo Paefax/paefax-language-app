@@ -1,9 +1,17 @@
 <template>
   <main>
-    <img v-if="theme.theme.logo" id="paefax-img" src="../assets/images/official-paefax-logo-dark.svg"
-      alt="Official Paefax logo" />
-    <img v-if="!theme.theme.logo" id="paefax-img" src="../assets/images/official-paefax-logo-light.svg"
-      alt="Official Paefax logo" />
+    <img
+      v-if="theme.theme.logo"
+      id="paefax-img"
+      src="../assets/images/official-paefax-logo-dark.svg"
+      alt="Official Paefax logo"
+    />
+    <img
+      v-if="!theme.theme.logo"
+      id="paefax-img"
+      src="../assets/images/official-paefax-logo-light.svg"
+      alt="Official Paefax logo"
+    />
     <h1>Log in</h1>
     <form id="login-form" @submit.prevent="logIn()">
       <label for="name">Username:</label>
@@ -20,7 +28,7 @@
       <hr />
     </div>
     <RouterLink to="/signup">
-      <button id="sing-up-button">SIGN UP</button>
+      <button id="sign-up-button">SIGN UP</button>
     </RouterLink>
   </main>
 </template>
@@ -94,23 +102,31 @@ main {
   border-radius: 10px;
   border-style: none;
   border: 1px solid;
-  border-color: v-bind('theme.theme.fieldColor');
-
+  border-color: v-bind("theme.theme.fieldColor");
 }
 
 #login-btn {
-  background-color: v-bind('theme.theme.footerBackgroundColor');
-  color: v-bind('theme.theme.color');
+  background-color: v-bind("theme.theme.footerBackgroundColor");
+  color: v-bind("theme.theme.color");
   font-size: 20px;
   margin-top: 10px;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
   border: 1px solid;
-  border-color: v-bind('theme.theme.fieldColor');
+  border-color: v-bind("theme.theme.fieldColor");
+}
 
+#login-btn:hover {
+  transform: translateY(4px);
+  cursor: pointer;
 }
 
 #forgot-psw-text {
-  color: v-bind('theme.theme.subleText');
+  color: v-bind("theme.theme.subleText");
+}
+
+#forgot-psw-text:hover {
+  transform: translateY(2px);
+  cursor: pointer;
 }
 
 #login-form label {
@@ -123,17 +139,22 @@ main {
   padding-left: 10px;
 }
 
-#sing-up-button {
+#sign-up-button {
   border-radius: 10px;
   cursor: pointer;
   font-size: 15px;
   width: 100px;
   height: 30px;
-  background-color: v-bind('theme.theme.footerBackgroundColor');
-  color: v-bind('theme.theme.color');
+  background-color: v-bind("theme.theme.footerBackgroundColor");
+  color: v-bind("theme.theme.color");
   box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
   border: 1px solid;
-  border-color: v-bind('theme.theme.fieldColor');
+  border-color: v-bind("theme.theme.fieldColor");
+}
+
+#sign-up-button:hover {
+  transform: translateY(4px);
+  cursor: pointer;
 }
 
 #or-div {
@@ -147,7 +168,7 @@ hr {
   height: 0px;
   margin: 10px;
   border: 1px solid;
-  border-color: v-bind('theme.theme.color')
+  border-color: v-bind("theme.theme.color");
 }
 
 @media only screen and (min-width: 769px) {
@@ -155,7 +176,7 @@ hr {
     width: 160px;
   }
 
-  #sing-up-button {
+  #sign-up-button {
     font-size: 20px;
     width: 120px;
     height: 40px;

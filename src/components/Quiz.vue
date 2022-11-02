@@ -196,6 +196,11 @@ button {
   margin-top: 30px;
 }
 
+button:hover {
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
 span {
   font-size: 0.9em;
   margin-top: 10px;

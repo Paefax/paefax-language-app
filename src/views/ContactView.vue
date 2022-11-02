@@ -57,22 +57,25 @@ main {
   border-style: none;
 }
 
+#contact-btn:hover {
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
 #message {
   height: 200px;
   border: 1px solid;
-  border-color: v-bind('theme.theme.fieldColor');
+  border-color: v-bind("theme.theme.fieldColor");
 }
 
 #contact-btn {
-  background-color: v-bind('theme.theme.footerBackgroundColor');
-  color: v-bind('theme.theme.color');
+  background-color: v-bind("theme.theme.footerBackgroundColor");
+  color: v-bind("theme.theme.color");
   font-size: 20px;
   margin-top: 50px;
   border: 1px solid;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
-  border-color: v-bind('theme.theme.fieldColor');
-
-
+  border-color: v-bind("theme.theme.fieldColor");
 }
 
 #contact-form label {
