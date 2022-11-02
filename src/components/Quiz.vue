@@ -30,7 +30,9 @@
         v-if="!answeredCorrectly && answeredQuestion"
       >
         Correct answer:
-        <h4>{{ correctAnswer }}</h4>
+        <h4>
+          {{ correctAnswer.charAt(0).toUpperCase() + correctAnswer.slice(1) }}
+        </h4>
       </div>
     </div>
     <div v-else>
@@ -160,10 +162,8 @@ onMounted(() => {
     let url = "";
 
     if (quiz.isUserQuiz === true) {
-      console.log("Was true");
       url = `http://localhost:3000/user/quiz/get/${quiz.quizId}`;
     } else {
-      console.log("Was false");
       url = `http://localhost:3000/${quiz.category}/${quiz.language}`;
     }
 
@@ -176,11 +176,10 @@ onMounted(() => {
       .then((data) => {
         if (quiz.isUserQuiz === true) {
           quiz.setQuestions(JSON.parse(data[0].questions));
-          console.log(JSON.parse(data[0].questions));
           quiz.setNumberOfQuestions(JSON.parse(data[0].questions).length);
+          progress.value = 100;
         } else {
           quiz.setQuestions(data.questions);
-          console.log(data.questions);
           quiz.setNumberOfQuestions(data.questions.length);
         }
 
