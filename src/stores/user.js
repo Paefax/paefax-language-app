@@ -5,7 +5,6 @@ export const useUserStore = defineStore("user", () => {
   const progress = ref([]);
   const username = ref("");
   const loggedIn = ref(localStorage.getItem("token") === null ? false : true);
-  const userMadeQuizzes = ref([]);
 
   const getProgressFromDB = () => {
     let url = "http://localhost:3000/progress";
@@ -53,20 +52,12 @@ export const useUserStore = defineStore("user", () => {
     loggedIn.value = boolean;
   };
 
-  const addUserMadeQuiz = (newQuiz) => {
-    userMadeQuizzes.value.push(newQuiz);
-    console.log(newQuiz);
-    console.log(userMadeQuizzes.value);
-  };
-
   return {
     getProgressFromDB,
     progress,
     increaseScoreInDB,
     username,
     getUsernameFromDB,
-    userMadeQuizzes,
-    addUserMadeQuiz,
     loggedIn,
     isLoggedIn,
     removeProgress,
