@@ -16,17 +16,14 @@
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
 import { computed } from "vue";
-import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
 
-const general = useGeneralStore();
 const quiz = useQuizStore();
 const userInfo = useUserStore();
 const props = defineProps(["language", "img", "link"]);
 const categoriesPerLanguage = 3; //This is hardcoded for now.
 
 const setLanguage = () => {
-  general.setLanguage(props.name);
   quiz.setLanguage(props.name);
 };
 

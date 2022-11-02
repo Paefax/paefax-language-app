@@ -8,18 +8,16 @@
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
 import { useUserStore } from "@/stores/user";
-import { useGeneralStore } from "@/stores/general";
 import { onMounted, computed } from "vue";
 import ResultOverview from "./ResultOverview.vue";
 
 const quiz = useQuizStore();
 const userInfo = useUserStore();
-const general = useGeneralStore();
 const loggedIn = computed(() => userInfo.loggedIn);
 
 const increaseScore = () => {
   if (quiz.score >= 4) {
-    userInfo.increaseScoreInDB(general.getLanguage(), general.getCategory());
+    userInfo.increaseScoreInDB(quiz.language, quiz.category);
   }
 };
 
