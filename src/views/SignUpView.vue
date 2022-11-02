@@ -1,9 +1,17 @@
 <template>
   <main>
-    <img v-if="theme.theme.logo" id="paefax-img" src="../assets/images/official-paefax-logo-dark.svg"
-      alt="Official Paefax logo" />
-    <img v-if="!theme.theme.logo" id="paefax-img" src="../assets/images/official-paefax-logo-light.svg"
-      alt="Official Paefax logo" />
+    <img
+      v-if="theme.theme.logo"
+      id="paefax-img"
+      src="../assets/images/official-paefax-logo-dark.svg"
+      alt="Official Paefax logo"
+    />
+    <img
+      v-if="!theme.theme.logo"
+      id="paefax-img"
+      src="../assets/images/official-paefax-logo-light.svg"
+      alt="Official Paefax logo"
+    />
     <h1>Sign up</h1>
     <form id="signup-form" @submit.prevent="signUp()">
       <label for="name">Username:</label>
@@ -83,9 +91,14 @@ main {
   width: 100%;
   height: 40px;
   border-radius: 10px;
-  border-color: v-bind('theme.theme.fieldColor');
+  border-color: v-bind("theme.theme.fieldColor");
   border: 1px solid;
   font-size: large;
+}
+
+#create-account-btn:hover {
+  transform: translateY(4px);
+  cursor: pointer;
 }
 
 #signup-form label {
@@ -99,17 +112,15 @@ main {
 }
 
 #create-account-btn {
-  background-color: v-bind('theme.theme.footerBackgroundColor');
-  color: v-bind('theme.theme.color');
+  background-color: v-bind("theme.theme.footerBackgroundColor");
+  color: v-bind("theme.theme.color");
   font-size: 20px;
   margin-top: 10px;
-  border-color: v-bind('theme.theme.fieldColor');
+  border-color: v-bind("theme.theme.fieldColor");
   box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
-
 }
 
 @media only screen and (min-width: 769px) {
-
   #password,
   #name,
   #email,

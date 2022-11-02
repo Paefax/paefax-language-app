@@ -84,6 +84,11 @@ const logout = () => {
   margin: 10px;
 }
 
+.menu-item:hover {
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
 .menu-item-img {
   margin-bottom: 10px;
   padding-left: 20px;
