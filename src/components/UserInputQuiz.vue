@@ -12,7 +12,6 @@ import { useTheme } from "../stores/theme";
 
 const theme = useTheme();
 
-
 const input = ref("");
 
 const emits = defineEmits(["checkInputAnswer"]);
@@ -47,14 +46,14 @@ h4 {
   height: 40px;
   border-radius: 10px;
   background-color: rgb(255, 255, 255, 0.56);
-  border-style: none;
+  border: 1px solid v-bind("theme.theme.fieldColor");
   font-size: large;
   padding-left: 10px;
 }
 
 .submit-button {
-  background-color: v-bind('theme.theme.footerBackgroundColor');
-  color: v-bind('theme.theme.color');
+  background-color: v-bind("theme.theme.footerBackgroundColor");
+  color: v-bind("theme.theme.color");
   border: 1px solid black;
   border-radius: 10px;
   cursor: pointer;
