@@ -49,21 +49,36 @@ button {
   margin-top: 10px;
   transition: all 0.3s;
   border: 1px solid;
-  border-color: v-bind('theme.theme.fieldColor');
+  border-color: v-bind("theme.theme.fieldColor");
   box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
 }
 
 .button1 {
-  background-color: v-bind('theme.theme.footerBackgroundColor');
-  color: v-bind('theme.theme.color');
+  background-color: v-bind("theme.theme.footerBackgroundColor");
+  color: v-bind("theme.theme.color");
 
   font-weight: 500;
 }
 
 .button2 {
-  color: v-bind('theme.theme.color');
+  color: v-bind("theme.theme.color");
   color: black;
   font-weight: 500;
+}
+
+button:hover {
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
+.button2:hover {
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
+.button1:hover {
+  transform: translateY(4px);
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 769px) {
