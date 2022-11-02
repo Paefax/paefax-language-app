@@ -96,6 +96,11 @@ main {
   font-size: large;
 }
 
+#create-account-btn:hover {
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
 #signup-form label {
   width: 100%;
   padding: 10px 0px;
