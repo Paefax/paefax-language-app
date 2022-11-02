@@ -14,10 +14,13 @@
         @checkInputAnswer="checkInputAnswer"
         :input="input"
       />
-      <h4 class="show-answer" v-if="answeredQuestion && answeredCorrectly">
-        {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
-        <CheckBold fillColor="#11814B" class="check-bold" />
-      </h4>
+      <div class="show-answer" v-if="answeredQuestion && answeredCorrectly">
+        <span>Correct!</span>
+        <h4>
+          {{ currentAnswer.charAt(0).toUpperCase() + currentAnswer.slice(1) }}
+          <CheckBold fillColor="#11814B" class="check-bold" />
+        </h4>
+      </div>
       <h4
         class="show-wrong-answer"
         v-if="answeredQuestion && !answeredCorrectly"
@@ -147,8 +150,8 @@ const nextQuestion = () => {
 };
 
 const showResult = () => {
-  quiz.setAnswerChosen(false);
   router.push("/result");
+  quiz.setAnswerChosen(false);
 };
 
 onMounted(() => {
@@ -221,6 +224,7 @@ h4 {
 .show-answer {
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .check-bold {
