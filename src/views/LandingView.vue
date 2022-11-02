@@ -33,7 +33,7 @@ main {
 }
 
 #logo-img {
-  max-width: 80%;
+  max-width: 70%;
 }
 
 .get-started-btn {
