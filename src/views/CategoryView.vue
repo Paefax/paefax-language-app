@@ -54,13 +54,11 @@ onMounted(() => {
 
   userInfo.getProgressFromDB();
 
-  url = `http://localhost:3000/user/quiz/1/${general.getLanguage()}`;
+  url = `http://localhost:3000/user/quiz/${general.getLanguage()}`;
 
   fetch(url, {
-    method: "GET",
     headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjczMzA0ODJ9.Mn6FxmaCHqVcE2FhrqeRjtIonIFjEGqVWdDNY4D7n3Q",
+      Authorization: "Bearer " + localStorage.getItem("token"),
     },
   })
     .then((response) => response.json())
