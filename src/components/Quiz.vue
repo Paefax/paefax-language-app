@@ -61,11 +61,11 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useQuizStore } from "@/stores/quiz";
+import { useUserStore } from "@/stores/user";
 import AnswerItems from "../components/AnswerItems.vue";
 import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
 import UserInputQuiz from "./UserInputQuiz.vue";
-import { useUserStore } from "@/stores/user";
 import CloseThick from "vue-material-design-icons/CloseThick.vue";
 import CheckBold from "vue-material-design-icons/CheckBold.vue";
 

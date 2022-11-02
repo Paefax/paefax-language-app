@@ -9,15 +9,15 @@
 </template>
 
 <script setup>
-import { useQuizStore } from "@/stores/quiz";
-import ProgressBar from "./ProgressBar.vue";
-import { useUserStore } from "@/stores/user";
 import { computed } from "vue";
+import { useQuizStore } from "@/stores/quiz";
+import { useUserStore } from "@/stores/user";
+import ProgressBar from "./ProgressBar.vue";
 import { useTheme } from "../stores/theme";
 
-const theme = useTheme();
+const props = defineProps(["id", "name", "img", "alt", "link", "isUserQuiz"]);
 
-const props = defineProps(["name", "img", "alt", "link", "isUserQuiz"]);
+const theme = useTheme();
 
 const userInfo = useUserStore();
 const quiz = useQuizStore();
@@ -25,6 +25,7 @@ const quiz = useQuizStore();
 const setCategory = () => {
   quiz.setCategory(props.name);
   quiz.setIsUserQuiz(props.isUserQuiz);
+  quiz.setQuizId(props.id);
 };
 
 const progress = computed(() => {

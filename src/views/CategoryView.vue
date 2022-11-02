@@ -15,8 +15,9 @@
     <h1>Category</h1>
     <section id="category-card">
       <CategoryCard
-        v-for="(category, index) in categories"
+        v-for="category in categories"
         :key="category.id"
+        :id="category.id"
         :name="category.name"
         :img="category.img"
         :alt="category.alt"
@@ -24,8 +25,9 @@
         is-user-quiz="false"
       />
       <CategoryCard
-        v-for="(quiz, index) in userQuizzes"
-        :key="index"
+        v-for="quiz in userQuizzes"
+        :key="quiz.id"
+        :id="quiz.id"
         :name="quiz.name"
         img="src/assets/images/question-mark.png"
         alt="question mark"
@@ -75,6 +77,7 @@ onMounted(() => {
     .then((data) => {
       data.forEach((row) => {
         let userQuiz = {
+          id: row.id,
           name: row.name,
           language: row.language,
           questions: JSON.parse(row.questions),
