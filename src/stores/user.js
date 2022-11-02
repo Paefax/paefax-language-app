@@ -45,7 +45,7 @@ export const useUserStore = defineStore("user", () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        username.value = data.find((obj) => obj.id === 1).username; //OBS! hard coded user id = 1
+        username.value = data[0].username;
       });
   };
 
