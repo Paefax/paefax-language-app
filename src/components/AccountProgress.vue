@@ -1,6 +1,6 @@
 <template>
-  <RouterLink @click="setLanguage" :to="props.link">
-    <section class="language-card" v-if="progress > 0">
+  <RouterLink @click="setLanguage" :to="props.link" v-if="progress > 0">
+    <section class="language-card">
       <img :src="props.img" />
       <div class="progress-info">
         <div class="language">{{ props.language }}</div>
