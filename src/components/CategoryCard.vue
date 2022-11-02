@@ -19,7 +19,7 @@ import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
 import { computed } from "vue";
 
-const props = defineProps(["name", "img", "alt", "link"]);
+const props = defineProps(["name", "img", "alt", "link", "isUserQuiz"]);
 
 const userInfo = useUserStore();
 const general = useGeneralStore();
@@ -28,6 +28,7 @@ const quiz = useQuizStore();
 const setCategory = () => {
   general.setCategory(props.name);
   quiz.setCategory(props.name);
+  quiz.setIsUserQuiz(props.isUserQuiz);
 };
 
 const progress = computed(() => {
