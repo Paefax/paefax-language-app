@@ -1,7 +1,11 @@
 <template>
   <section class="wizard">
     <RouterLink to="/language">
-      <ArrowLeftCircleOutline :size="38" v-if="theme.theme.logo" fillColor="#456268" />
+      <ArrowLeftCircleOutline
+        :size="38"
+        v-if="theme.theme.logo"
+        fillColor="#456268"
+      />
       <ArrowLeftCircleOutline :size="38" v-else="!theme.theme.logo" />
     </RouterLink>
     <WizardBalls :position="2" />
@@ -39,16 +43,15 @@ import WizardBalls from "../components/WizardBalls.vue";
 import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOutline.vue";
 import { useUserStore } from "@/stores/user";
 import { useTheme } from "../stores/theme";
-import { useGeneralStore } from "../stores/general";
+import { useQuizStore } from "@/stores/quiz";
 
 const theme = useTheme();
 
 const userInfo = useUserStore();
-const general = useGeneralStore();
+const quiz = useQuizStore();
 
 const categories = ref([]);
 const userQuizzes = ref([]);
-
 
 onMounted(() => {
   let url = `http://localhost:3000/categories`;
@@ -61,7 +64,7 @@ onMounted(() => {
 
   userInfo.getProgressFromDB();
 
-  url = `http://localhost:3000/user/quiz/${general.getLanguage()}`;
+  url = `http://localhost:3000/user/quiz/${quiz.language}`;
 
   fetch(url, {
     headers: {
