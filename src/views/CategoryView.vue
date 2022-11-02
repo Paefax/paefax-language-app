@@ -16,6 +16,7 @@
         :img="category.img"
         :alt="category.alt"
         :link="category.link"
+        is-user-quiz="false"
       />
       <CategoryCard
         v-for="(quiz, index) in userQuizzes"
@@ -24,6 +25,7 @@
         img="src/assets/images/question-mark.png"
         alt="question mark"
         link="/quiz"
+        :is-user-quiz="quiz.isUserQuiz"
       />
     </section>
   </main>
@@ -68,6 +70,7 @@ onMounted(() => {
           name: row.name,
           language: row.language,
           questions: JSON.parse(row.questions),
+          isUserQuiz: true,
         };
 
         userQuizzes.value.push(userQuiz);
