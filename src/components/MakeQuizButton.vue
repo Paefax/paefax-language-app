@@ -21,8 +21,8 @@ const theme = useTheme();
   border-radius: 15px;
   background-color: v-bind("theme.theme.categoryCardColor");
   box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
-  width: 248px;
-  height: 98px;
+  width: 228px;
+  height: 78px;
   cursor: pointer;
 }
 
@@ -40,8 +40,8 @@ h1 {
 
 @media only screen and (min-width: 769px) {
   #make-quiz-card {
-    width: 348px;
-    height: 138px;
+    width: 308px;
+    height: 108px;
   }
 }
 </style>
