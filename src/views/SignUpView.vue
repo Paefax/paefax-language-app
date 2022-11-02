@@ -16,12 +16,8 @@
     <form id="signup-form" @submit.prevent="signUp()">
       <label for="name">Username:</label>
       <input type="text" id="name" name="name" v-model="name" />
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" />
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" v-model="password" />
-      <label for="confirm-password">Confirm password:</label>
-      <input type="password" id="confirm-password" name="confirm-password" />
       <br />
       <input type="submit" id="create-account-btn" value="CREATE ACCOUNT" />
     </form>
@@ -85,8 +81,6 @@ main {
 
 #password,
 #name,
-#email,
-#confirm-password,
 #create-account-btn {
   width: 100%;
   height: 40px;
@@ -123,8 +117,6 @@ main {
 @media only screen and (min-width: 769px) {
   #password,
   #name,
-  #email,
-  #confirm-password,
   #create-account-btn {
     height: 50px;
   }
