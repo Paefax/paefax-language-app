@@ -9,13 +9,6 @@
       </div>
 
       <div class="menu-item">
-        <RouterLink to="/settings" v-show="loggedIn">
-          Settings
-          <CogOutline class="menu-item-img" />
-        </RouterLink>
-      </div>
-
-      <div class="menu-item">
         <RouterLink to="/language">
           Quiz
           <AlphaQCircleOutline class="menu-item-img" />
@@ -56,7 +49,6 @@
 <script setup>
 import { Slide } from "vue3-burger-menu";
 import AccountCircleOutline from "vue-material-design-icons/AccountCircleOutline.vue";
-import CogOutline from "vue-material-design-icons/CogOutline.vue";
 import AlphaQCircleOutline from "vue-material-design-icons/AlphaQCircleOutline.vue";
 import EmailOutline from "vue-material-design-icons/EmailOutline.vue";
 import { useTheme } from "../stores/theme";
