@@ -27,7 +27,7 @@ const props = defineProps(["language", "img", "link"]);
 const categoriesPerLanguage = 3; //This is hardcoded for now.
 
 const setLanguage = () => {
-  quiz.setLanguage(props.name);
+  quiz.setLanguage(props.language);
 };
 
 const progress = computed(
