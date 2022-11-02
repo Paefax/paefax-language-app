@@ -4,7 +4,7 @@ import { ref } from "vue";
 export const useUserStore = defineStore("user", () => {
   const progress = ref([]);
   const username = ref("");
-  const loggedIn = ref(false);
+  const loggedIn = ref(localStorage.getItem("token") === null ? false : true);
 
   const getProgressFromDB = () => {
     let url = "http://localhost:3000/progress";
