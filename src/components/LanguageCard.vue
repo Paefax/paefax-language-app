@@ -46,7 +46,7 @@ const progress = computed(
 #language-card-box {
   max-width: 150px;
   max-height: 100px;
-  border: 2px solid black;
+
   border-radius: 15px;
 }
 
@@ -55,9 +55,8 @@ const progress = computed(
   transform: translateY(4px);
 }
 
-
 h4 {
-  color: v-bind('theme.theme.color');
+  color: v-bind("theme.theme.color");
 }
 
 img {

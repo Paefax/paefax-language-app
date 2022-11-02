@@ -47,9 +47,6 @@ const progress = computed(
 .language-card {
   width: 250px;
   height: 120px;
-  border: 1px solid;
-  border-color: v-bind('theme.theme.fieldColor');
-
 }
 
 img {
@@ -57,6 +54,7 @@ img {
   width: 100%;
   height: 100px;
   border-radius: 10px;
+  border: 1px solid black;
 }
 
 .progress-info {
