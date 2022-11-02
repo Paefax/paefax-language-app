@@ -1,7 +1,8 @@
 <template>
   <section class="wizard">
     <RouterLink to="/">
-      <ArrowLeftCircleOutline :size="38" />
+      <ArrowLeftCircleOutline :size="38" v-if="theme.theme.logo" fillColor="#456268" />
+      <ArrowLeftCircleOutline :size="38" v-else="!theme.theme.logo" />
     </RouterLink>
     <WizardBalls :position="1" />
     <div id="space"></div>
@@ -9,14 +10,8 @@
   <main id="language-box">
     <h1>Language</h1>
     <section id="language-cards">
-      <LanguageCard
-        v-for="language in languages"
-        :key="language.id"
-        :name="language.name"
-        :img="language.img"
-        :alt="language.alt"
-        :link="language.link"
-      />
+      <LanguageCard v-for="language in languages" :key="language.id" :name="language.name" :img="language.img"
+        :alt="language.alt" :link="language.link" />
     </section>
   </main>
 </template>
@@ -27,6 +22,9 @@ import LanguageCard from "../components/LanguageCard.vue";
 import WizardBalls from "../components/WizardBalls.vue";
 import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOutline.vue";
 import { useUserStore } from "@/stores/user";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 
 const languages = ref([]);
 const userInfo = useUserStore();

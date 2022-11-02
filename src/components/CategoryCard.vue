@@ -3,30 +3,26 @@
     <h4>{{ props.name }}</h4>
     <main id="category-card-box">
       <img :src="props.img" />
-      <ProgressBar
-        id="progress-bar"
-        :progress="`${progress}%`"
-        v-if="progress > 0"
-      />
+      <ProgressBar id="progress-bar" :progress="`${progress}%`" v-if="progress > 0" />
     </main>
   </RouterLink>
 </template>
 
 <script setup>
-import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
 import { computed } from "vue";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 
 const props = defineProps(["name", "img", "alt", "link"]);
 
 const userInfo = useUserStore();
-const general = useGeneralStore();
 const quiz = useQuizStore();
 
 const setCategory = () => {
-  general.setCategory(props.name);
   quiz.setCategory(props.name);
 };
 
@@ -34,7 +30,7 @@ const progress = computed(() => {
   return userInfo.progress
     .filter(
       (obj) =>
-        obj.language === general.getLanguage() &&
+        obj.language === quiz.language &&
         obj.category === props.name.toLowerCase()
     )
     .map((obj) => obj.progress);
@@ -47,7 +43,7 @@ const progress = computed(() => {
   height: 120px;
   border: 2px solid black;
   border-radius: 15px;
-  background: white;
+  background-color: v-bind('theme.theme.categoryCardColor');
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;

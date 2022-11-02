@@ -16,17 +16,17 @@
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
 import { computed } from "vue";
-import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
+import { useTheme } from "../stores/theme";
 
-const general = useGeneralStore();
+const theme = useTheme();
+
 const quiz = useQuizStore();
 const userInfo = useUserStore();
 const props = defineProps(["language", "img", "link"]);
 const categoriesPerLanguage = 3; //This is hardcoded for now.
 
 const setLanguage = () => {
-  general.setLanguage(props.name);
   quiz.setLanguage(props.name);
 };
 
@@ -51,6 +51,7 @@ img {
   width: 100%;
   height: 100px;
   border-radius: 10px;
+  border: 1px solid black;
 }
 
 .progress-info {
@@ -80,9 +81,11 @@ img {
     width: 350px;
     height: 160px;
   }
+
   img {
     height: 140px;
   }
+
   .progress-bar {
     width: 250px;
   }

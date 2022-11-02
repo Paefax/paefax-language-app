@@ -67,13 +67,11 @@ import { useQuizStore } from "@/stores/quiz";
 import AnswerItems from "../components/AnswerItems.vue";
 import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
-import { useGeneralStore } from "@/stores/general";
 import UserInputQuiz from "./UserInputQuiz.vue";
 import { useUserStore } from "@/stores/user";
 import CloseThick from "vue-material-design-icons/CloseThick.vue";
 import CheckBold from "vue-material-design-icons/CheckBold.vue";
 
-const general = useGeneralStore();
 const quiz = useQuizStore();
 const user = useUserStore();
 
@@ -88,9 +86,7 @@ const input = ref("");
 const progress = ref(
   user.progress
     .filter(
-      (obj) =>
-        obj.language === general.getLanguage() &&
-        obj.category === general.getCategory()
+      (obj) => obj.language === quiz.language && obj.category === quiz.category
     )
     .map((obj) => obj.progress)
 );
@@ -160,14 +156,14 @@ onMounted(() => {
     quiz.category != quiz.originalCategory ||
     quiz.language != quiz.originalLanguage
   ) {
-    let url = `http://localhost:3000/${general.getCategory()}/${general.getLanguage()}`;
+    let url = `http://localhost:3000/${quiz.category}/${quiz.language}`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         quiz.setQuestions(data.questions);
         quiz.setNumberOfQuestions(data.questions.length);
-        quiz.setOriginalLanguage(general.getLanguage());
-        quiz.setOriginalCategory(general.getCategory());
+        quiz.setOriginalLanguage(quiz.language);
+        quiz.setOriginalCategory(quiz.category);
         quiz.resetProgressBalls();
         quiz.resetQuizProgress();
         quiz.setResetQuestions(false);

@@ -15,6 +15,9 @@
 import { onUnmounted } from "vue";
 import QuizResult from "../components/QuizResult.vue";
 import { useQuizStore } from "@/stores/quiz";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 
 const quiz = useQuizStore();
 
@@ -39,23 +42,26 @@ a {
 
 button {
   border-radius: 10px;
-  border-style: none;
   cursor: pointer;
-  font-size: 15px;
+  font-size: large;
   width: 200px;
   height: 50px;
   margin-top: 10px;
   transition: all 0.3s;
+  border: 1px solid;
+  border-color: v-bind('theme.theme.fieldColor');
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
 }
 
 .button1 {
-  background: #185359;
-  color: #fff;
+  background-color: v-bind('theme.theme.footerBackgroundColor');
+  color: v-bind('theme.theme.color');
+
   font-weight: 500;
 }
 
 .button2 {
-  background: #fff;
+  color: v-bind('theme.theme.color');
   color: black;
   font-weight: 500;
 }

@@ -22,8 +22,13 @@
 import { onMounted, ref, computed } from "vue";
 import AccountProgress from "../components/AccountProgress.vue";
 import { useUserStore } from "@/stores/user";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
+
 const userInfo = useUserStore();
 const username = computed(() => userInfo.username);
+
 const profilePicture = "fake-profile.jpeg";
 const languages = ref([]);
 
@@ -51,20 +56,22 @@ main {
   width: 250px;
   border-radius: 50%;
 }
+
 button {
   border-radius: 15px;
-  border-style: none;
   cursor: pointer;
   font-size: 15px;
   width: 150px;
   height: 50px;
   margin-top: 10px;
-  background: #fff;
-  color: black;
   font-weight: 700;
   transition: all 0.3s;
   margin-top: 30px;
   margin-bottom: 50px;
+  color: v-bind("theme.theme.color");
+  background-color: v-bind("theme.theme.footerBackgroundColor");
+  box-shadow: 0px 5px 10px black;
+  border: 1px solid v-bind("theme.theme.fieldColor");
 }
 
 @media only screen and (min-width: 769px) {
