@@ -14,7 +14,9 @@
         :link="language.link"
       />
     </div>
-    <button>EDIT PROFILE</button>
+    <RouterLink to="/language">
+      <button>PICK A LANGUAGE TO START A QUIZ</button>
+    </RouterLink>
   </main>
 </template>
 
@@ -52,24 +54,27 @@ main {
   border-radius: 50%;
 }
 button {
-  border-radius: 15px;
+  border-radius: 10px;
   border-style: none;
   cursor: pointer;
   font-size: 15px;
-  width: 150px;
-  height: 50px;
-  margin-top: 10px;
-  background: #fff;
-  color: black;
-  font-weight: 700;
+  width: 200px;
+  height: 60px;
   transition: all 0.3s;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  background: #185359;
+  color: #fff;
+  font-weight: 500;
 }
 
 @media only screen and (min-width: 769px) {
   h2 {
     font-size: 30px;
+  }
+
+  button {
+    font-size: 20px;
+    width: 220px;
+    height: 70px;
   }
 }
 </style>
