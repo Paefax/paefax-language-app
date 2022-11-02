@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
@@ -21,11 +20,9 @@ const theme = useTheme();
 const props = defineProps(["name", "img", "alt", "link", "isUserQuiz"]);
 
 const userInfo = useUserStore();
-const general = useGeneralStore();
 const quiz = useQuizStore();
 
 const setCategory = () => {
-  general.setCategory(props.name);
   quiz.setCategory(props.name);
   quiz.setIsUserQuiz(props.isUserQuiz);
 };
@@ -34,7 +31,7 @@ const progress = computed(() => {
   return userInfo.progress
     .filter(
       (obj) =>
-        obj.language === general.getLanguage() &&
+        obj.language === quiz.language &&
         obj.category === props.name.toLowerCase()
     )
     .map((obj) => obj.progress);

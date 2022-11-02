@@ -3,9 +3,17 @@ import { ref } from "vue";
 
 export const useQuizStore = defineStore("quiz", () => {
   const originalCategory = ref("");
-  const category = ref("");
+  const category = ref(
+    localStorage.getItem("category") === null
+      ? ""
+      : localStorage.getItem("category")
+  );
   const originalLanguage = ref("");
-  const language = ref("");
+  const language = ref(
+    localStorage.getItem("language") === null
+      ? ""
+      : localStorage.getItem("language")
+  );
   const originalQuestions = ref([]);
   const questions = ref([]);
   const idCurrentQuestion = ref(0);
@@ -52,6 +60,7 @@ export const useQuizStore = defineStore("quiz", () => {
 
   const setCategory = (categoryName) => {
     category.value = categoryName.toLowerCase();
+    localStorage.setItem("category", category.value);
   };
 
   const setOriginalCategory = (categoryName) => {
@@ -60,6 +69,7 @@ export const useQuizStore = defineStore("quiz", () => {
 
   const setLanguage = (languageName) => {
     language.value = languageName.toLowerCase();
+    localStorage.setItem("language", language.value);
   };
 
   const setOriginalLanguage = (languageName) => {
