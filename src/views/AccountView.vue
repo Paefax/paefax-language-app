@@ -14,15 +14,17 @@
         :link="language.link"
       />
     </div>
+    <MakeQuizButtonVue />
     <button>EDIT PROFILE</button>
   </main>
 </template>
 
 <script setup>
 import { onMounted, ref, computed } from "vue";
-import AccountProgress from "../components/AccountProgress.vue";
 import { useUserStore } from "@/stores/user";
 import { useTheme } from "../stores/theme";
+import AccountProgress from "../components/AccountProgress.vue";
+import MakeQuizButtonVue from "../components/MakeQuizButton.vue";
 
 const theme = useTheme();
 
