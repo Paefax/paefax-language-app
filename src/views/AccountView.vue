@@ -1,12 +1,13 @@
 <template>
   <main>
+    <h1>My Profile</h1>
     <img
       id="profile-img"
       :src="'/src/assets/images/' + profilePicture"
       alt="Profile picture"
     />
-    <h1>{{ username }}</h1>
-    <h2>My Languages:</h2>
+    <h2>{{ username }}</h2>
+    <h3 v-show="hasProgress">My Languages:</h3>
     <div v-for="(language, index) in languages" :key="index">
       <AccountProgress
         :language="language.name"
@@ -15,7 +16,7 @@
       />
     </div>
     <RouterLink to="/language">
-      <button>PICK A LANGUAGE TO START A QUIZ</button>
+      <button>START A NEW QUIZ</button>
     </RouterLink>
   </main>
 </template>
@@ -28,6 +29,7 @@ const userInfo = useUserStore();
 const username = computed(() => userInfo.username);
 const profilePicture = "fake-profile.jpeg";
 const languages = ref([]);
+const hasProgress = computed(() => userInfo.progress[0] !== undefined);
 
 onMounted(() => {
   let url = `http://localhost:3000/languages`;
@@ -50,16 +52,17 @@ main {
 }
 
 #profile-img {
-  width: 250px;
+  width: 150px;
   border-radius: 50%;
 }
+
 button {
   border-radius: 10px;
   border-style: none;
   cursor: pointer;
   font-size: 15px;
-  width: 200px;
-  height: 60px;
+  width: 180px;
+  height: 40px;
   transition: all 0.3s;
   background: #185359;
   color: #fff;
@@ -71,10 +74,14 @@ button {
     font-size: 30px;
   }
 
+  h3 {
+    font-size: 20px;
+  }
+
   button {
     font-size: 20px;
-    width: 220px;
-    height: 70px;
+    width: 230px;
+    height: 50px;
   }
 }
 </style>
