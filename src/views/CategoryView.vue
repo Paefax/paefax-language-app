@@ -49,7 +49,6 @@ import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOut
 import { useUserStore } from "@/stores/user";
 import { useQuizStore } from "@/stores/quiz";
 import { useTheme } from "../stores/theme";
-import { useQuizStore } from "@/stores/quiz";
 
 const theme = useTheme();
 
