@@ -29,6 +29,7 @@ export const useTheme = defineStore("theme", () => {
         buttonColor: darkMode.value ? buttonColorLight : buttonColorDark,
         logo: darkMode.value ? true : false,
         subleText: darkMode.value ? subleTextLight : subleTextDark,
+        fieldColor: darkMode.value ? "black" : "#0B2B40",
 
     }
   }) 

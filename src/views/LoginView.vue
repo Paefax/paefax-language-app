@@ -93,7 +93,8 @@ main {
   height: 40px;
   border-radius: 10px;
   border-style: none;
-  background-color: rgb(255, 255, 255, 0.56);
+  border: 1px solid;
+  border-color: v-bind('theme.theme.fieldColor');
 
 }
 
@@ -102,6 +103,10 @@ main {
   color: v-bind('theme.theme.color');
   font-size: 20px;
   margin-top: 10px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
+  border: 1px solid;
+  border-color: v-bind('theme.theme.fieldColor');
+
 }
 
 #forgot-psw-text {
@@ -120,13 +125,15 @@ main {
 
 #sing-up-button {
   border-radius: 10px;
-  border-style: none;
   cursor: pointer;
   font-size: 15px;
   width: 100px;
   height: 30px;
   background-color: v-bind('theme.theme.footerBackgroundColor');
   color: v-bind('theme.theme.color');
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
+  border: 1px solid;
+  border-color: v-bind('theme.theme.fieldColor');
 }
 
 #or-div {
@@ -139,7 +146,8 @@ hr {
   width: 120px;
   height: 0px;
   margin: 10px;
-  border: 1px solid white;
+  border: 1px solid;
+  border-color: v-bind('theme.theme.color')
 }
 
 @media only screen and (min-width: 769px) {
