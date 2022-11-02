@@ -8,11 +8,7 @@
       </tr>
     </thead>
     <tbody>
-      <ResultOverviewItem
-        v-for="(result, index) in results"
-        :key="index"
-        :info="result"
-      />
+      <ResultOverviewItem v-for="(result, index) in results" :key="index" :info="result" />
     </tbody>
   </table>
 </template>
@@ -21,6 +17,9 @@
 import { useQuizStore } from "@/stores/quiz";
 import ResultOverviewItem from "./ResultOverviewItem.vue";
 import { onMounted, ref } from "vue";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 
 const quiz = useQuizStore();
 const answers = quiz.answers;
@@ -44,14 +43,14 @@ onMounted(() => {
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   background: white;
-  color: black;
+  color: #333333;
   max-width: 90%;
   margin-bottom: 40px;
 }
 
 .content-table thead tr {
-  background-color: #185359;
-  color: #fff;
+  background-color: v-bind('theme.theme.footerBackgroundColor');
+  color: v-bind('theme.theme.color');
   text-align: center;
 }
 
@@ -59,6 +58,7 @@ onMounted(() => {
 .content-table td {
   padding: 12px 25px;
   text-align: center;
+
 }
 
 @media only screen and (min-width: 769px) {

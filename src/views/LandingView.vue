@@ -1,11 +1,10 @@
 <template>
   <WizardBalls :position="0" />
   <main>
-    <img
-      id="logo-img"
-      src="../assets/images/official-paefax-logo-white.svg"
-      alt="Official Paefax logo"
-    />
+    <img v-if="theme.theme.logo" id="logo-img" src="../assets/images/official-paefax-logo-dark.svg"
+      alt="Official Paefax logo" />
+    <img v-if="!theme.theme.logo" id="logo-img" src="../assets/images/official-paefax-logo-light.svg"
+      alt="Official Paefax logo" />
     <RouterLink to="/language">
       <button class="get-started-btn">Get Started</button>
     </RouterLink>
@@ -17,6 +16,10 @@
 
 <script setup>
 import WizardBalls from "../components/WizardBalls.vue";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
+
 </script>
 
 <style scoped>
@@ -30,7 +33,7 @@ main {
 }
 
 #logo-img {
-  max-width: 80%;
+  max-width: 70%;
 }
 
 .get-started-btn {
@@ -46,12 +49,16 @@ main {
   box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
   margin-top: 50px;
   margin-bottom: 10px;
+  background-color: v-bind('theme.theme.footerBackgroundColor');
+  color: v-bind('theme.theme.color');
+
 }
 
 h4 {
   font-weight: 300;
-  color: #30a5bf;
+  color: v-bind('theme.theme.subleText');
   margin: 0;
+
 }
 
 @media only screen and (min-width: 769px) {
