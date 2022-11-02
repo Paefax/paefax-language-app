@@ -1,7 +1,8 @@
 <template>
   <section class="wizard">
     <RouterLink to="/language">
-      <ArrowLeftCircleOutline :size="38" />
+      <ArrowLeftCircleOutline :size="38" v-if="theme.theme.logo" fillColor="#456268" />
+      <ArrowLeftCircleOutline :size="38" v-else="!theme.theme.logo" />
     </RouterLink>
     <WizardBalls :position="2" />
     <div id="space"></div>
@@ -37,13 +38,17 @@ import CategoryCard from "../components/CategoryCard.vue";
 import WizardBalls from "../components/WizardBalls.vue";
 import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOutline.vue";
 import { useUserStore } from "@/stores/user";
+import { useTheme } from "../stores/theme";
 import { useGeneralStore } from "../stores/general";
+
+const theme = useTheme();
 
 const userInfo = useUserStore();
 const general = useGeneralStore();
 
 const categories = ref([]);
 const userQuizzes = ref([]);
+
 
 onMounted(() => {
   let url = `http://localhost:3000/categories`;

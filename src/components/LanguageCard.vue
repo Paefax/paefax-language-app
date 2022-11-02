@@ -16,6 +16,9 @@ import { useQuizStore } from "@/stores/quiz";
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
 import { computed } from "vue";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 
 const props = defineProps(["name", "img", "alt", "link"]);
 
@@ -43,13 +46,17 @@ const progress = computed(
 #language-card-box {
   max-width: 150px;
   max-height: 100px;
-  border: 2px solid black;
+
   border-radius: 15px;
 }
 
 #language-card-box:hover {
   box-shadow: 0px 5px 10px black;
   transform: translateY(4px);
+}
+
+h4 {
+  color: v-bind("theme.theme.color");
 }
 
 img {

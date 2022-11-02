@@ -29,6 +29,7 @@
 <script setup>
 import { useQuizStore } from "@/stores/quiz";
 import { computed } from "vue";
+import { useTheme } from "../stores/theme";
 import CloseThick from "vue-material-design-icons/CloseThick.vue";
 import CheckBold from "vue-material-design-icons/CheckBold.vue";
 
@@ -44,6 +45,8 @@ const findCorrectAnswer = computed(() => {
     (question) => question.id === quiz.idCurrentQuestion
   ).correctAnswer;
 });
+
+const theme = useTheme();
 
 const props = defineProps({
   answer: {
@@ -62,8 +65,8 @@ button {
   height: 50px;
   border-radius: 10px;
   font-size: 1.2em;
-  background-color: #185359;
-  color: white;
+  background-color: v-bind("theme.theme.footerBackgroundColor");
+  color: v-bind("theme.theme.color");
   border: 1px solid black;
   cursor: pointer;
   margin-top: 8px;

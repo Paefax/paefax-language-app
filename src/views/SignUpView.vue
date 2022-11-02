@@ -1,10 +1,9 @@
 <template>
   <main>
-    <img
-      id="paefax-img"
-      src="../assets/images/official-paefax-logo-white.svg"
-      alt="Paefax logo"
-    />
+    <img v-if="theme.theme.logo" id="paefax-img" src="../assets/images/official-paefax-logo-dark.svg"
+      alt="Official Paefax logo" />
+    <img v-if="!theme.theme.logo" id="paefax-img" src="../assets/images/official-paefax-logo-light.svg"
+      alt="Official Paefax logo" />
     <h1>Sign up</h1>
     <form id="signup-form" @submit.prevent="signUp()">
       <label for="name">Username:</label>
@@ -24,7 +23,9 @@
 <script setup>
 import { ref } from "vue";
 import router from "../router/index";
+import { useTheme } from "../stores/theme";
 
+const theme = useTheme();
 const name = ref("");
 const password = ref("");
 
@@ -82,8 +83,8 @@ main {
   width: 100%;
   height: 40px;
   border-radius: 10px;
-  background-color: rgb(255, 255, 255, 0.56);
-  border-style: none;
+  border-color: v-bind('theme.theme.fieldColor');
+  border: 1px solid;
   font-size: large;
 }
 
@@ -98,13 +99,17 @@ main {
 }
 
 #create-account-btn {
-  background-color: #185359;
-  color: white;
+  background-color: v-bind('theme.theme.footerBackgroundColor');
+  color: v-bind('theme.theme.color');
   font-size: 20px;
   margin-top: 10px;
+  border-color: v-bind('theme.theme.fieldColor');
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
+
 }
 
 @media only screen and (min-width: 769px) {
+
   #password,
   #name,
   #email,

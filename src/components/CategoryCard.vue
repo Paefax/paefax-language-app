@@ -3,11 +3,7 @@
     <h4>{{ props.name.charAt(0).toUpperCase() + props.name.slice(1) }}</h4>
     <main id="category-card-box">
       <img :src="props.img" />
-      <ProgressBar
-        id="progress-bar"
-        :progress="`${progress}%`"
-        v-if="progress > 0"
-      />
+      <ProgressBar id="progress-bar" :progress="`${progress}%`" v-if="progress > 0" />
     </main>
   </RouterLink>
 </template>
@@ -18,6 +14,9 @@ import { useQuizStore } from "@/stores/quiz";
 import ProgressBar from "./ProgressBar.vue";
 import { useUserStore } from "@/stores/user";
 import { computed } from "vue";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 
 const props = defineProps(["name", "img", "alt", "link", "isUserQuiz"]);
 
@@ -48,7 +47,7 @@ const progress = computed(() => {
   height: 120px;
   border: 2px solid black;
   border-radius: 15px;
-  background: white;
+  background-color: v-bind('theme.theme.categoryCardColor');
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
