@@ -18,36 +18,31 @@
         </select>
       </form>
 
-      <h2>Add Question</h2>
+      <h2>Add Word</h2>
       <form id="add-question-form">
-        <label for="question">Question</label>
-        <input
-          type="text"
-          id="question"
-          name="question"
-          v-model="questionToAdd"
-        />
+        <label for="word">Word</label>
+        <input type="text" id="word" name="word" v-model="wordToAdd" />
         <label for="answer">Answer</label>
         <input type="text" id="answer" name="answer" v-model="answerToAdd" />
-        <button id="add-button" @click.prevent="addQuestion()">ADD</button>
+        <button id="add-button" @click.prevent="addWord()">ADD</button>
       </form>
       <section id="questions-line">
         <div class="line"></div>
-        <h3>Questions</h3>
+        <h3>Words</h3>
         <div class="line"></div>
       </section>
       <section id="added-questions-section">
         <section>
-          <table id="added-questions-table" v-if="addedQuestions.length > 0">
+          <table id="added-questions-table" v-if="addedWords.length > 0">
             <thead>
               <th id="id-header">ID</th>
               <th id="question-header">Question</th>
               <th id="answer-header">Answer</th>
               <th id="empty-header"></th>
             </thead>
-            <tbody v-for="(question, index) in addedQuestions" :key="index">
+            <tbody v-for="(question, index) in addedWords" :key="index">
               <td>{{ index }}</td>
-              <td>{{ question.question }}</td>
+              <td>{{ question.word }}</td>
               <td>{{ question.correctAnswer }}</td>
               <td id="delete-column">
                 <button
@@ -70,56 +65,66 @@
 
 <script setup>
 import { onMounted, ref } from "vue";
-import { useUserStore } from "@/stores/user";
-
-const userInfo = useUserStore();
 
 const quizName = ref("");
 const quizLanguage = ref("Select Language");
 const languages = ref([]);
 
-const questionToAdd = ref("");
+const wordToAdd = ref("");
 const answerToAdd = ref("");
 
-const addedQuestions = ref([]);
+const addedWords = ref([]);
 
-const addQuestion = () => {
-  if (questionToAdd.value === "" || answerToAdd.value === "") {
-    console.error("You need to input both a question and answer");
+const addWord = () => {
+  if (wordToAdd.value === "" || answerToAdd.value === "") {
+    console.error("You need to input both a word and an answer");
   } else {
-    addedQuestions.value.push({
-      question: questionToAdd.value.toLowerCase(),
+    addedWords.value.push({
+      word: wordToAdd.value.toLowerCase(),
       correctAnswer: answerToAdd.value.toLowerCase(),
     });
 
-    questionToAdd.value = "";
+    wordToAdd.value = "";
     answerToAdd.value = "";
   }
 };
 
 const deleteQuestion = (index) => {
-  addedQuestions.value.splice(index, 1);
+  addedWords.value.splice(index, 1);
 };
 
 const createQuiz = () => {
   if (
     quizName.value === "" ||
     quizLanguage.value === "Select Language" ||
-    addedQuestions.value.length === 0
+    addedWords.value.length === 0
   ) {
     console.error("You need to fill in all fields to create a quiz");
   } else {
     let quiz = {
       name: quizName.value.toLowerCase(),
       language: quizLanguage.value.toLowerCase(),
-      questions: addedQuestions.value,
+      questions: addedWords.value,
     };
 
-    userInfo.addUserMadeQuiz(quiz);
+    let url = "http://localhost:3000/user/quiz";
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify(quiz),
+    })
+      .then((response) => response)
+      .then((data) => {
+        console.log("Success:", data);
+      });
 
     quizName.value = "";
     quizLanguage.value = "Select Language";
-    addedQuestions.value = [];
+    addedWords.value = [];
   }
 };
 
