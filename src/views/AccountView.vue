@@ -74,6 +74,11 @@ button {
   border: 1px solid v-bind("theme.theme.fieldColor");
 }
 
+button:hover {
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 769px) {
   h2 {
     font-size: 30px;
