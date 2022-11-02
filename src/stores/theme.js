@@ -23,7 +23,7 @@ export const useTheme = defineStore("theme", () => {
   const theme = computed (() => {
     return {
         color: darkMode.value ? fontColorLight : fontColorDark,
-        categoryCardColor: darkMode.value ? "#79A3B1" : "#c9c9c9",
+        categoryCardColor: darkMode.value ? "#c9c9c9" : "#c9c9c9",
         backgroundColor: darkMode.value ? backgroundColorLight : backgroundColorDark,
         footerBackgroundColor: darkMode.value ? footerColorLight : footerColorDark,
         buttonColor: darkMode.value ? buttonColorLight : buttonColorDark,

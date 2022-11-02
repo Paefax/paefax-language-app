@@ -53,12 +53,14 @@ main {
   width: 100%;
   height: 40px;
   border-radius: 10px;
-  background-color: rgb(255, 255, 255, 0.56);
+  background-color: rgba(255, 255, 255, 0.836);
   border-style: none;
 }
 
 #message {
   height: 200px;
+  border: 1px solid;
+  border-color: v-bind('theme.theme.fieldColor');
 }
 
 #contact-btn {
@@ -66,6 +68,11 @@ main {
   color: v-bind('theme.theme.color');
   font-size: 20px;
   margin-top: 50px;
+  border: 1px solid;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
+  border-color: v-bind('theme.theme.fieldColor');
+
+
 }
 
 #contact-form label {

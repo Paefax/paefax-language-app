@@ -18,6 +18,9 @@ import { useUserStore } from "@/stores/user";
 import { computed } from "vue";
 import { useGeneralStore } from "@/stores/general";
 import { useQuizStore } from "@/stores/quiz";
+import { useTheme } from "../stores/theme";
+
+const theme = useTheme();
 
 const general = useGeneralStore();
 const quiz = useQuizStore();
@@ -44,6 +47,9 @@ const progress = computed(
 .language-card {
   width: 250px;
   height: 120px;
+  border: 1px solid;
+  border-color: v-bind('theme.theme.fieldColor');
+
 }
 
 img {
@@ -80,9 +86,11 @@ img {
     width: 350px;
     height: 160px;
   }
+
   img {
     height: 140px;
   }
+
   .progress-bar {
     width: 250px;
   }

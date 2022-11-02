@@ -83,8 +83,8 @@ main {
   width: 100%;
   height: 40px;
   border-radius: 10px;
-  background-color: rgb(255, 255, 255, 0.56);
-  border-style: none;
+  border-color: v-bind('theme.theme.fieldColor');
+  border: 1px solid;
   font-size: large;
 }
 
@@ -99,10 +99,13 @@ main {
 }
 
 #create-account-btn {
-  background-color: #185359;
-  color: white;
+  background-color: v-bind('theme.theme.footerBackgroundColor');
+  color: v-bind('theme.theme.color');
   font-size: 20px;
   margin-top: 10px;
+  border-color: v-bind('theme.theme.fieldColor');
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 10);
+
 }
 
 @media only screen and (min-width: 769px) {
