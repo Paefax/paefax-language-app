@@ -72,6 +72,11 @@ button {
   margin-top: 8px;
 }
 
+button:hover {
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
 .correctHighlight {
   border: 5px solid green;
 }
