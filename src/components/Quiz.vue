@@ -171,6 +171,7 @@ onMounted(() => {
     quiz.resetProgressBalls();
     quiz.resetQuizProgress();
     setQuestionInfo();
+    quiz.setAnswerChosen(false);
   }
 });
 </script>
