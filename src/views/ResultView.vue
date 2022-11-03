@@ -1,7 +1,6 @@
 <template>
   <main>
     <QuizResult />
-    <button class="button2">Take new quiz</button>
     <RouterLink to="/category">
       <button class="button1">Change category</button>
     </RouterLink>
@@ -47,6 +46,7 @@ button {
   width: 200px;
   height: 50px;
   margin-top: 10px;
+  margin-bottom: 12px;
   transition: all 0.3s;
   border: 1px solid;
   border-color: v-bind("theme.theme.fieldColor");
@@ -60,18 +60,7 @@ button {
   font-weight: 500;
 }
 
-.button2 {
-  color: v-bind("theme.theme.color");
-  color: black;
-  font-weight: 500;
-}
-
 button:hover {
-  transform: translateY(4px);
-  cursor: pointer;
-}
-
-.button2:hover {
   transform: translateY(4px);
   cursor: pointer;
 }
