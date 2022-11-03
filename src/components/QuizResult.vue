@@ -16,7 +16,7 @@ const userInfo = useUserStore();
 const loggedIn = computed(() => userInfo.loggedIn);
 
 const increaseScore = () => {
-  if (quiz.score >= 4 && quiz.isUserQuiz === false) {
+  if (quiz.score >= 4 && quiz.isUserQuiz === "false") {
     userInfo.increaseScoreInDB(quiz.language, quiz.category);
   }
 };
