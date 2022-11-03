@@ -1,12 +1,13 @@
 <template>
   <main>
+    <h1>My Profile</h1>
     <img
       id="profile-img"
       :src="'/src/assets/images/' + profilePicture"
       alt="Profile picture"
     />
-    <h1>{{ username }}</h1>
-    <h2>My Languages:</h2>
+    <h2>{{ username }}</h2>
+    <h3 v-show="hasProgress">My Languages:</h3>
     <div v-for="(language, index) in languages" :key="index">
       <AccountProgress
         :language="language.name"
@@ -14,7 +15,9 @@
         :link="language.link"
       />
     </div>
-    <button>EDIT PROFILE</button>
+    <RouterLink to="/language">
+      <button>START A NEW QUIZ</button>
+    </RouterLink>
   </main>
 </template>
 
@@ -31,6 +34,7 @@ const username = computed(() => userInfo.username);
 
 const profilePicture = "fake-profile.jpeg";
 const languages = ref([]);
+const hasProgress = computed(() => userInfo.progress[0] !== undefined);
 
 onMounted(() => {
   let url = `http://localhost:3000/languages`;
@@ -53,7 +57,7 @@ main {
 }
 
 #profile-img {
-  width: 250px;
+  width: 150px;
   border-radius: 50%;
 }
 
@@ -74,9 +78,24 @@ button {
   border: 1px solid v-bind("theme.theme.fieldColor");
 }
 
+button:hover {
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 769px) {
   h2 {
     font-size: 30px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 20px;
+    width: 230px;
+    height: 50px;
   }
 }
 </style>

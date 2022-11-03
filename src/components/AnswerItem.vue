@@ -70,6 +70,12 @@ button {
   border: 1px solid black;
   cursor: pointer;
   margin-top: 8px;
+  transition: all 0.3s;
+}
+
+button:hover {
+  transform: translateY(4px);
+  cursor: pointer;
 }
 
 .correctHighlight {

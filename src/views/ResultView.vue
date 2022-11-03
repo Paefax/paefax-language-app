@@ -60,6 +60,16 @@ button {
   font-weight: 500;
 }
 
+button:hover {
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
+.button1:hover {
+  transform: translateY(4px);
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 769px) {
   button {
     border-radius: 10px;

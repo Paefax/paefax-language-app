@@ -13,6 +13,9 @@
   </section>
   <main>
     <h1>Category</h1>
+    <div>
+      <h2>Selected language: {{ selectedLanguage }}</h2>
+    </div>
     <section id="category-card">
       <CategoryCard
         v-for="(category, index) in categories"
@@ -27,16 +30,22 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import CategoryCard from "../components/CategoryCard.vue";
 import WizardBalls from "../components/WizardBalls.vue";
 import ArrowLeftCircleOutline from "vue-material-design-icons/ArrowLeftCircleOutline.vue";
 import { useUserStore } from "@/stores/user";
+import { useQuizStore } from "@/stores/quiz";
 import { useTheme } from "../stores/theme";
 
 const theme = useTheme();
-const categories = ref([]);
+const quiz = useQuizStore();
 const userInfo = useUserStore();
+
+const categories = ref([]);
+const selectedLanguage = computed(
+  () => quiz.language.charAt(0).toUpperCase() + quiz.language.slice(1)
+);
 
 onMounted(() => {
   let url = `http://localhost:3000/categories`;
@@ -75,6 +84,16 @@ main {
   align-items: center;
   gap: 10px;
   flex-direction: column;
+}
+
+h1 {
+  margin-bottom: 0px;
+}
+
+h2 {
+  margin-top: 0px;
+  font-style: italic;
+  font-weight: 300;
 }
 
 @media only screen and (min-width: 769px) {

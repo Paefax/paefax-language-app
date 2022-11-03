@@ -1,11 +1,14 @@
 <template>
   <div id="app">
     <main id="viewport">
-      <NavHeader v-show="
-  $route.name !== 'home' &&
-  $route.name !== 'language' &&
-  $route.name !== 'category'
-      " />
+      <NavHeader
+        v-show="
+          ($route.name !== 'home' &&
+            $route.name !== 'language' &&
+            $route.name !== 'category') ||
+          loggedIn
+        "
+      />
       <RouterView />
       <NavFooter />
     </main>
@@ -16,19 +19,23 @@
 import { RouterView } from "vue-router";
 import NavHeader from "./components/NavHeader.vue";
 import NavFooter from "./components/NavFooter.vue";
+import { computed } from "vue";
+import { useUserStore } from "./stores/user";
+import { useTheme } from "./stores/theme";
 
-import { useTheme } from "./stores/theme"
+const userInfo = useUserStore();
+
+const loggedIn = computed(() => userInfo.loggedIn);
 
 const theme = useTheme();
-
-
 </script>
-
 
 <style scoped>
 #app {
-  background-color: v-bind('theme.theme.backgroundColor');
-  color: v-bind('theme.theme.color')
+  width: 100%;
+  height: 100%;
+  background-color: v-bind("theme.theme.backgroundColor");
+  color: v-bind("theme.theme.color");
 }
 
 #viewport {
@@ -39,9 +46,6 @@ const theme = useTheme();
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-
-
 }
 
 @media only screen and (min-width: 376px) {
