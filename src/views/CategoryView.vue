@@ -18,12 +18,24 @@
     </div>
     <section id="category-card">
       <CategoryCard
-        v-for="(category, index) in categories"
+        v-for="category in categories"
         :key="category.id"
+        :id="category.id"
         :name="category.name"
         :img="category.img"
         :alt="category.alt"
         :link="category.link"
+        is-user-quiz="false"
+      />
+      <CategoryCard
+        v-for="quiz in userQuizzes"
+        :key="quiz.id"
+        :id="quiz.id"
+        :name="quiz.name"
+        img="src/assets/images/question-mark.png"
+        alt="question mark"
+        link="/quiz"
+        :is-user-quiz="quiz.isUserQuiz"
       />
     </section>
   </main>
@@ -39,22 +51,49 @@ import { useQuizStore } from "@/stores/quiz";
 import { useTheme } from "../stores/theme";
 
 const theme = useTheme();
-const quiz = useQuizStore();
+
 const userInfo = useUserStore();
+const quiz = useQuizStore();
 
 const categories = ref([]);
+const userQuizzes = ref([]);
+
 const selectedLanguage = computed(
   () => quiz.language.charAt(0).toUpperCase() + quiz.language.slice(1)
 );
 
 onMounted(() => {
   let url = `http://localhost:3000/categories`;
+
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
       categories.value = data;
     });
+
   userInfo.getProgressFromDB();
+
+  url = `http://localhost:3000/user/quiz/${quiz.language}`;
+
+  fetch(url, {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((row) => {
+        let userQuiz = {
+          id: row.id,
+          name: row.name,
+          language: row.language,
+          questions: JSON.parse(row.questions),
+          isUserQuiz: true,
+        };
+
+        userQuizzes.value.push(userQuiz);
+      });
+    });
 });
 </script>
 

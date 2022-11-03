@@ -24,6 +24,9 @@ export const useQuizStore = defineStore("quiz", () => {
   const resetQuestions = ref(true);
   const answerChosen = ref(false);
 
+  const quizId = ref(0);
+  const isUserQuiz = ref(false);
+
   const setResetQuestions = (boolean) => {
     resetQuestions.value = boolean;
   };
@@ -95,6 +98,10 @@ export const useQuizStore = defineStore("quiz", () => {
 
   const setAnswerChosen = (boolean) => (answerChosen.value = boolean);
 
+  const setQuizId = (newId) => (quizId.value = newId);
+
+  const setIsUserQuiz = (boolean) => (isUserQuiz.value = boolean);
+
   return {
     questions,
     nextQuestion,
@@ -124,5 +131,9 @@ export const useQuizStore = defineStore("quiz", () => {
     setOriginalLanguage,
     answerChosen,
     setAnswerChosen,
+    quizId,
+    setQuizId,
+    isUserQuiz,
+    setIsUserQuiz,
   };
 });

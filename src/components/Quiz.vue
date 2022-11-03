@@ -33,7 +33,9 @@
         v-if="!answeredCorrectly && answeredQuestion"
       >
         Correct answer:
-        <h4>{{ correctAnswer }}</h4>
+        <h4>
+          {{ correctAnswer.charAt(0).toUpperCase() + correctAnswer.slice(1) }}
+        </h4>
       </div>
     </div>
     <div v-else>
@@ -64,11 +66,11 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useQuizStore } from "@/stores/quiz";
+import { useUserStore } from "@/stores/user";
 import AnswerItems from "../components/AnswerItems.vue";
 import ProgressBalls from "../components/ProgressBalls.vue";
 import router from "../router/index";
 import UserInputQuiz from "./UserInputQuiz.vue";
-import { useUserStore } from "@/stores/user";
 import CloseThick from "vue-material-design-icons/CloseThick.vue";
 import CheckBold from "vue-material-design-icons/CheckBold.vue";
 
@@ -94,6 +96,7 @@ const progress = ref(
 const checkAnswer = (answer) => {
   answeredQuestion.value = true;
   currentAnswer.value = answer;
+
   if (answer === correctAnswer.value) {
     answeredCorrectly.value = true;
     quiz.increaseScore();
@@ -126,8 +129,11 @@ const setQuestionInfo = () => {
   answers.value = [];
 
   answers.value.push(currentQuestion.value.correctAnswer);
-  answers.value.push(currentQuestion.value.incorrectAnswers[0]);
-  answers.value.push(currentQuestion.value.incorrectAnswers[1]);
+
+  if (currentQuestion.value.incorrectAnswers !== undefined) {
+    answers.value.push(currentQuestion.value.incorrectAnswers[0]);
+    answers.value.push(currentQuestion.value.incorrectAnswers[1]);
+  }
 
   shuffleAnswers(answers.value);
 };
@@ -156,17 +162,37 @@ onMounted(() => {
     quiz.category != quiz.originalCategory ||
     quiz.language != quiz.originalLanguage
   ) {
-    let url = `http://localhost:3000/${quiz.category}/${quiz.language}`;
-    fetch(url)
+    let url = "";
+
+    if (quiz.isUserQuiz === true) {
+      url = `http://localhost:3000/user/quiz/get/${quiz.quizId}`;
+    } else {
+      url = `http://localhost:3000/${quiz.category}/${quiz.language}`;
+    }
+
+    fetch(url, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
-        quiz.setQuestions(data.questions);
-        quiz.setNumberOfQuestions(data.questions.length);
+        if (quiz.isUserQuiz === true) {
+          quiz.setQuestions(JSON.parse(data[0].questions));
+          quiz.setNumberOfQuestions(JSON.parse(data[0].questions).length);
+          progress.value = 100;
+        } else {
+          quiz.setQuestions(data.questions);
+          quiz.setNumberOfQuestions(data.questions.length);
+        }
+
         quiz.setOriginalLanguage(quiz.language);
         quiz.setOriginalCategory(quiz.category);
+
         quiz.resetProgressBalls();
         quiz.resetQuizProgress();
         quiz.setResetQuestions(false);
+
         setQuestionInfo();
       });
   } else {

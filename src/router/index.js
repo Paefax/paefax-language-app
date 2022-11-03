@@ -8,6 +8,7 @@ import AccountView from "../views/AccountView.vue";
 import LoginView from "../views/LoginView.vue";
 import SignUpView from "../views/SignUpView.vue";
 import ContactView from "../views/ContactView.vue";
+import CreateQuizView from "../views/CreateQuizView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,7 +59,19 @@ const router = createRouter({
       name: "contact",
       component: ContactView,
     },
+    {
+      path: "/quiz/create",
+      name: "create quiz",
+      component: CreateQuizView,
+    },
   ],
+
+  scrollBehavior(to, from, savedPosition) {
+    return {
+      top: 0,
+      behavior: "smooth",
+    };
+  },
 });
 
 export default router;
