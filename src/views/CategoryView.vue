@@ -1,7 +1,11 @@
 <template>
   <section class="wizard">
     <RouterLink to="/language">
-      <ArrowLeftCircleOutline :size="38" v-if="theme.theme.logo" fillColor="#456268" />
+      <ArrowLeftCircleOutline
+        :size="38"
+        v-if="theme.theme.logo"
+        fillColor="#456268"
+      />
       <ArrowLeftCircleOutline :size="38" v-else="!theme.theme.logo" />
     </RouterLink>
     <WizardBalls :position="2" />
@@ -10,8 +14,14 @@
   <main>
     <h1>Category</h1>
     <section id="category-card">
-      <CategoryCard v-for="(category, index) in categories" :key="category.id" :name="category.name" :img="category.img"
-        :alt="category.alt" :link="category.link" />
+      <CategoryCard
+        v-for="(category, index) in categories"
+        :key="category.id"
+        :name="category.name"
+        :img="category.img"
+        :alt="category.alt"
+        :link="category.link"
+      />
     </section>
   </main>
 </template>
@@ -27,7 +37,6 @@ import { useTheme } from "../stores/theme";
 const theme = useTheme();
 const categories = ref([]);
 const userInfo = useUserStore();
-
 
 onMounted(() => {
   let url = `http://localhost:3000/categories`;
