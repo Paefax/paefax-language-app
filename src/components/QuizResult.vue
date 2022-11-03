@@ -11,15 +11,12 @@ import { useUserStore } from "@/stores/user";
 import { onMounted, computed } from "vue";
 import ResultOverview from "./ResultOverview.vue";
 
-
 const quiz = useQuizStore();
 const userInfo = useUserStore();
 const loggedIn = computed(() => userInfo.loggedIn);
 
-
-
 const increaseScore = () => {
-  if (quiz.score >= 4) {
+  if (quiz.score >= 4 && quiz.isUserQuiz === false) {
     userInfo.increaseScoreInDB(quiz.language, quiz.category);
   }
 };
@@ -35,7 +32,6 @@ onMounted(() => {
 @media only screen and (min-width: 769px) {
   h1 {
     font-size: 3em;
-
   }
 
   h2 {
