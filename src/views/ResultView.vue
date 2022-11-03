@@ -46,6 +46,7 @@ button {
   width: 200px;
   height: 50px;
   margin-top: 10px;
+  margin-bottom: 12px;
   transition: all 0.3s;
   border: 1px solid;
   border-color: v-bind("theme.theme.fieldColor");
