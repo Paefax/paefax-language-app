@@ -20,7 +20,7 @@
 
       <h2>Add Word</h2>
       <form id="add-question-form">
-        <label for="word">Word</label>
+        <label for="word">Word in English</label>
         <input type="text" id="word" name="word" v-model="wordToAdd" />
         <label for="answer">Answer</label>
         <input type="text" id="answer" name="answer" v-model="answerToAdd" />
@@ -35,13 +35,11 @@
         <section>
           <table id="added-questions-table" v-if="addedWords.length > 0">
             <thead>
-              <th id="id-header">ID</th>
-              <th id="question-header">Question</th>
+              <th id="question-header">Word</th>
               <th id="answer-header">Answer</th>
               <th id="empty-header"></th>
             </thead>
             <tbody v-for="(question, index) in addedWords" :key="index">
-              <td>{{ index }}</td>
               <td>{{ question.word }}</td>
               <td>{{ question.correctAnswer }}</td>
               <td id="delete-column">
