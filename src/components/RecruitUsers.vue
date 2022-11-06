@@ -1,33 +1,24 @@
 <template>
   <main>
-    <QuizResult />
-    <RouterLink v-if="userInfo.loggedIn" to="/category">
-      <button class="button1">Change category</button>
+    <p id="info-txt">
+      Do you want to save your progress or create you own quiz?
+    </p>
+    <p id="urging-txt">Log in or create a new account!</p>
+    <RouterLink to="/login">
+      <button class="button1">Log in</button>
     </RouterLink>
-    <RouterLink v-if="userInfo.loggedIn" to="/language">
-      <button class="button1">Change language</button>
+    <RouterLink to="/signup">
+      <button class="button1">Create account</button>
     </RouterLink>
-    <RecruitUsers v-if="!userInfo.loggedIn" />
+    <RouterLink to="/language">
+      <button class="button2">No thanks! Not now</button>
+    </RouterLink>
   </main>
 </template>
 
 <script setup>
-import { onUnmounted } from "vue";
-import QuizResult from "../components/QuizResult.vue";
-import { useQuizStore } from "@/stores/quiz";
-import { useUserStore } from "@/stores/user";
 import { useTheme } from "../stores/theme";
-import RecruitUsers from "../components/RecruitUsers.vue";
-
 const theme = useTheme();
-const quiz = useQuizStore();
-const userInfo = useUserStore();
-
-onUnmounted(() => {
-  quiz.resetProgressBalls();
-  quiz.resetQuizProgress();
-  quiz.setResetQuestions(true);
-});
 </script>
 
 <style scoped>
@@ -36,10 +27,21 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
-a {
-  padding: 0;
+#info-txt {
+  font-size: 20px;
+  max-width: 300px;
+  text-align: center;
+}
+
+#urging-txt {
+  margin-top: 0px;
+  font-size: 15px;
+  font-style: italic;
+  max-width: 250px;
+  text-align: center;
 }
 
 button {
@@ -48,7 +50,6 @@ button {
   font-size: large;
   width: 200px;
   height: 50px;
-  margin-top: 10px;
   transition: all 0.3s;
   border: 1px solid;
   border-color: v-bind("theme.theme.fieldColor");
@@ -58,7 +59,6 @@ button {
 .button1 {
   background-color: v-bind("theme.theme.footerBackgroundColor");
   color: v-bind("theme.theme.color");
-
   font-weight: 500;
 }
 
@@ -66,7 +66,9 @@ button {
   color: v-bind("theme.theme.color");
   color: black;
   font-weight: 500;
-  margin-bottom: 30px;
+  font-size: smaller;
+  width: 170px;
+  height: 40px;
 }
 
 button:hover {
@@ -85,12 +87,24 @@ button:hover {
 }
 
 @media only screen and (min-width: 769px) {
+  #info-txt {
+    max-width: 450px;
+    font-size: 30px;
+  }
+
+  #urging-txt {
+    font-size: 25px;
+  }
   button {
     border-radius: 10px;
     font-size: 25px;
     width: 300px;
     height: 60px;
-    margin-top: 15px;
+  }
+  .button2 {
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
   }
 }
 </style>
