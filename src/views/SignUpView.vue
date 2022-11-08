@@ -15,9 +15,23 @@
     <h1>Sign up</h1>
     <form id="signup-form" @submit.prevent="signUp()">
       <label for="name">Username:</label>
-      <input type="text" id="name" name="name" v-model="name" />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        minlength="3"
+        v-model="name"
+      />
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" v-model="password" />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        minlength="3"
+        v-model="password"
+      />
       <br />
       <input type="submit" id="create-account-btn" value="CREATE ACCOUNT" />
     </form>

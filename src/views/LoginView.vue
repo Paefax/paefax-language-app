@@ -15,9 +15,15 @@
     <h1>Log in</h1>
     <form id="login-form" @submit.prevent="logIn()">
       <label for="name">Username:</label>
-      <input type="text" id="name" name="name" v-model="name" />
+      <input type="text" id="name" name="name" required v-model="name" />
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" v-model="password" />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        v-model="password"
+      />
       <br />
       <input type="submit" id="login-btn" value="LOG IN" />
     </form>
