@@ -94,17 +94,19 @@ const progress = ref(
 );
 
 const checkAnswer = (answer) => {
-  answeredQuestion.value = true;
-  currentAnswer.value = answer;
+  if (answeredQuestion.value === false) {
+    answeredQuestion.value = true;
+    currentAnswer.value = answer;
 
-  if (answer === correctAnswer.value) {
-    answeredCorrectly.value = true;
-    quiz.increaseScore();
-  } else {
-    answeredCorrectly.value = false;
+    if (answer === correctAnswer.value) {
+      answeredCorrectly.value = true;
+      quiz.increaseScore();
+    } else {
+      answeredCorrectly.value = false;
+    }
+
+    quiz.registerAnswer(answeredCorrectly.value, answer);
   }
-
-  quiz.registerAnswer(answeredCorrectly.value, answer);
 };
 
 const checkInputAnswer = (input) => {
